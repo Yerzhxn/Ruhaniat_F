@@ -10,6 +10,29 @@ const router = createRouter({
       component: Home
     },
     {
+      path: '/news',
+      name: 'news',
+      component: () => import('./views/News/News.vue')
+    },
+    {
+      path: '/news/:id',
+      name: 'newsView',
+      component: () => import('./views/News/NewsView.vue')
+    },
+    {
+      path: '/achievements',
+      name: 'achievements',
+      component: () => import('./views/Achievements/Achievements.vue')
+    },
+    {
+      path: '/achievements/:id',
+      name: 'achievementsView',
+      component: () => import('./views/Achievements/AchievementView.vue')
+    },
+
+    //old
+
+    {
       path: '/youtube',
       name: 'youtube',
       component: () => import('./views/Youtube.vue')
@@ -23,11 +46,6 @@ const router = createRouter({
       path: '/jetistikter',
       name: 'jetistikter',
       component: () => import('./views/Zhetistikter.vue')
-    },
-    {
-      path: '/news',
-      name: 'news',
-      component: () => import('./views/Zhanalyktar.vue')
     },
     {
       path: '/jet',

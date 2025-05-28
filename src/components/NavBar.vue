@@ -1,5 +1,7 @@
 <template>
-  <div class="container fixed z-40 backdrop-blur-sm inset-x-0 shadow-md  border-[1px] border-[#dedfe3] flex justify-between items-center h-16 w-[90%] mx-auto mt-[20px] px-[20px] border-1 rounded-[18px] ">
+  <div
+    class="container fixed z-40 backdrop-blur-sm inset-x-0 shadow-md border-[1px] border-[#dedfe3] flex justify-between items-center h-16 w-[90%] mx-auto mt-[20px] px-[20px] border-1 rounded-[18px]"
+  >
     <div class="flex items-center gap-10 text-gray-700">
       <img
         @click="$router.push('/')"
@@ -21,7 +23,7 @@
           Kesteler
         </p>
         <p
-          @click="$router.push('/jetistikter')"
+          @click="$router.push('/achievements')"
           class="text-gray-700 hover:text-[#00B5C0] transition-all duration-300 cursor-pointer"
         >
           Bizdin Jetistikter

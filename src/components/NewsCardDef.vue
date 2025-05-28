@@ -1,21 +1,29 @@
 <template>
   <div>
     <img
-      class="w-full h-[300px] rounded-xl object-cover"
+      class="w-full h-[300px] rounded-xl object-cover mb-3"
       alt="example"
-      src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+      :src="API_URL + data.image?.url"
     />
     <p
-      class="text-[24px] hover:text-gray-200 cursor-pointer transition-all duration-300 font-bold mb-3 py-3 border-b border-white"
+      @click="$router.push(`/achievements/${data.documentId}`)"
+      class="text-[24px] hover:text-gray-200 cursor-pointer transition-all duration-300 font-bold mb-1"
     >
-      SABAK
+      {{ data.title }}
     </p>
-    <p class="text-[16px]">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
-    </p>
+    <p
+      v-html="data.description"
+      class="text-[16px] line-clamp-2 text-gray-500"
+    />
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { API_URL } from "../env";
+
+defineProps<{
+  data: any;
+}>();
+</script>
 
 <style scoped></style>
