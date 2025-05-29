@@ -40,31 +40,10 @@ const router = createRouter({
     },
 
     //old
-
-    {
-      path: '/youtube',
-      name: 'youtube',
-      component: () => import('./views/Youtube.vue')
-    },
     {
       path: '/about',
       name: 'about',
       component: () => import('./views/BizTuraly.vue')
-    },
-    {
-      path: '/jetistikter',
-      name: 'jetistikter',
-      component: () => import('./views/Zhetistikter.vue')
-    },
-    {
-      path: '/jet',
-      name: 'jetDef',
-      component: () => import('./views/ZhatistikDef.vue')
-    },
-    {
-      path: '/jan',
-      name: 'janDef',
-      component: () => import('./views/zhanalykDef.vue')
     },
     {
       path: '/tabl',
