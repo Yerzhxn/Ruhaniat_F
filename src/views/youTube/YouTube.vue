@@ -6,10 +6,10 @@
       class="absolute w-[600px] h-[600px] top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2"
     />
     <div class="flex justify-between items-center">
-      <p class="text-[24px]">Jetistikter</p>
+      <p class="text-[24px]">You-Tube</p>
     </div>
     <div class="grid md:grid-cols-3 gap-5 pt-10">
-      <NewsCardDef v-for="item in achievements" :data="item" :key="item.id" />
+      <NewsCardDef v-for="item in youTubes" :data="item" :key="item.id" />
     </div>
   </div>
 </template>
@@ -21,7 +21,7 @@ import { storeToRefs } from "pinia";
 import { onMounted } from "vue";
 
 const newsStore = useNewsStore();
-const { achievements } = storeToRefs(newsStore);
+const { youTubes } = storeToRefs(newsStore);
 
 onMounted(async () => {
   await newsStore.getNews();

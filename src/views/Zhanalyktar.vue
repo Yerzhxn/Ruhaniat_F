@@ -53,7 +53,7 @@ function goToDetails(card) {
       <div 
         v-for="(card, index) in cards" 
         :key="index"
-        class="flex container  space-x-[70px]"
+        class="md:flex container  space-x-[70px]"
       >
         <img src="../assets/img/img_1.png" width="467px" height="267px" alt="">
         

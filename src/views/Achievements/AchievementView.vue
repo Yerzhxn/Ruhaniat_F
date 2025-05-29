@@ -1,9 +1,10 @@
 <template>
-  <div class="container mx-auto px-[100px] py-[140px]">
+  <div class="container mx-auto px-[20px] md:px-[100px] py-[140px]">
     <div v-if="loading" class="flex justify-center items-center">
       <a-spin :spinning="loading" size="large" />
     </div>
     <div class="" v-else>
+      <p class="text-[24px] mb-[40px]">{{ currentAchievement.title }}</p>
       <img
         :src="API_URL + currentAchievement.image.url"
         alt=""

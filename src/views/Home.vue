@@ -1,28 +1,28 @@
 <template>
   <div>
     <div
-      class="container mx-auto flex flex-col items-center justify-center h-[900px]"
+      class="container mx-auto flex flex-col items-center justify-center h-[600px] md:h-[900px]"
     >
-      <img src="../assets/img/logo_2.png" alt="" class="w-[350px] mb-10" />
-      <p class="text-center text-[20px] text-gray-500 font-light">
+      <img src="../assets/img/logo_2.png" alt="" class="w-[150px] md:w-[350px] mb-5 md:mb-10" />
+      <p class="text-center text-sm md:text-[20px] text-gray-500 font-light">
         Жана мектеп, бизбен бирге белеске!
       </p>
-      <h1 class="text-[80px] font-bold text-[#00B5C0] -mt-4">RUHANIAT</h1>
+      <h1 class="text-[30px] md:text-[80px] font-bold text-[#00B5C0] mt-2 md:mt-4">RUHANIAT</h1>
     </div>
-    <div class="bg-[#00B5C0] py-[140px] relative px-[100px]">
+    <div class="bg-[#00B5C0] py-[60px] md:py-[140px] relative px-[20px] md:px-[100px]">
       <img
         src="../assets/img/oyu_1.png"
         alt=""
-        class="absolute w-[600px] top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2"
+        class="absolute w-[300px] md:w-[600px] top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2"
       />
       <div
-        class="relative about grid grid-cols-2 gap-10 container mx-auto text-white"
+        class="relative about grid md:grid-cols-2 gap-10 container mx-auto text-white"
       >
         <div>
-          <p class="text-[60px] font-bold mb-8 pb-8 border-b border-white">
+          <p class="text-[25px] md:text-[60px] font-bold mb-8 pb-8 border-b border-white">
             BIZ TURALY
           </p>
-          <p class="text-[24px]">
+          <p class="text-[16px] md:text-[24px]">
             Lorem24, ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
             fermentum tortor id tortor cursus, vel lacinia odio sagittis.
             Curabitur efficitur, quam ac aliquet cursus, ligula est elementum ,
@@ -34,19 +34,19 @@
       </div>
     </div>
 
-    <div class="news py-[140px] container mx-auto px-[100px]">
+    <div class="news py-[60px] md:py-[140px] container mx-auto px-[20px] md:px-[100px]">
       <div class="flex justify-between items-center">
-        <p class="text-[24px]">Новости</p>
+        <p class="text-[18px] md:text-[24px]">Новости</p>
         <div
           @click="$router.push('/news')"
-          class="flex items-center gap-2 border border-gray-300 rounded-xl cursor-pointer px-4 py-1 text-gray-600"
+          class=" text-[14px] md:text-[16px] flex items-center gap-2 border border-gray-300 rounded-xl cursor-pointer px-4 py-1 text-gray-600"
         >
           Все
           <ArrowRightOutlined />
         </div>
       </div>
 
-      <div class="grid grid-cols-3 gap-5 pt-10">
+      <div class="grid md:grid-cols-3 gap-5 pt-10">
         <NewsCard
           v-for="item in news.slice(0, 6)"
           :data="item"
@@ -55,33 +55,17 @@
       </div>
     </div>
 
-    <div class="youtube py-[140px] bg-[#00B5C0] text-white relative px-[100px]">
+    <div class="youtube py-[60px] md:py-[140px] bg-[#00B5C0] text-white relative px-[20px] md:px-[100px]">
       <img
         src="../assets/img/oyu_1.png"
         alt=""
         class="absolute w-[600px] top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2"
       />
       <div class="flex justify-between items-center container mx-auto">
-        <p class="text-[24px]">Youtube</p>
+        <p class="text-[18px] md:text-[24px]">You-Tube</p>
         <div
-          @click="$router.push('/youtube')"
-          class="flex items-center gap-2 bg-white rounded-xl cursor-pointer px-4 py-1 text-gray-600"
-        >
-          Все
-          <ArrowRightOutlined />
-        </div>
-      </div>
-
-      <div class="grid relative grid-cols-3 gap-10 pt-10 container mx-auto">
-        <!-- <NewsCardDef v-for="item in 6" :key="item" :data="item" /> -->
-      </div>
-    </div>
-
-    <div class="directors py-[140px] px-[100px]">
-      <div class="flex justify-between items-center container mx-auto">
-        <p class="text-[24px]">Basshylar</p>
-        <div
-          class="flex items-center gap-2 border border-gray-300 rounded-xl cursor-pointer px-4 py-1 text-gray-600"
+          @click="$router.push('/youTubes')"
+          class="text-[14px] md:text-[16px] flex items-center gap-2 bg-white rounded-xl cursor-pointer px-4 py-1 text-gray-600"
         >
           Все
           <ArrowRightOutlined />
@@ -89,7 +73,30 @@
       </div>
 
       <div
-        class="grid relative grid-cols-3 gap-10 pt-20 container mx-auto text-center px-[100px]"
+        class="grid relative md:grid-cols-3 gap-10 pt-10 container mx-auto"
+        v-if="youTubes.length > 0"
+      >
+        <NewsCardDef
+          v-for="item in youTubes.slice(0, 3)"
+          :key="item.id"
+          :data="item"
+        />
+      </div>
+    </div>
+
+    <div class="directors py-[60px] md:py-[140px] px-[20px] md:px-[100px]">
+      <div class="flex justify-between items-center container mx-auto">
+        <p class="text-[18px] md:text-[24px]">Basshylar</p>
+        <div
+          class="text-[14px] md:text-[16px] flex items-center gap-2 border border-gray-300 rounded-xl cursor-pointer px-4 py-1 text-gray-600"
+        >
+          Все
+          <ArrowRightOutlined />
+        </div>
+      </div>
+
+      <div
+        class="grid relative md:grid-cols-3 gap-10 pt-20 container mx-auto text-center px-[100px]"
       >
         <div v-for="item in 3" :key="item">
           <img
@@ -98,28 +105,28 @@
             src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
           />
           <p
-            class="text-[30px] hover:text-gray-200 cursor-pointer transition-all duration-300"
+            class="text-[20px] md:text-[30px] hover:text-gray-200 cursor-pointer transition-all duration-300"
           >
             Kuralbayev T
           </p>
-          <p class="text-[16px] text-gray-500 font-light">
+          <p class="text-[14px] md:text-[16px] text-gray-500 font-light">
             CEO and CTO of SpaceX
           </p>
         </div>
       </div>
     </div>
 
-    <div class="youtube py-[140px] bg-[#00B5C0] text-white relative px-[100px]">
+    <div class="achievments py-[60px] md:py-[140px] bg-[#00B5C0] text-white relative px-[20px] md:px-[100px]">
       <img
         src="../assets/img/oyu_1.png"
         alt=""
         class="absolute w-[600px] top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2"
       />
       <div class="flex justify-between items-center container mx-auto">
-        <p class="text-[24px]">Bizdin jetistikter</p>
+        <p class="text-[18px] md:text-[24px]">Bizdin jetistikter</p>
         <div
           @click="$router.push('/achievements')"
-          class="flex items-center gap-2 bg-white rounded-xl cursor-pointer px-4 py-1 text-gray-600"
+          class="text-[14px] md:text-[16px] flex items-center gap-2 bg-white rounded-xl cursor-pointer px-4 py-1 text-gray-600"
         >
           Все
           <ArrowRightOutlined />
@@ -127,7 +134,7 @@
       </div>
 
       <div
-        class="grid relative grid-cols-3 gap-10 pt-10 container mx-auto"
+        class="grid relative md:grid-cols-3 gap-10 pt-10 container mx-auto"
         v-if="achievements.length > 0"
       >
         <NewsCardDef
@@ -138,23 +145,23 @@
       </div>
     </div>
     <div
-      class="FAG grid place-content-center my-[206px] w-[608px] mx-auto px-[100px]"
+      class="FAG grid place-content-center my-[120px] md:my-[206px] w-[450px] md:w-[608px] md:mx-auto px-[20px] md:px-[100px]"
     >
       <div
         class="bg-[#E3EAFD] rounded-full p-[8px] mx-auto mb-[40px] text-[#133A9A]"
       >
         F.A.G
       </div>
-      <div class="py-[24px] grid space-y-[40px] place-content-center">
-        <span class="text-[48px] text-center">Часто задаваемый вопрос</span>
-        <span class="text-[#81828c] text-center text-[20px]"
+      <div class="text-[16px] py-[24px] grid space-y-[40px] place-content-center">
+        <span class="text-[24px] md:text-[48px] text-center">Часто задаваемый вопрос</span>
+        <span class="text-[#81828c] text-center text-[14px] md:text-[20px]"
           >Мы собрали ответы на самые популярные вопросы. Если у вас остались
           другие — свяжитесь с нами!</span
         >
       </div>
-      <div class="mx-auto w-[538px] space-y-[12px] mt-[17px]">
+      <div class="mx-auto w-[410px] md:w-[538px] space-y-[12px] mt-[17px]">
         <div
-          class="question_1 transition duration-300 grid grid-cols-[95%_5%] text-[20px] border border-gray-300 justify-between px-[20px] py-[16px] rounded-[10px] space-y-[8px]"
+          class="question_1 transition duration-300 grid grid-cols-[95%_5%] text-[14px] md:text-[20px] border border-gray-300 justify-between px-[20px] py-[8px] md:py-[16px] rounded-[10px]  md:space-y-[8px]"
         >
           <span>1. Кто может записаться на обучение?</span>
           <button
@@ -163,7 +170,7 @@
           >
             +
           </button>
-          <span class="answer_1 hidden w-[500px] text-[#81828c] text-[16px]"
+          <span class="answer_1 hidden md:w-[500px] text-[#81828c] text-[14px] md:text-[16px]"
             >1. Вы можете заполнить онлайн-заявку через раздел «Контакты» или
             позвонить по указанному телефону. Наш менеджер свяжется с вами в
             ближайшее время.</span
@@ -171,7 +178,7 @@
         </div>
 
         <div
-          class="question_2 transition duration-300 grid grid-cols-[95%_5%] text-[20px] border border-gray-300 justify-between px-[20px] py-[16px] rounded-[10px] space-y-[8px]"
+          class="question_2 transition duration-300 grid grid-cols-[95%_5%] text-[14px] md:text-[20px] border border-gray-300 justify-between px-[20px] py-[8px] md:py-[16px] rounded-[10px]  md:space-y-[8px]"
         >
           <span>1. Кто может записаться на обучение?</span>
           <button
@@ -180,14 +187,14 @@
           >
             +
           </button>
-          <span class="answer_2 hidden w-[500px] text-[#81828c] text-[16px]"
+          <span class="answer_2 hidden md:w-[500px] text-[#81828c] text-[14px] md:text-[16px]"
             >1. Вы можете заполнить онлайн-заявку через раздел «Контакты» или
             позвонить по указанному телефону. Наш менеджер свяжется с вами в
             ближайшее время.</span
           >
         </div>
         <div
-          class="question_3 transition duration-300 grid grid-cols-[95%_5%] text-[20px] border border-gray-300 justify-between px-[20px] py-[16px] rounded-[10px] space-y-[8px]"
+          class="question_3 transition duration-300 grid grid-cols-[95%_5%] text-[14px] md:text-[20px] border border-gray-300 justify-between px-[20px] py-[8px] md:py-[16px] rounded-[10px]  md:space-y-[8px]"
         >
           <span>1. Кто может записаться на обучение?</span>
           <button
@@ -196,14 +203,14 @@
           >
             +
           </button>
-          <span class="answer_3 hidden w-[500px] text-[#81828c] text-[16px]"
+          <span class="answer_3 hidden md:w-[500px] text-[#81828c] text-[14px] md:text-[16px]"
             >1. Вы можете заполнить онлайн-заявку через раздел «Контакты» или
             позвонить по указанному телефону. Наш менеджер свяжется с вами в
             ближайшее время.</span
           >
         </div>
         <div
-          class="question_4 transition duration-300 grid grid-cols-[95%_5%] text-[20px] border border-gray-300 justify-between px-[20px] py-[16px] rounded-[10px] space-y-[8px]"
+          class="question_4 transition duration-300 grid grid-cols-[95%_5%] text-[14px] md:text-[20px] border border-gray-300 justify-between px-[20px] py-[8px] md:py-[16px] rounded-[10px]  md:space-y-[8px]"
         >
           <span>1. Кто может записаться на обучение?</span>
           <button
@@ -212,7 +219,7 @@
           >
             +
           </button>
-          <span class="answer_4 hidden w-[500px] text-[#81828c] text-[16px]"
+          <span class="answer_4 hidden md:w-[500px] text-[#81828c] text-[14px] md:text-[16px]"
             >1. Вы можете заполнить онлайн-заявку через раздел «Контакты» или
             позвонить по указанному телефону. Наш менеджер свяжется с вами в
             ближайшее время.</span
@@ -221,16 +228,16 @@
       </div>
     </div>
     <div
-      class="footer px-[120px] py-[40px] border-b border-4 border-[#F7F7F8] flex justify-between bg-[#F7F7F8] px-[100px]"
+      class="footer px-[20px] md:px-[120px] py-[40px] border-b border-4 border-[#F7F7F8] md:flex justify-between bg-[#F7F7F8] "
     >
-      <div class="grid space-y-[12px]">
-        <span class="text-[20px]">Подпишитесь на нашу рассылку новостей</span>
-        <span class="w-[500px] text-[#81828c] text-[16px]"
+      <div class="grid space-y-[12px] mb-[20px]">
+        <span class= "text-[16px] md:text-[20px]">Подпишитесь на нашу рассылку новостей</span>
+        <span class="md:w-[500px] text-[#81828c] text-[14px] md:text-[16px]"
           >Получите краткую информацию о том, что мы отправили за последний
           месяц, о последних обновлениях и выборе команды.</span
         >
       </div>
-      <div class="flex h-[40px] space-x-[8px]">
+      <div class="text-[14px] md:text-[16px] flex h-[30px] md:h-[40px] space-x-[8px]">
         <input
           type="text"
           placeholder="@ Sizdyn meiliniz"
@@ -238,7 +245,7 @@
           width="240px"
         />
         <button
-          class="bg-[#00B5C0] border-none text-[white] rounded-[12px] px-[20px] hover:bg-[white] hover:text-[#00B5C0] transition duration-300"
+          class="text-[12px] md:text-[16px] bg-[#00B5C0] border-none text-[white] rounded-[12px] px-[20px] hover:bg-[white] hover:text-[#00B5C0] transition duration-300"
         >
           ZHAZYLU
         </button>
@@ -251,10 +258,15 @@
 import { ArrowRightOutlined } from "@ant-design/icons-vue";
 import NewsCard from "../components/NewsCard.vue";
 import NewsCardDef from "../components/NewsCardDef.vue";
-import { useNewsStore } from "../stores/news";
+import { useNewsStore } from "../stores/news.js";
 import { storeToRefs } from "pinia";
 
-const { news, achievements } = storeToRefs(useNewsStore());
+const { news, achievements , youTubes } = storeToRefs(useNewsStore());
+import { onMounted } from 'vue'
+console.log('aasasddsd')
+onMounted(() => {
+  console.log("Achievements:", youTubes.value)
+})
 
 document.addEventListener("DOMContentLoaded", () => {
   const btn1 = document.getElementById("toggle-btn1");
@@ -307,4 +319,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 </script>

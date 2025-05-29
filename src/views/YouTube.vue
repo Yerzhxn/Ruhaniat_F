@@ -70,7 +70,7 @@ const cards = [
   
 ]
 import { useRouter } from 'vue-router'
-import { useCardStore } from '/src/stores/cardStores.js'
+import { useCardStore } from '/src/stores/cardStores1.js'
 
 const router = useRouter()
 const cardStore = useCardStore()

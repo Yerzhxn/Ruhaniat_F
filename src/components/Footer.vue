@@ -1,8 +1,8 @@
 <template>
   
-    <div class="flex justify-between   text-gray-700 px-[120px] py-[80px] bg-[#F7F7F8]">
-      <img src="../assets/img/logo.png" alt="" class="h-10" />
-      <div class="flex gap-4 col-span-2">
+    <div class="flex justify-between   text-gray-700 px-[20px] md:px-[120px] py-[40px] md:py-[80px] bg-[#F7F7F8]">
+      <img src="../assets/img/logo.png" alt="" class="h-9 md:h-10" />
+      <div class="hidden md:flex gap-4 col-span-2">
         <p
           class="text-gray-400 hover:text-[#00B5C0] transition-all duration-300 cursor-pointer"
         >
@@ -31,10 +31,10 @@
       </div>
       <div class="flex text-gray-400 gap-4">
         <InstagramFilled
-          class="text-2xl cursor-pointer hover:!text-[#00B5C0] transition-all duration-300"
+          class="text-xl md:text-2xl cursor-pointer hover:!text-[#00B5C0] transition-all duration-300"
         />
         <YoutubeFilled
-          class="text-2xl cursor-pointer hover:!text-[#00B5C0] transition-all duration-300"
+          class="text-xl md:text-2xl cursor-pointer hover:!text-[#00B5C0] transition-all duration-300"
         />
       </div>
     </div>

@@ -6,7 +6,9 @@ export const useNewsStore = defineStore('newsStore', {
         news: [],
         currentNews: null,
         achievements: [],
-        currentAchievement: null
+        currentAchievement: null,
+        youTubes: [],
+        currentYouTube: null
     }),
     actions: {
         async getNews() {
@@ -24,6 +26,17 @@ export const useNewsStore = defineStore('newsStore', {
         async getCurrentAchievement(id) {
             const response = await api.get(`/achievements/${id}`);
             this.currentAchievement = response.data.data;
+        },
+        async getYouTubes() {
+            const response = await api.get("/youtubes");
+            this.youTubes = response.data.data;
+        },
+        async getCurrentYouTube(id) {
+            const response = await api.get(`/youtubes/${id}`);
+            this.currentYouTube= response.data.data;
         }
     }
 })
+
+
+

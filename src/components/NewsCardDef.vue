@@ -7,7 +7,7 @@
     />
     <p
       @click="$router.push(`/achievements/${data.documentId}`)"
-      class="text-[24px] hover:text-gray-200 cursor-pointer transition-all duration-300 font-bold mb-1"
+      class="text-[18px] md:text-[24px] hover:text-gray-200 cursor-pointer transition-all duration-300 font-bold mb-1"
     >
       {{ data.title }}
     </p>

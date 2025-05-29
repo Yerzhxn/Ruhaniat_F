@@ -28,6 +28,15 @@ const router = createRouter({
       path: '/achievements/:id',
       name: 'achievementsView',
       component: () => import('./views/Achievements/AchievementView.vue')
+    },{
+      path: '/youTubes',
+      name: 'youTubes',
+      component: () => import('./views/youTube/YouTube.vue')
+    },
+    {
+      path: '/youTubes/:id',
+      name: 'youTubesView',
+      component: () => import('./views/youTube/YoutubeView.vue')
     },
 
     //old

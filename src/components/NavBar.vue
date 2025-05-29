@@ -1,15 +1,15 @@
 <template>
   <div
-    class="container fixed z-40 backdrop-blur-sm inset-x-0 shadow-md border-[1px] border-[#dedfe3] flex justify-between items-center h-16 w-[90%] mx-auto mt-[20px] px-[20px] border-1 rounded-[18px]"
+    class="container fixed z-40 backdrop-blur-sm inset-x-0 shadow-md border-[1px] border-[#dedfe3] flex justify-between items-center h-12  md:h-16 w-[90%] mx-auto mt-[20px] px-[20px] border-1 rounded-[18px]"
   >
     <div class="flex items-center gap-10 text-gray-700">
       <img
         @click="$router.push('/')"
         src="../assets/img/logo.png"
         alt=""
-        class="h-10 cursor-pointer"
+        class="h-7 md:h-10 cursor-pointer"
       />
-      <div class="flex items-center gap-7">
+      <div class="hidden md:flex items-center gap-7">
         <p
           @click="$router.push('/news')"
           class="text-gray-700 hover:text-[#00B5C0] transition-all duration-300 cursor-pointer"
@@ -42,10 +42,11 @@
           Біз туралы
         </p>
       </div>
+      
     </div>
     <a-dropdown>
       <p
-        class="text-gray-700 text-[14px] flex items-center gap-2 cursor-pointer"
+        class="text-gray-700 text-[14px] md:ml-0 ml-[60%] flex items-center gap-2 cursor-pointer"
       >
         {{ lang }} <DownOutlined class="text-xs" />
       </p>
@@ -63,6 +64,32 @@
         </a-menu>
       </template>
     </a-dropdown>
+    <a-dropdown class="md:hidden">
+        <p
+          class="text-gray-700 text-[14px] flex items-center gap-2 cursor-pointer"
+        >
+          menu <DownOutlined class="text-xs" />
+        </p>
+        <template #overlay>
+          <a-menu>
+            <a-menu-item>
+              <p @click="$router.push('/news')">Janalyktar</p>
+            </a-menu-item>
+            <a-menu-item>
+              <p @click="$router.push('/youTubes')">You-Tube</p>
+            </a-menu-item>
+            <a-menu-item>
+              <p @click="$router.push('/achievements')">Jetistsikter</p>
+            </a-menu-item>
+            <a-menu-item>
+              <p @click="$router.push('/about')">Biz Turaly</p>
+            </a-menu-item>
+            <a-menu-item>
+              <p @click="$router.push('/tabl')">Kesteler</p>
+            </a-menu-item>
+          </a-menu>
+        </template>
+      </a-dropdown>
   </div>
 </template>
 

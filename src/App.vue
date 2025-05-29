@@ -16,5 +16,6 @@ const newsStore = useNewsStore();
 onMounted(async () => {
   await newsStore.getNews();
   await newsStore.getAchievements();
+  await newsStore.getYouTubes();
 });
 </script>

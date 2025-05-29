@@ -1,6 +1,6 @@
 <script setup>
 
-import { useCardStore } from '/src/stores/cardStores.js'
+import { useCardStore } from '/src/stores/cardStores1.js'
 
 const cardStore = useCardStore()
 const card = cardStore.selectedCard
