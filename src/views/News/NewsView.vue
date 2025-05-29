@@ -4,7 +4,6 @@
       <a-spin :spinning="loading" size="large" />
     </div>
     <div class="" v-else>
-      <p class="text-[24px] mb-[40px]">{{ currentNews.title }}</p>
       <img
         :src="API_URL + currentNews.image.url"
         alt=""

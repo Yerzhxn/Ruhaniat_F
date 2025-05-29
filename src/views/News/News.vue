@@ -1,7 +1,12 @@
 <template>
   <div class="container mx-auto px-[20px] md:px-[100px] py-[140px]">
+    <img
+      src="../../assets/img/oyu_2.png"
+      alt=""
+      class="absolute w-[600px] h-[600px] top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2 "
+    />
     <div class="flex justify-between items-center">
-      <p class="text-[24px]">Новости</p>
+      <p class="text-[24px]">Jańalyqtar</p>
     </div>
     <div class="grid md:grid-cols-3 gap-5 pt-10">
       <NewsCard v-for="item in news" :data="item" :key="item.id" />

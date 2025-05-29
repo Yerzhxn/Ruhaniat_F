@@ -1,7 +1,7 @@
 <template>
   <div>
     <img
-      class="w-full h-[300px] rounded-xl object-cover mb-3"
+      class="w-full h-[200px] rounded-xl object-cover mb-3"
       alt="example"
       :src="API_URL + data.image?.url"
     />

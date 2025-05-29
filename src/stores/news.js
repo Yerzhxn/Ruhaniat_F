@@ -30,10 +30,6 @@ export const useNewsStore = defineStore('newsStore', {
         async getYouTubes() {
             const response = await api.get("/youtubes");
             this.youTubes = response.data.data;
-        },
-        async getCurrentYouTube(id) {
-            const response = await api.get(`/youtubes/${id}`);
-            this.currentYouTube= response.data.data;
         }
     }
 })
