@@ -5,56 +5,65 @@ export const useNewsStore = defineStore('newsStore', {
     state: () => ({
         news: [],
         currentNews: null,
-        achievements: [],
+        achievements: [], 
         currentAchievement: null,
         youTubes: [],
-        table1s: [],
-        table2s: [],
-        table3s: [],
-        table4s: [],
-        currentYouTube: null
+        currentYouTube: null,
+        tables: {
+            table1: [],
+            table2: [],
+            table3: [], 
+            table4: []
+        }
     }),
     actions: {
+        async fetchData(endpoint, stateKey) {
+            try {
+                const response = await api.get(endpoint);
+                this[stateKey] = response.data.data;
+            } catch (error) {
+                console.error(`Error fetching ${endpoint}:`, error);
+                throw error;
+            }
+        },
+
+        async fetchSingleItem(endpoint, stateKey, id) {
+            try {
+                const response = await api.get(`${endpoint}/${id}`);
+                this[stateKey] = response.data.data;
+            } catch (error) {
+                console.error(`Error fetching ${endpoint}/${id}:`, error);
+                throw error;
+            }
+        },
+
+        // News
         async getNews() {
-            const response = await api.get("/news");
-            this.news = response.data.data;
+            await this.fetchData('/news', 'news');
         },
+
         async getCurrentNews(id) {
-            const response = await api.get(`/news/${id}`);
-            this.currentNews = response.data.data;
+            await this.fetchSingleItem('/news', 'currentNews', id);
         },
+
+        // Achievements
         async getAchievements() {
-            const response = await api.get("/achievements");
-            this.achievements = response.data.data;
+            await this.fetchData('/achievements', 'achievements');
         },
+
         async getCurrentAchievement(id) {
-            const response = await api.get(`/achievements/${id}`);
-            this.currentAchievement = response.data.data;
+            await this.fetchSingleItem('/achievements', 'currentAchievement', id);
         },
+
+        // YouTube
         async getYouTubes() {
-            const response = await api.get("/youtubes");
-            this.youTubes = response.data.data;
-        }
-        ,
-        async getTable1() {
-            const response = await api.get("/table1s");
-            this.table1s = response.data.data;
+            await this.fetchData('/youtubes', 'youTubes');
         },
-        async getTable2() {
-            const response = await api.get("/table2s");
-            this.table2s = response.data.data;
-        }
-        ,
-        async getTable3() {
-            const response = await api.get("/table3s");
-            this.table3s = response.data.data;
-        },
-        async getTable4() {
-            const response = await api.get("/table4s");
-            this.table4s = response.data.data;
+
+        // Tables
+        async getTable(tableNumber) {
+            const response = await api.get(`/table${tableNumber}s`);
+            this.tables[`table${tableNumber}`] = response.data.data;
         }
     }
 })
-
-
-
