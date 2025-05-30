@@ -2,301 +2,474 @@
     
     <div class="pt-[100px] px-[20px] text-[#00B5C0]">
         <div>
-            <p class="text-[30px] py-[40px]">MEMLEKETTIK TILDE OTKIZILGEN SABAQTARDYN SAQAN SANDARY</p>
-            <table>
-                <thead>
-                <tr>
-                    <th>MEKENZHAY</th>
-                    <th v-for="day in 31" :key="day">{{ day }}</th>
-                    <th>TOLTQ SAGAT</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!-- Основные строки -->
-                <tr v-for="(row, index) in tableData" :key="index">
-                    <td>{{ row.MEKENZHAY }}</td>
-                    <td v-for="(val, i) in row.days" :key="i">{{ val }}</td>
-                    <td>{{ row.days.reduce((sum, val) => sum + (isNaN(val) ? 0 : Number(val)), 0) }}</td>
-                </tr>
+          <p class="text-[24px] md:text-[30px] pt-[40px]">
+            MEMLEKETTIK TILDE OTKIZILGEN SABAQTARDYN SAQAN SANDARY
+          </p>
 
-                <!-- Строка BARLYGY -->
-                <tr>
-                    <td><strong>BARLYGY</strong></td>
-                    <td v-for="(val, i) in totalPerDay" :key="i"><strong>{{ val }}</strong></td>
-                    <td><strong>{{ totalPerDay.reduce((sum, val) => sum + val, 0) }}</strong></td>
-                </tr>
-                </tbody>
-            </table>
+          <a-dropdown>
+            <p
+              class="text-gray-700 rounded-lg text-[24px] w-[120px] px-[20px] my-[20px] border-[2px] border-[#00B5C0] flex items-center gap-2 cursor-pointer"
+            >
+              {{ month }} <DownOutlined class="text-xs" />
+            </p>
+            <template #overlay>
+              <a-menu>
+                <a-menu-item v-for="m in months" :key="m">
+                  <p @click="month = m">{{ m }}</p>
+                </a-menu-item>
+              </a-menu>
+            </template>
+          </a-dropdown>
+
+          <a-table
+            v-if="groupedData[month] && groupedData[month].length"
+            :columns="table1Columns"
+            :data-source="groupedData[month]"
+            :pagination="false"
+            bordered
+            row-key="adress"
+          />
         </div>
         <div>
-            <p class="text-[30px] py-[40px]">MEMLEKETTIK TIL KURSYNA KATYSUSSYLAR TIZIMI</p>
-            <table>
-                <thead>
-                <tr>
-                    <th>T.A.A.</th>
-                    <th>LAUAZYMY</th>
-                    <th>TUGAN ZHYLY</th>
-                    <th>MEKEN ZHAY</th>
-                    <th>BAILANYS TELEFONY</th>
-                    <th>ULTY</th>
-                    <th>DENGEIY</th>
-                    <th>AZAMATTYGY</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr v-for="(person, index) in people" :key="index">
-                    <td>{{ person.taa }}</td>
-                    <td>{{ person.lauazymy }}</td>
-                    <td>{{ person.tuganZhyly }}</td>
-                    <td>{{ person.mekenZhay }}</td>
-                    <td>{{ person.phone }}</td>
-                    <td>{{ person.ulty }}</td>
-                    <td>{{ person.dengeiy }}</td>
-                    <td>{{ person.azamattygy }}</td>
-                </tr>
-                </tbody>
-            </table>
+            <p class="text-[24px] md:text-[30px] pt-[40px]">MEMLEKETTIK TIL KURSYNA KATYSUSSYLAR TIZIMI</p>
+
+            <a-dropdown>
+              <p class="text-gray-700 rounded-lg text-[24px] w-[120px] px-[20px] my-[20px] border-[2px] border-[#00B5C0] flex items-center gap-2 cursor-pointer">
+                {{ month2 }} <DownOutlined class="text-xs" />
+              </p>
+              <template #overlay>
+                <a-menu>
+                  <a-menu-item v-for="m in months2" :key="m">
+                    <p @click="month2 = m">{{ m }}</p>
+                  </a-menu-item>
+                </a-menu>
+              </template>
+            </a-dropdown>
+
+            <a-table
+              v-if="filteredTable2s.length"
+              :columns="columnsTable2s"
+              :dataSource="filteredTable2s"
+              :pagination="false"
+              bordered
+              rowKey="Adress"
+            />
         </div>
         <div>
-            <p class="text-[30px] py-[40px]">MEMLEKETTIK TIL KURSYNYN SABAQ KESTESI</p>
-            <table>
-                <thead>
-                <tr>
-                    <th>MEKEN ZHAIY</th>
-                    <th>SANY</th>
-                    <th>DYISWNBI</th>
-                    <th>SEISEMBI</th>
-                    <th>SARSENBI</th>
-                    <th>BEISENBI</th>
-                    <th>ZUMA</th>
-                    <th>SENBI</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr v-for="(row, index) in schedule" :key="index">
-                    <td>{{ row.mekenZhaiy }}</td>
-                    <td>{{ row.sany }}</td>
-                    <td>{{ row.dyiswnbi }}</td>
-                    <td>{{ row.seisembi }}</td>
-                    <td>{{ row.sarsenbi }}</td>
-                    <td>{{ row.beisenbi }}</td>
-                    <td>{{ row.zuma }}</td>
-                    <td>{{ row.senbi }}</td>
-                </tr>
-                </tbody>
-            </table>
+            <p class="text-[24px] md:text-[30px] py-[40px]">MEMLEKETTIK TIL KURSYNYN SABAQ KESTESI</p>
+
+            <!-- Выбор месяца и имени -->
+            <div class="flex gap-4 mb-4">
+              <a-dropdown>
+                <p class="cursor-pointer border border-[#00B5C0] rounded-lg px-4 py-1 text-[20px] text-gray-700">
+                  {{ table3sMonth }} <DownOutlined class="text-xs" />
+                </p>
+                <template #overlay>
+                  <a-menu>
+                    <a-menu-item v-for="m in table3sMonths" :key="m">
+                      <p @click="table3sMonth = m">{{ m }}</p>
+                    </a-menu-item>
+                  </a-menu>
+                </template>
+              </a-dropdown>
+
+              <a-dropdown>
+                <p class="cursor-pointer border border-[#00B5C0] rounded-lg px-4 py-1 text-[20px] text-gray-700">
+                  {{ table3sName }} <DownOutlined class="text-xs" />
+                </p>
+                <template #overlay>
+                  <a-menu>
+                    <a-menu-item v-for="n in table3sNames" :key="n">
+                      <p @click="table3sName = n">{{ n }}</p>
+                    </a-menu-item>
+                  </a-menu>
+                </template>
+              </a-dropdown>
+            </div>
+
+            <!-- Таблица -->
+            <a-table
+              v-if="table3sSchedule.length"
+              :columns="columnsTable3"
+              :dataSource="table3sSchedule"
+              :pagination="false"
+              bordered
+              rowKey="Adress"
+            />
         </div>
         <div>
-            <p class="text-[30px] py-[40px]">MEMLEKETTIK TILDI OQYTU BOIYNSA TANDAUSYLARDYN SABAQQA KATYSU TURALY MALIMET</p>
-            <table class="table-auto border-collapse w-full border border-gray-300">
-                <thead class="bg-gray-100">
-                    <tr>
-                    <th class="border border-gray-300 px-2 py-1">TANDAUSYNYN T.A.A</th>
-                    <th v-for="day in 31" :key="day" class="border border-gray-300 px-2 py-1">{{ day }}</th>
-                    <th class="border border-gray-300 px-2 py-1">SEBEPTI</th>
-                    <th class="border border-gray-300 px-2 py-1">SEBEPSIZ</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="(row, index) in tableData2" :key="index">
-                    <td class="border border-gray-300 px-2 py-1">{{ row.name }}</td>
-                    <td
-                        v-for="day in 31"
-                        :key="day"
-                        class="border border-gray-300 text-center px-2 py-1"
-                    >
-                        {{ getMark(row, day) }}
-                    </td>
-                    <td class="border border-gray-300 text-center px-2 py-1">
-                        {{ countMarks(row, '+') }}
-                    </td>
-                    <td class="border border-gray-300 text-center px-2 py-1">
-                        {{ countMarks(row, '-') }}
-                    </td>
-                    </tr>
-                </tbody>
-            </table>
+          <p class="text-[24px] md:text-[30px] py-[40px]">MEMLEKETTIK TILDI OQYTU BOIYNSA TANDAUSYLARDYN SABAQQA KATYSU TURALY MALIMET</p>
+
+          <!-- Выбор месяца и преподавателя -->
+          <div class="flex gap-4 mb-4">
+            <a-dropdown>
+              <p class="cursor-pointer border border-[#00B5C0] rounded-lg px-4 py-1 text-[20px] text-gray-700">
+                {{ table4sMonth }} <DownOutlined class="text-xs" />
+              </p>
+              <template #overlay>
+                <a-menu>
+                  <a-menu-item v-for="m in table4sMonths" :key="m">
+                    <p @click="table4sMonth = m">{{ m }}</p>
+                  </a-menu-item>
+                </a-menu>
+              </template>
+            </a-dropdown>
+
+            <a-dropdown>
+              <p class="cursor-pointer border border-[#00B5C0] rounded-lg px-4 py-1 text-[20px] text-gray-700">
+                {{ table4sMugalim }} <DownOutlined class="text-xs" />
+              </p>
+              <template #overlay>
+                <a-menu>
+                  <a-menu-item v-for="t in table4sMugalimder" :key="t">
+                    <p @click="table4sMugalim = t">{{ t }}</p>
+                  </a-menu-item>
+                </a-menu>
+              </template>
+            </a-dropdown>
+          </div>
+
+          <!-- Таблица -->
+          <a-table
+            v-if="filteredTable4s.length"
+            :columns="columnsTable4"
+            :dataSource="formattedTable4s"
+            :pagination="false"
+            bordered
+            scroll="{ x: 1500 }"
+            rowKey="TAA"
+          />
         </div>
     </div>
     
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed, ref } from 'vue';
-const tableData2 = [
-  {
-    name: "ASPANOV ORALBEK",
-    markedDays: {
-      1: '+', 2: '-', 3: '+', 4: '-', 5: '+', 6: '+', 7: '-', 8: '+', 9: '-', 10: '+',
-      11: '+', 12: '-', 13: '+', 14: '+', 15: '-', 16: '+', 17: '+', 18: '-', 19: '-', 20: '+',
-      21: '-', 22: '+', 23: '-', 24: '+', 25: '+', 26: '+', 27: '-', 28: '+', 29: '+', 30: '-', 31: '+'
-    }
-  },
-  {
-    name: "ASPANOV ORALBEK",
-    markedDays: {
-      2: '+', 4: '+', 6: '+', 8: '-', 10: '+', 12: '-', 14: '+', 16: '-', 18: '+', 20: '+',
-      22: '-', 24: '+', 26: '+', 28: '+', 30: '+'
-    }
-  },
-  {
-    name: "ASPANOV ORALBEK",
-    markedDays: {
-      3: '+', 5: '+', 7: '+', 9: '-', 11: '+', 13: '+', 15: '+', 17: '+', 19: '+', 21: '+',
-      23: '+', 25: '+', 27: '-', 29: '+', 31: '+'
-    }
-  }
-]
 
-// Функция получения символа на конкретный день
-const getMark = (row, day) => {
-  return row.markedDays[day] || ''
-}
+import { useNewsStore } from "../stores/news.js";
+import { storeToRefs } from "pinia";
+import { onMounted } from "vue";
 
-// Подсчёт символов ('+' или '-')
-const countMarks = (row, mark) => {
-  return Object.values(row.markedDays).filter(val => val === mark).length
-}
-const schedule = [
-  {
-    mekenZhaiy: "ASPANOV ORALBEK",
-    sany: 2,
-    dyiswnbi: "12:00–14:00",
-    seisembi: "12:00–14:00",
-    sarsenbi: "",
-    beisenbi: "12:00–14:00",
-    zuma: "12:00–14:00",
-    senbi: "12:00–14:00"
-  },
-  {
-    mekenZhaiy: "ASPANOV ORALBEK",
-    sany: 3,
-    dyiswnbi: "12:00–14:00",
-    seisembi: "12:00–14:00",
-    sarsenbi: "",
-    beisenbi: "12:00–14:00",
-    zuma: "12:00–14:00",
-    senbi: "12:00–14:00"
-  },
-  {
-    mekenZhaiy: "ASPANOV ORALBEK",
-    sany: 3,
-    dyiswnbi: "12:00–14:00",
-    seisembi: "12:00–14:00",
-    sarsenbi: "",
-    beisenbi: "12:00–14:00",
-    zuma: "12:00–14:00",
-    senbi: "12:00–14:00"
-  },
-  {
-    mekenZhaiy: "ASPANOV ORALBEK",
-    sany: 3,
-    dyiswnbi: "12:00–14:00",
-    seisembi: "12:00–14:00",
-    sarsenbi: "12:00–14:00",
-    beisenbi: "12:00–14:00",
-    zuma: "12:00–14:00",
-    senbi: "12:00–14:00"
-  },
-  {
-    mekenZhaiy: "ASPANOV ORALBEK",
-    sany: 3,
-    dyiswnbi: "12:00–14:00",
-    seisembi: "12:00–14:00",
-    sarsenbi: "",
-    beisenbi: "12:00–14:00",
-    zuma: "12:00–14:00",
-    senbi: "12:00–14:00"
-  }
-];
+const newsStore = useNewsStore();
+const { table1s,table2s,table3s,table4s } = storeToRefs(newsStore);
 
-// Данные по дням (отмечено 1 / "" / 4)
-const tableData = ref([
-  {
-    MEKENZHAY: "ASTANA ZHARNAMA1",
-    days: [1, "", "", 4, 1, "", "", 1, 1, 1, "", 1, "", 1, 1, 1, 1, 1, "", 1, "", 1, "", 1, 1, 1, 1, 1, "", 1, 1]
-  },
-  {
-    MEKENZHAY: "ASTANA ZHARNAMA1",
-    days: [1, "", "", 4, 1, "", "", 1, 1, 1, "", 1, "", 1, 1, 1, 1, 1, "", 1, "", 1, "", 1, 1, 1, 1, 1, "", 1, 1]
-  },
-  {
-    MEKENZHAY: "ASTANA ZHARNAMA1",
-    days: [1, "", "", 4, 1, "", "", 1, 1, 1, "", 1, "", 1, 1, 1, 1, 1, "", 1, "", 1, "", 1, 1, 1, 1, 1, "", 1, 1]
-  },
-  {
-    MEKENZHAY: "ASTANA ZHARNAMA1",
-    days: [1, "", "", 4, 1, "", "", 1, 1, 1, "", 1, "", 1, 1, 1, 1, 1, "", 1, "", 1, "", 1, 1, 1, 1, 1, "", 1, 1]
-  },
-  {
-    MEKENZHAY: "ASTANA ZHARNAMA1",
-    days: [1, "", "", 4, 1, "", "", 1, 1, 1, "", 1, "", 1, 1, 1, 1, 1, "", 1, "", 1, "", 1, 1, 1, 1, 1, "", 1, 1]
-  },
-]);
-const people = [
-  {
-    taa: "ASPANOV ORALBEK",
-    lauazymy: "MUGALIM",
-    tuganZhyly: "24.10.1996",
-    mekenZhay: "ASTANA ULY ZHOL 3",
-    phone: "8 777 777 77 77",
-    ulty: "QAZAQ",
-    dengeiy: "A1",
-    azamattygy: "QAZAQ"
-  },
-  // Повторим 5 раз
-  {
-    taa: "ASPANOV ORALBEK",
-    lauazymy: "MUGALIM",
-    tuganZhyly: "24.10.1996",
-    mekenZhay: "ASTANA ULY ZHOL 3",
-    phone: "8 777 777 77 77",
-    ulty: "QAZAQ",
-    dengeiy: "A1",
-    azamattygy: "QAZAQ"
-  },
-  {
-    taa: "ASPANOV ORALBEK",
-    lauazymy: "MUGALIM",
-    tuganZhyly: "24.10.1996",
-    mekenZhay: "ASTANA ULY ZHOL 3",
-    phone: "8 777 777 77 77",
-    ulty: "QAZAQ",
-    dengeiy: "A1",
-    azamattygy: "QAZAQ"
-  },
-  {
-    taa: "ASPANOV ORALBEK",
-    lauazymy: "MUGALIM",
-    tuganZhyly: "24.10.1996",
-    mekenZhay: "ASTANA ULY ZHOL 3",
-    phone: "8 777 777 77 77",
-    ulty: "QAZAQ",
-    dengeiy: "A1",
-    azamattygy: "QAZAQ"
-  },
-  {
-    taa: "ASPANOV ORALBEK",
-    lauazymy: "MUGALIM",
-    tuganZhyly: "24.10.1996",
-    mekenZhay: "ASTANA ULY ZHOL 3",
-    phone: "8 777 777 77 77",
-    ulty: "QAZAQ",
-    dengeiy: "A1",
-    azamattygy: "QAZAQ"
-  }
-];
 
-// Считаем BARLYGY (по колонкам)
-const totalPerDay = computed(() => {
-  const totals = Array(31).fill(0);
-  for (const row of tableData.value) {
-    row.days.forEach((val, idx) => {
-      totals[idx] += isNaN(val) ? 0 : Number(val);
-    });
-  }
-  return totals;
+onMounted(async () => {
+  await newsStore.getTable1();
+  await newsStore.getTable2();
+  await newsStore.getTable3();
+  await newsStore.getTable4();
+  console.log("table1s after fetch:", table1s.value);
+  console.log("table1s after fetch:", table1s.list);
+  console.log("table2s after fetch:", table2s.value);
+  console.log("table3s after fetch:", table3s.value);
+  console.log("table4s after fetch:", table4s.value);
 });
+
+
+
+//TABLE_1
+const month = ref('Qantar');
+const months = computed(() => {
+  return [...new Set(table1s.value.map(item => item.month))];
+});
+
+const groupedData = computed(() => {
+  const grouped = {};
+  months.value.forEach(m => {
+    grouped[m] = [];
+  });
+
+  table1s.value.forEach(item => {
+    const fullDaysArray = Array(31).fill(0);
+
+    if (Array.isArray(item.list1)) {
+      item.list1.forEach(entry => {
+        const dayIndex = parseInt(entry.day, 10) - 1;
+        const hour = parseInt(entry.hour, 10);
+        if (!isNaN(dayIndex) && dayIndex >= 0 && dayIndex < 31 && !isNaN(hour)) {
+          fullDaysArray[dayIndex] = hour;
+        }
+      });
+    }
+
+    if (!grouped[item.month]) grouped[item.month] = [];
+
+    grouped[item.month].push({
+      ...item,
+      daysArray: fullDaysArray
+    });
+  });
+
+  return grouped;
+});
+const table1Columns = computed(() => {
+  const dayColumns = Array.from({ length: 31 }, (_, i) => ({
+    title: String(i + 1),
+    dataIndex: `day${i + 1}`,
+    key: `day${i + 1}`,
+    align: 'center',
+    customRender: ({ record }) => record.daysArray[i] || ''
+  }));
+
+  return [
+    {
+      title: 'MEKENZHAY',
+      dataIndex: 'adress',
+      key: 'adress',
+      fixed: 'left',
+    },
+    ...dayColumns,
+    {
+      title: 'TOLTQ SAGAT',
+      key: 'total',
+      align: 'center',
+      customRender: ({ record }) =>
+        record.daysArray.reduce((sum, val) => sum + (isNaN(val) ? 0 : val), 0),
+    },
+  ];
+});
+
+
+
+
+//TABLE_2
+const month2 = ref('Qantar');
+const months2 = computed(() => {
+  return [...new Set(table2s.value.map(item => item.month))];
+});
+
+const filteredTable2s = computed(() => {
+  return table2s.value.filter(item => item.month?.toLowerCase() === month2.value.toLowerCase());
+});
+
+onMounted(async () => {
+  await newsStore.getTable2(); // обязательно вызвать этот метод
+});
+
+const columnsTable2s = [
+  {
+    title: 'T.A.A.',
+    dataIndex: 'TAA',
+    key: 'TAA',
+  },
+  {
+    title: 'LAUAZYMY',
+    dataIndex: 'Lauazym',
+    key: 'Lauazym',
+  },
+  {
+    title: 'TUGAN ZHYLY',
+    dataIndex: 'TuganJyly',
+    key: 'TuganJyly',
+  },
+  {
+    title: 'MEKEN ZHAY',
+    dataIndex: 'Adress',
+    key: 'Adress',
+  },
+  {
+    title: 'BAILANYS TELEFONY',
+    dataIndex: 'Tel',
+    key: 'Tel',
+  },
+  {
+    title: 'ULTY',
+    dataIndex: 'Ulty',
+    key: 'Ulty',
+  },
+  {
+    title: 'DENGEIY',
+    dataIndex: 'Dengei',
+    key: 'Dengei',
+  },
+  {
+    title: 'AZAMATTYGY',
+    dataIndex: 'Azamat',
+    key: 'Azamat',
+  },
+];
+const columnsTable3 = [
+  {
+    title: 'MEKEN ZHAIY',
+    dataIndex: 'Adress',
+    key: 'Adress',
+  },
+  {
+    title: 'SANY',
+    dataIndex: 'Sany',
+    key: 'Sany',
+  },
+  {
+    title: 'DYISWNBI',
+    dataIndex: 'pn',
+    key: 'pn',
+  },
+  {
+    title: 'SEISEMBI',
+    dataIndex: 'vt',
+    key: 'vt',
+  },
+  {
+    title: 'SARSENBI',
+    dataIndex: 'sr',
+    key: 'sr',
+  },
+  {
+    title: 'BEISENBI',
+    dataIndex: 'cht',
+    key: 'cht',
+  },
+  {
+    title: 'ZUMA',
+    dataIndex: 'pt',
+    key: 'pt',
+  },
+  {
+    title: 'SENBI',
+    dataIndex: 'sb',
+    key: 'sb',
+  },
+];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//TABLE_3
+onMounted(async () => {
+  await newsStore.getTable3();
+});
+const table3sMonth = ref('Qantar');
+const table3sName = ref('Mugalim');
+
+
+const table3sMonths = computed(() => {
+  return [...new Set(table3s.value.map(item => item.month))];
+});
+const table3sNames = computed(() => {
+  return [...new Set(table3s.value.map(item => item.mugalim))];
+});
+
+const table3sSchedule = computed(() =>
+  newsStore.table3s.filter(
+    item =>
+      item.month === table3sMonth.value &&
+      item.mugalim === table3sName.value
+  )
+);
+
+
+
+//TABLE_4
+onMounted(async () => {
+  await newsStore.getTable4(); // получаем table4s
+});
+
+const table4sMonth = ref('Qantar');
+const table4sMugalim = ref('Mugalim');
+
+const table4sMonths = computed(() => {
+  return [...new Set(table4s.value.map(item => item.month))];
+});
+
+const table4sMugalimder = computed(() => {
+  return [...new Set(table4s.value.map(item => item.mugalim))];
+});
+
+const filteredTable4s = computed(() =>
+  table4s.value.filter(
+    item =>
+      item.month === table4sMonth.value &&
+      item.mugalim === table4sMugalim.value
+  )
+);
+
+
+function parseDaysFromObject(daysArray) {
+  const result = Array(31).fill('');
+
+  if (!Array.isArray(daysArray)) return result;
+
+  for (const entry of daysArray) {
+    const dayIndex = Number(entry.day) - 1;
+    if (dayIndex >= 0 && dayIndex < 31 && (entry.sign === '+' || entry.sign === '-')) {
+      result[dayIndex] = entry.sign;
+    }
+  }
+
+  return result;
+}
+
+function countMarkFromArray(arr, symbol) {
+  if (!Array.isArray(arr)) return 0;
+  return arr.filter(x => x === symbol).length;
+}
+const columnsTable4 = computed(() => {
+  const baseColumns = [
+    {
+      title: 'TANDAUSYNYN T.A.A',
+      dataIndex: 'TAA',
+      key: 'TAA',
+      fixed: 'left',
+    },
+  ]
+
+  // 31 day columns
+  const dayColumns = Array.from({ length: 31 }, (_, i) => ({
+    title: `${i + 1}`,
+    dataIndex: `day${i + 1}`,
+    key: `day${i + 1}`,
+    align: 'center',
+  }))
+
+  const summaryColumns = [
+    {
+      title: 'SEBEPTI',
+      dataIndex: 'sebep',
+      key: 'sebep',
+      align: 'center',
+    },
+    {
+      title: 'SEBEPSIZ',
+      dataIndex: 'sebepsiz',
+      key: 'sebepsiz',
+      align: 'center',
+    },
+  ]
+
+  return [...baseColumns, ...dayColumns, ...summaryColumns]
+})
+
+// Подготовка данных под Ant Design формат
+const formattedTable4s = computed(() => {
+  return filteredTable4s.value.map((row) => {
+    const daysArray = parseDaysFromObject(row.days)
+    const dayData = {}
+
+    for (let i = 0; i < 31; i++) {
+      dayData[`day${i + 1}`] = ['+', '-'].includes(daysArray[i]) ? daysArray[i] : ''
+    }
+
+    return {
+      TAA: row.TAA,
+      ...dayData,
+      sebep: countMarkFromArray(daysArray, '+'),
+      sebepsiz: countMarkFromArray(daysArray, '-'),
+    }
+  })
+})
 </script>
 
 <style scoped>

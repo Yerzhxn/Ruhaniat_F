@@ -38,6 +38,12 @@ const router = createRouter({
       name: 'youTubesView',
       component: () => import('./views/youTube/YoutubeView.vue')
     },
+    {
+      path: '/tabl',
+      name: 'tables',
+      component: () => import('./views/table.vue')
+    },
+    
 
     //old
     {
@@ -45,11 +51,7 @@ const router = createRouter({
       name: 'about',
       component: () => import('./views/BizTuraly.vue')
     },
-    {
-      path: '/tabl',
-      name: 'tables',
-      component: () => import('./views/table.vue')
-    },
+    
     
   ]
 })

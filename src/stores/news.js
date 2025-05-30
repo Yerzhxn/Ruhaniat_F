@@ -8,6 +8,10 @@ export const useNewsStore = defineStore('newsStore', {
         achievements: [],
         currentAchievement: null,
         youTubes: [],
+        table1s: [],
+        table2s: [],
+        table3s: [],
+        table4s: [],
         currentYouTube: null
     }),
     actions: {
@@ -30,6 +34,24 @@ export const useNewsStore = defineStore('newsStore', {
         async getYouTubes() {
             const response = await api.get("/youtubes");
             this.youTubes = response.data.data;
+        }
+        ,
+        async getTable1() {
+            const response = await api.get("/table1s");
+            this.table1s = response.data.data;
+        },
+        async getTable2() {
+            const response = await api.get("/table2s");
+            this.table2s = response.data.data;
+        }
+        ,
+        async getTable3() {
+            const response = await api.get("/table3s");
+            this.table3s = response.data.data;
+        },
+        async getTable4() {
+            const response = await api.get("/table4s");
+            this.table4s = response.data.data;
         }
     }
 })
