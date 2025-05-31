@@ -11,7 +11,7 @@
       <template #title>
         <p
           @click="$router.push(`/news/${data.documentId}`)"
-          class="text-[18px] md:text-[24px] hover:text-gray-200 cursor-pointer transition-all duration-300 font-bold mb-1"
+          class="text-[16px] transition-all duration-300 hover:text-[#00B5C0] cursor-pointer"
         >
           {{ data.title }}
         </p>

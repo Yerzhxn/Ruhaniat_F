@@ -46,7 +46,7 @@
       </div>
     </div>
 
-    <div class="news py-[60px] md:py-[140px] container relative px-[20px] md:px-[100px] ">
+    <div class="news py-[60px] md:py-[140px] container px-[20px] md:px-[100px] ">
       <div class="flex justify-between items-center">
         <p class="text-[18px] md:text-[24px]">Jańalyqtar</p>
         <div
@@ -58,7 +58,7 @@
         </div>
       </div>
 
-      <div class="grid relative md:grid-cols-3 gap-10 pt-10 container mx-auto">
+      <div class="md:grid md:grid-cols-3 gap-10 pt-10 container mx-auto">
         <NewsCard
           v-for="item in news.slice(0, 6)"
           :data="item"
@@ -150,6 +150,80 @@
           :key="item.id"
           :data="item"
         />
+      </div>
+    </div>
+    <div
+      class="FAG grid place-content-center my-[120px] md:my-[206px] w-[450px] md:w-[608px] md:mx-auto px-[20px] md:px-[100px]"
+    >
+      <div
+        class="bg-[#E3EAFD] rounded-full p-[8px] mx-auto mb-[40px] text-[#133A9A]"
+      >
+        F.A.G
+      </div>
+      <div class="text-[16px] py-[24px] grid space-y-[40px] place-content-center">
+        <span class="text-[24px] md:text-[48px] text-center">Kóp taralǵan suraq</span>
+        <span class="text-[#81828c] text-center text-[14px] md:text-[20px]"
+          >Biz en táýelsiz swraqtardyń jauaptarın jıqtap aldyq. Eger sizde basqa swraqtar bolsa — bizben baylanısyńyz!</span
+        >
+      </div>
+      <div class="mx-auto w-[410px] md:w-[538px] space-y-[12px] mt-[17px]">
+        <div
+          class="question_1 transition duration-300 grid grid-cols-[95%_5%] text-[14px] md:text-[20px] border border-gray-300 justify-between px-[20px] py-[8px] md:py-[16px] rounded-[10px]  md:space-y-[8px]"
+        >
+          <span>Oquǵa kim tiriýleý alady?</span>
+          <button
+            id="toggle-btn1"
+            class="cursor-pointer border-none bg-inherit text-[#81828c]"
+          >
+            +
+          </button>
+          <span class="answer_1 hidden md:w-[500px] text-[#81828c] text-[14px] md:text-[16px]"
+            >1. Siz «Baylanystar» bólimi arqılı onlaýn ótinis toltyrýyńyz nemese belgilengen telefonnan qosylýyńyz múmkin. Bizdiń menedzherimiz sizben jaqyn uaqytta baylanısady.</span
+          >
+        </div>
+
+        <div
+          class="question_2 transition duration-300 grid grid-cols-[95%_5%] text-[14px] md:text-[20px] border border-gray-300 justify-between px-[20px] py-[8px] md:py-[16px] rounded-[10px]  md:space-y-[8px]"
+        >
+          <span>Oquǵa kim tiriýleý alady?</span>
+          <button
+            id="toggle-btn2"
+            class="cursor-pointer border-none bg-inherit text-[#81828c]"
+          >
+            +
+          </button>
+          <span class="answer_2 hidden md:w-[500px] text-[#81828c] text-[14px] md:text-[16px]"
+            >1. Siz «Baylanystar» bólimi arqılı onlaýn ótinis toltyrýyńyz nemese belgilengen telefonnan qosylýyńyz múmkin. Bizdiń menedzherimiz sizben jaqyn uaqytta baylanısady.</span
+          >
+        </div>
+        <div
+          class="question_3 transition duration-300 grid grid-cols-[95%_5%] text-[14px] md:text-[20px] border border-gray-300 justify-between px-[20px] py-[8px] md:py-[16px] rounded-[10px]  md:space-y-[8px]"
+        >
+          <span>Oquǵa kim tiriýleý alady?</span>
+          <button
+            id="toggle-btn3"
+            class="cursor-pointer border-none bg-inherit text-[#81828c]"
+          >
+            +
+          </button>
+          <span class="answer_3 hidden md:w-[500px] text-[#81828c] text-[14px] md:text-[16px]"
+            >1. Siz «Baylanystar» bólimi arqılı onlaýn ótinis toltyrýyńyz nemese belgilengen telefonnan qosylýyńyz múmkin. Bizdiń menedzherimiz sizben jaqyn uaqytta baylanısady.</span
+          >
+        </div>
+        <div
+          class="question_4 transition duration-300 grid grid-cols-[95%_5%] text-[14px] md:text-[20px] border border-gray-300 justify-between px-[20px] py-[8px] md:py-[16px] rounded-[10px]  md:space-y-[8px]"
+        >
+          <span>Oquǵa kim tiriýleý alady?</span>
+          <button
+            id="toggle-btn4"
+            class="cursor-pointer border-none bg-inherit text-[#81828c]"
+          >
+            +
+          </button>
+          <span class="answer_4 hidden md:w-[500px] text-[#81828c] text-[14px] md:text-[16px]"
+            >1. Siz «Baylanystar» bólimi arqılı onlaýn ótinis toltyrýyńyz nemese belgilengen telefonnan qosylýyńyz múmkin. Bizdiń menedzherimiz sizben jaqyn uaqytta baylanısady.</span
+          >
+        </div>
       </div>
     </div>
     <div

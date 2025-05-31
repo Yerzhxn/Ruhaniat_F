@@ -8,10 +8,12 @@ export const useNewsStore = defineStore('newsStore', {
         achievements: [], 
         currentAchievement: null,
         youTubes: [],
-        table1s: [],
-        table2s: [],
-        table3s: [],
-        table4s: [],
+        tables: {
+            table1: [],
+            table2: [],
+            table3: [], 
+            table4: []
+        },
         dirs: [],
         jumyss: [],
         currentDir: null,
@@ -60,26 +62,8 @@ export const useNewsStore = defineStore('newsStore', {
         async getYouTubes() {
             const response = await api.get("/youtubes");
             this.youTubes = response.data.data;
-        }
-        ,
-        async getTable1() {
-            const response = await api.get("/table1s");
-            this.table1s = response.data.data;
         },
-        async getTable2() {
-            const response = await api.get("/table2s");
-            this.table2s = response.data.data;
-        }
-        ,
-        async getTable3() {
-            const response = await api.get("/table3s");
-            this.table3s = response.data.data;
-        },
-        async getTable4() {
-            const response = await api.get("/table4s");
-            this.table4s = response.data.data;
-        }
-        ,
+        
         async getDirs() {
             const response = await api.get("/dirs");
             this.dirs = response.data.data;
@@ -92,5 +76,9 @@ export const useNewsStore = defineStore('newsStore', {
             const response = await api.get("/jumyss");
             this.jumyss = response.data.data;
         },
+        async getTable(tableNumber) {
+            const response = await api.get(`/table${tableNumber}s`);
+            this.tables[`table${tableNumber}`] = response.data.data;
+        }
     }
 })

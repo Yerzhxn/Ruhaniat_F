@@ -248,6 +248,7 @@ const table4Columns = computed(() => [
     dataIndex: "TAA",
     key: "TAA",
     fixed: "left" as const,
+    width: 200,
   },
   ...createDayColumns(),
   {
@@ -255,12 +256,14 @@ const table4Columns = computed(() => [
     dataIndex: "sebep",
     key: "sebep",
     align: "center" as const,
+    width: 150,
   },
   {
     title: "SEBEPSIZ",
     dataIndex: "sebepsiz",
     key: "sebepsiz",
     align: "center" as const,
+    width: 150,
   },
 ]);
 
