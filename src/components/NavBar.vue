@@ -35,12 +35,24 @@
           You-Tube
         </p>
 
-        <p
-          @click="$router.push('/about')"
-          class="text-gray-700 hover:text-[#00B5C0] transition-all duration-300 cursor-pointer"
-        >
-          Біз туралы
-        </p>
+        <a-dropdown>
+          <a class="ant-dropdown-link" @click.prevent>
+            Biz Turaly 
+          </a>
+          <template #overlay>
+            <a-menu>
+              <a-menu-item @click="$router.push('/about')">
+                Jalpy Aqparat
+              </a-menu-item>
+              <a-menu-item @click="$router.push('/dirs')">
+                Qurulym
+              </a-menu-item>
+              <a-menu-item @click="$router.push('/map')">
+                Baylanys
+              </a-menu-item>
+            </a-menu>
+          </template>
+        </a-dropdown>
       </div>
       
     </div>
@@ -84,7 +96,24 @@
           <p @click="$router.push('/news')">Janalyktar</p>
           <p @click="$router.push('/youTubes')">You-Tube</p>
           <p @click="$router.push('/achievements')">Bizdiń jetistikter</p>
-          <p @click="$router.push('/about')">Biz Turaly</p>
+          <a-dropdown>
+            <a class="ant-dropdown-link" @click.prevent>
+              Biz Turaly 
+            </a>
+            <template #overlay>
+              <a-menu>
+                <a-menu-item @click="$router.push('/about')">
+                  Jalpy Aqparat
+                </a-menu-item>
+                <a-menu-item @click="$router.push('/dirs')">
+                  Qurulym
+                </a-menu-item>
+                <a-menu-item @click="$router.push('/map')">
+                  Baylanys
+                </a-menu-item>
+              </a-menu>
+            </template>
+          </a-dropdown>
           <p @click="$router.push('/tabl')">Kesteler</p>
           <a-dropdown>
             <p

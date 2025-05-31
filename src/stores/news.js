@@ -12,6 +12,9 @@ export const useNewsStore = defineStore('newsStore', {
         table2s: [],
         table3s: [],
         table4s: [],
+        dirs: [],
+        jumyss: [],
+        currentDir: null,
         currentYouTube: null
     }),
     actions: {
@@ -53,6 +56,19 @@ export const useNewsStore = defineStore('newsStore', {
             const response = await api.get("/table4s");
             this.table4s = response.data.data;
         }
+        ,
+        async getDirs() {
+            const response = await api.get("/dirs");
+            this.dirs = response.data.data;
+        },
+        async getCurrentDir(id) {
+            const response = await api.get(`/dirs/${id}`);
+            this.currentDir = response.data.data;
+        },
+        async getJumyss() {
+            const response = await api.get("/jumyss");
+            this.jumyss = response.data.data;
+        },
     }
 })
 

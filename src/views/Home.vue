@@ -30,7 +30,7 @@
       </div>
     </div>
 
-    <div class="news py-[60px] md:py-[140px] container mx-auto px-[20px] md:px-[100px]">
+    <div class="news py-[60px] md:py-[140px] container relative px-[20px] md:px-[100px] ">
       <div class="flex justify-between items-center">
         <p class="text-[18px] md:text-[24px]">Jańalyqtar</p>
         <div
@@ -42,7 +42,7 @@
         </div>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-5 pt-10">
+      <div class="grid relative md:grid-cols-3 gap-10 pt-10 container mx-auto">
         <NewsCard
           v-for="item in news.slice(0, 6)"
           :data="item"
@@ -84,32 +84,24 @@
       <div class="flex justify-between items-center container mx-auto">
         <p class="text-[18px] md:text-[24px]">Basşılar</p>
         <div
-          class="text-[14px] md:text-[16px] flex items-center gap-2 border border-gray-300 rounded-xl cursor-pointer px-4 py-1 text-gray-600"
+        @click="$router.push('/dirs')"
+        class="text-[14px] md:text-[16px] flex items-center gap-2 border border-gray-300 rounded-xl cursor-pointer px-4 py-1 text-gray-600"
         >
           Bárliǵy
           <ArrowRightOutlined />
         </div>
       </div>
-
       <div
-        class="grid relative md:grid-cols-3 gap-10 pt-20 container mx-auto text-center px-[100px]"
+        class="grid relative md:grid-cols-3 gap-10 pt-10 container mx-auto"
+        v-if="dirs.length > 0"
       >
-        <div v-for="item in 3" :key="item">
-          <img
-            class="w-[100px] h-[100px] rounded-full m-auto mb-5 object-cover"
-            alt="example"
-            src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-          />
-          <p
-            class="text-[20px] md:text-[30px] hover:text-gray-200 cursor-pointer transition-all duration-300"
-          >
-            Kuralbayev T
-          </p>
-          <p class="text-[14px] md:text-[16px] text-gray-500 font-light">
-            CEO and CTO of SpaceX
-          </p>
-        </div>
+        <DirsCardDef
+          v-for="item in dirs.slice(0, 3)"
+          :key="item.id"
+          :data="item"
+        />
       </div>
+      
     </div>
 
     <div class="achievments py-[60px] md:py-[140px] bg-[#00B5C0] text-white relative px-[20px] md:px-[100px]">
@@ -244,15 +236,16 @@
 import { ArrowRightOutlined } from "@ant-design/icons-vue";
 import NewsCard from "../components/NewsCard.vue";
 import NewsCardDef from "../components/NewsCardDef.vue";
+import DirsCardDef from "../components/DirsCardDef.vue";
 import { useNewsStore } from "../stores/news.js";
 import { storeToRefs } from "pinia";
+import { onMounted } from "vue";
 
-const { news, achievements , youTubes } = storeToRefs(useNewsStore());
-import { onMounted } from 'vue'
-console.log('aasasddsd')
-onMounted(() => {
-  console.log("Achievements:", youTubes.value)
-})
+const { news, achievements , youTubes,dirs } = storeToRefs(useNewsStore());
+const newsStore = useNewsStore();
+onMounted(async () => {
+  await newsStore.getDirs();
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   const btn1 = document.getElementById("toggle-btn1");

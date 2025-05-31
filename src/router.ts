@@ -43,6 +43,21 @@ const router = createRouter({
       name: 'tables',
       component: () => import('./views/table.vue')
     },
+    {
+      path: '/dirs',
+      name: 'dirs',
+      component: () => import('./views/dirs/Dirs.vue')
+    },
+    {
+      path: '/dirs/:id',
+      name: 'dirsView',
+      component: () => import('./views/dirs/DirView.vue')
+    },
+    {
+      path: '/map',
+      name: 'map',
+      component: () => import('./views/Map.vue')
+    },
     
 
     //old
