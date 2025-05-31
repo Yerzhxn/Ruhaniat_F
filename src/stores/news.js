@@ -5,7 +5,7 @@ export const useNewsStore = defineStore('newsStore', {
     state: () => ({
         news: [],
         currentNews: null,
-        achievements: [],
+        achievements: [], 
         currentAchievement: null,
         youTubes: [],
         table1s: [],
@@ -18,22 +18,45 @@ export const useNewsStore = defineStore('newsStore', {
         currentYouTube: null
     }),
     actions: {
+        async fetchData(endpoint, stateKey) {
+            try {
+                const response = await api.get(endpoint);
+                this[stateKey] = response.data.data;
+            } catch (error) {
+                console.error(`Error fetching ${endpoint}:`, error);
+                throw error;
+            }
+        },
+
+        async fetchSingleItem(endpoint, stateKey, id) {
+            try {
+                const response = await api.get(`${endpoint}/${id}`);
+                this[stateKey] = response.data.data;
+            } catch (error) {
+                console.error(`Error fetching ${endpoint}/${id}:`, error);
+                throw error;
+            }
+        },
+
+        // News
         async getNews() {
-            const response = await api.get("/news");
-            this.news = response.data.data;
+            await this.fetchData('/news', 'news');
         },
+
         async getCurrentNews(id) {
-            const response = await api.get(`/news/${id}`);
-            this.currentNews = response.data.data;
+            await this.fetchSingleItem('/news', 'currentNews', id);
         },
+
+        // Achievements
         async getAchievements() {
-            const response = await api.get("/achievements");
-            this.achievements = response.data.data;
+            await this.fetchData('/achievements', 'achievements');
         },
+
         async getCurrentAchievement(id) {
-            const response = await api.get(`/achievements/${id}`);
-            this.currentAchievement = response.data.data;
+            await this.fetchSingleItem('/achievements', 'currentAchievement', id);
         },
+
+        // YouTube
         async getYouTubes() {
             const response = await api.get("/youtubes");
             this.youTubes = response.data.data;
@@ -71,6 +94,3 @@ export const useNewsStore = defineStore('newsStore', {
         },
     }
 })
-
-
-
