@@ -1,7 +1,10 @@
 <template>
   <div class="mx-auto">
     <NavBar />
-    <router-view />
+    <div style="min-height: calc(100vh - 264px);">
+      <router-view />
+    </div>
+    
     <Footer />
   </div>
 </template>

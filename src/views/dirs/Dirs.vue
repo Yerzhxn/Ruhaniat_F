@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto px-[20px] md:px-[100px] py-[140px] relative"
-  style="min-height: calc(100vh);">
+  >
     <img
       src="../../assets/img/oyu_2.png"
       alt=""
