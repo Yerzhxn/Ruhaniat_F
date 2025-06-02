@@ -4,7 +4,7 @@
     <img
       src="../../assets/img/oyu_2.png"
       alt=""
-      class="absolute w-[600px] h-[600px] top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2"
+      class="absolute  md:w-[600px] h-[600px] top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2 -z-10"
     />
     <div class="flex justify-between items-center">
       <p class="text-[24px]">You-Tube</p>
