@@ -6,7 +6,7 @@
       class="absolute w-[600px] h-[600px] top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2 -z-10"
     />
     <div class="flex justify-between items-center">
-      <p class="text-[24px]">Bizdiń jetistikter</p>
+      <p class="text-[24px]">Біздің Жетістіктер</p>
     </div>
     <div class="grid md:grid-cols-3 gap-5 pt-10">
       <NewsCardDef v-for="item in achievements" :data="item" :key="item.id" />

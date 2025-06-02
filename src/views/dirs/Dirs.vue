@@ -6,7 +6,7 @@
       class="absolute w-[600px] h-[600px] top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2 -z-10"
     />
     <div class="flex justify-between items-center">
-      <p class="text-[24px]">Bizdiń Otbasymyz</p>
+      <p class="text-[24px]">Біздің Басшылар</p>
     </div>
     <div class="grid md:grid-cols-3 gap-5 pt-10">
       <DirsCardDef v-for="item in dirs" :data="item" :key="item.id" />
@@ -14,7 +14,7 @@
   </div>
 
   <div class="p-6 text-[20px] mx-auto px-[20px] md:px-[100px]">
-    <p class="text-[24px] py-[40px]">Bizdin Bolimder</p>
+    <p class="text-[24px] py-[40px]">Біздің Бөлімдер</p>
     <!-- Dropdown по bolim -->
     <a-dropdown>
         <a-button size="large"  class="text-[red] text-[20px]">

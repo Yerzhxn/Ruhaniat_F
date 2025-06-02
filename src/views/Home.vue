@@ -9,7 +9,7 @@
         class="w-[150px] md:w-[350px] mb-5 md:mb-10"
       />
       <p class="text-center text-sm md:text-[20px] text-gray-500 font-light">
-        Jaña mektep, bizben birge beleske!
+        Жаңа мектеп, бізбен бірге белеске!
       </p>
       <h1
         class="text-[30px] md:text-[80px] font-bold text-[#00B5C0] mt-2 md:mt-4"
@@ -32,14 +32,10 @@
           <p
             class="text-[25px] md:text-[60px] font-bold mb-8 pb-8 border-b border-white"
           >
-            BIZ TURALY
+            Біз туралы
           </p>
           <p class="text-[16px] md:text-[24px]">
-            Bizdiñ mektep – qazaq tilin úırenýge arnalǵan keremet oryn. Múnda
-            tásirıibeli ustazdar zamanawy ádistermen sabaq beredi. Oqushylar
-            tildik daǵdyların jylдам damytady. Sabaqtar qyzyqty, tíimdi jáne
-            qoljetimdi. Qazaq mádenietin tereńirek túsinýge kómektesemiz. Bizben
-            birge qazaq tilin ońai úirenińiz!
+            Біздің мектеп – қазақ тілін үйренуге арналған керемет орын. Мұнда тәжірибелі ұстаздар заманауи әдістермен сабақ береді. Оқушылар тілдік дағдыларын жылдам дамытады. Сабақтар қызықты, тиімді және қолжетімді. Қазақ мәдениетін тереңірек түсінуге көмектесеміз. Бізбен бірге қазақ тілін оңай үйреніңіз!
           </p>
         </div>
         <img src="../assets/img/img_1.png" alt="" class="w-[500px]" />
@@ -48,12 +44,12 @@
 
     <div class="news py-[60px] md:py-[140px] container px-[20px] md:px-[100px] ">
       <div class="flex justify-between items-center">
-        <p class="text-[18px] md:text-[24px]">Jańalyqtar</p>
+        <p class="text-[18px] md:text-[24px]">Жаңалықтар</p>
         <div
           @click="$router.push('/news')"
           class="text-[14px] md:text-[16px] flex items-center gap-2 border border-gray-300 rounded-xl cursor-pointer px-4 py-1 text-gray-600"
         >
-          Bárliǵy
+          Барлығы
           <ArrowRightOutlined />
         </div>
       </div>
@@ -81,7 +77,7 @@
           @click="$router.push('/youTubes')"
           class="text-[14px] md:text-[16px] flex items-center gap-2 bg-white rounded-xl cursor-pointer px-4 py-1 text-gray-600"
         >
-          Bárliǵy
+          Барлығы
           <ArrowRightOutlined />
         </div>
       </div>
@@ -100,12 +96,12 @@
 
     <div class="directors py-[60px] md:py-[140px] px-[20px] md:px-[100px]">
       <div class="flex justify-between items-center container mx-auto">
-        <p class="text-[18px] md:text-[24px]">Basşılar</p>
+        <p class="text-[18px] md:text-[24px]">Басшылар</p>
         <div
         @click="$router.push('/dirs')"
         class="text-[14px] md:text-[16px] flex items-center gap-2 border border-gray-300 rounded-xl cursor-pointer px-4 py-1 text-gray-600"
         >
-          Bárliǵy
+          Барлығы
           <ArrowRightOutlined />
         </div>
       </div>
@@ -131,12 +127,12 @@
         class="absolute w-[600px] top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2"
       />
       <div class="flex justify-between items-center container mx-auto">
-        <p class="text-[18px] md:text-[24px]">Bizdiń jetistikter</p>
+        <p class="text-[18px] md:text-[24px]">Біздің жетістіктер</p>
         <div
           @click="$router.push('/achievements')"
           class="text-[14px] md:text-[16px] flex items-center gap-2 bg-white rounded-xl cursor-pointer px-4 py-1 text-gray-600"
         >
-          Bárliǵy
+          Барлығы
           <ArrowRightOutlined />
         </div>
       </div>
@@ -152,90 +148,16 @@
         />
       </div>
     </div>
-    <div
-      class="FAG grid place-content-center my-[120px] md:my-[206px] w-[450px] md:w-[608px] md:mx-auto px-[20px] md:px-[100px]"
-    >
-      <div
-        class="bg-[#E3EAFD] rounded-full p-[8px] mx-auto mb-[40px] text-[#133A9A]"
-      >
-        F.A.G
-      </div>
-      <div class="text-[16px] py-[24px] grid space-y-[40px] place-content-center">
-        <span class="text-[24px] md:text-[48px] text-center">Kóp taralǵan suraq</span>
-        <span class="text-[#81828c] text-center text-[14px] md:text-[20px]"
-          >Biz en táýelsiz swraqtardyń jauaptarın jıqtap aldyq. Eger sizde basqa swraqtar bolsa — bizben baylanısyńyz!</span
-        >
-      </div>
-      <div class="mx-auto w-[410px] md:w-[538px] space-y-[12px] mt-[17px]">
-        <div
-          class="question_1 transition duration-300 grid grid-cols-[95%_5%] text-[14px] md:text-[20px] border border-gray-300 justify-between px-[20px] py-[8px] md:py-[16px] rounded-[10px]  md:space-y-[8px]"
-        >
-          <span>Oquǵa kim tiriýleý alady?</span>
-          <button
-            id="toggle-btn1"
-            class="cursor-pointer border-none bg-inherit text-[#81828c]"
-          >
-            +
-          </button>
-          <span class="answer_1 hidden md:w-[500px] text-[#81828c] text-[14px] md:text-[16px]"
-            >1. Siz «Baylanystar» bólimi arqılı onlaýn ótinis toltyrýyńyz nemese belgilengen telefonnan qosylýyńyz múmkin. Bizdiń menedzherimiz sizben jaqyn uaqytta baylanısady.</span
-          >
-        </div>
-
-        <div
-          class="question_2 transition duration-300 grid grid-cols-[95%_5%] text-[14px] md:text-[20px] border border-gray-300 justify-between px-[20px] py-[8px] md:py-[16px] rounded-[10px]  md:space-y-[8px]"
-        >
-          <span>Oquǵa kim tiriýleý alady?</span>
-          <button
-            id="toggle-btn2"
-            class="cursor-pointer border-none bg-inherit text-[#81828c]"
-          >
-            +
-          </button>
-          <span class="answer_2 hidden md:w-[500px] text-[#81828c] text-[14px] md:text-[16px]"
-            >1. Siz «Baylanystar» bólimi arqılı onlaýn ótinis toltyrýyńyz nemese belgilengen telefonnan qosylýyńyz múmkin. Bizdiń menedzherimiz sizben jaqyn uaqytta baylanısady.</span
-          >
-        </div>
-        <div
-          class="question_3 transition duration-300 grid grid-cols-[95%_5%] text-[14px] md:text-[20px] border border-gray-300 justify-between px-[20px] py-[8px] md:py-[16px] rounded-[10px]  md:space-y-[8px]"
-        >
-          <span>Oquǵa kim tiriýleý alady?</span>
-          <button
-            id="toggle-btn3"
-            class="cursor-pointer border-none bg-inherit text-[#81828c]"
-          >
-            +
-          </button>
-          <span class="answer_3 hidden md:w-[500px] text-[#81828c] text-[14px] md:text-[16px]"
-            >1. Siz «Baylanystar» bólimi arqılı onlaýn ótinis toltyrýyńyz nemese belgilengen telefonnan qosylýyńyz múmkin. Bizdiń menedzherimiz sizben jaqyn uaqytta baylanısady.</span
-          >
-        </div>
-        <div
-          class="question_4 transition duration-300 grid grid-cols-[95%_5%] text-[14px] md:text-[20px] border border-gray-300 justify-between px-[20px] py-[8px] md:py-[16px] rounded-[10px]  md:space-y-[8px]"
-        >
-          <span>Oquǵa kim tiriýleý alady?</span>
-          <button
-            id="toggle-btn4"
-            class="cursor-pointer border-none bg-inherit text-[#81828c]"
-          >
-            +
-          </button>
-          <span class="answer_4 hidden md:w-[500px] text-[#81828c] text-[14px] md:text-[16px]"
-            >1. Siz «Baylanystar» bólimi arqılı onlaýn ótinis toltyrýyńyz nemese belgilengen telefonnan qosylýyńyz múmkin. Bizdiń menedzherimiz sizben jaqyn uaqytta baylanısady.</span
-          >
-        </div>
-      </div>
-    </div>
+    
     <div
       class="footer px-[20px] md:px-[120px] py-[40px] border-b border-4 border-[#F7F7F8] md:flex justify-between bg-[#F7F7F8]"
     >
       <div class="grid space-y-[12px] mb-[20px]">
         <span class="text-[16px] md:text-[20px]"
-          >Bizdiń jańalyqtar taratýymyzğa jazylıńyz.</span
+          >Біздің жаңалықтар таратылымымызға жазылыңыз.</span
         >
         <span class="md:w-[500px] text-[#81828c] text-[14px] md:text-[16px]"
-          >Biz sizge soñǵy ayda jiberilgen qısqa mälimetterdi, jańartýlardy jäne
-          komanda talğau twraly aqparattardy jetkizemiz.</span
+          >Біз сізге соңғы айда жіберілген қысқа мәліметтерді, жаңартуларды және команда талғау туралы ақпараттарды жеткіземіз..</span
         >
       </div>
       <div
@@ -243,14 +165,14 @@
       >
         <input
           type="text"
-          placeholder="@ Sizdyn meiliniz"
+          placeholder="@ Сіздің поштаңыз"
           class="border-none bg-[white] focus:outline-[#00B5C0] rounded-[12px] px-[10px]"
           width="240px"
         />
         <button
           class="text-[12px] md:text-[16px] bg-[#00B5C0] border-none text-[white] rounded-[12px] px-[20px] hover:bg-[white] hover:text-[#00B5C0] transition duration-300"
         >
-          ZHAZYLU
+          Жазылу
         </button>
       </div>
     </div>

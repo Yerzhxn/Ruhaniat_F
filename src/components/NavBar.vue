@@ -20,13 +20,13 @@
           @click="$router.push('/tabl')"
           class="text-gray-700 hover:text-[#00B5C0] transition-all duration-300 cursor-pointer"
         >
-          Kesteler
+          Кестелер
         </p>
         <p
           @click="$router.push('/achievements')"
           class="text-gray-700 hover:text-[#00B5C0] transition-all duration-300 cursor-pointer"
         >
-          Bizdin Jetistikter
+          Біздің жетістіктер
         </p>
         <p
           @click="$router.push('/youTubes')"
@@ -37,18 +37,18 @@
 
         <a-dropdown>
           <a class="ant-dropdown-link" @click.prevent>
-            Biz Turaly 
+            Біз Туралы 
           </a>
           <template #overlay>
             <a-menu>
               <a-menu-item @click="$router.push('/about')">
-                Jalpy Aqparat
+                Жалпы Ақпарат
               </a-menu-item>
               <a-menu-item @click="$router.push('/dirs')">
-                Qurulym
+                Құрылым
               </a-menu-item>
               <a-menu-item @click="$router.push('/map')">
-                Baylanys
+                Байланыс
               </a-menu-item>
             </a-menu>
           </template>
@@ -98,23 +98,23 @@
           <p @click="$router.push('/achievements')">Bizdiń jetistikter</p>
           <a-dropdown>
             <a class="ant-dropdown-link" @click.prevent>
-              Biz Turaly 
+              Біз Туралы 
             </a>
             <template #overlay>
               <a-menu>
                 <a-menu-item @click="$router.push('/about')">
-                  Jalpy Aqparat
+                  Жалпы Ақпарат
                 </a-menu-item>
                 <a-menu-item @click="$router.push('/dirs')">
-                  Qurulym
+                  Құрылым
                 </a-menu-item>
                 <a-menu-item @click="$router.push('/map')">
-                  Baylanys
+                  Байланыс
                 </a-menu-item>
               </a-menu>
             </template>
           </a-dropdown>
-          <p @click="$router.push('/tabl')">Kesteler</p>
+          <p @click="$router.push('/tabl')">Кестелер</p>
           <a-dropdown>
             <p
               class="text-gray-700 text-[14px] flex items-center gap-2 cursor-pointer"

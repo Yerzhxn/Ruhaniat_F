@@ -2,7 +2,7 @@
   <div class="pt-[100px] px-[20px] text-[#00B5C0] container mx-auto py-[100px]">
     <!-- Table 1: MEMLEKETTIK TILDE OTKIZILGEN SABAQTARDYN SAQAN SANDARY -->
     <TableSection
-      :title="'MEMLEKETTIK TILDE OTKIZILGEN SABAQTARDYN SAQAN SANDARY'"
+      :title="'Мемлекеттік тілде өткізілген сабақтардың сағат саны'"
       :month="selectedMonth1"
       :months="availableMonths1"
       :table-data="groupedData[selectedMonth1]"
@@ -12,7 +12,7 @@
 
     <!-- Table 2: MEMLEKETTIK TIL KURSYNA KATYSUSSYLAR TIZIMI -->
     <TableSection
-      :title="'MEMLEKETTIK TIL KURSYNA KATYSUSSYLAR TIZIMI'"
+      :title="'Мемлекеттік тіл курсына қатысушылар тізімі'"
       :month="selectedMonth2"
       :months="availableMonths2"
       :table-data="filteredTable2Data"
@@ -22,7 +22,7 @@
 
     <!-- Table 3: MEMLEKETTIK TIL KURSYNYN SABAQ KESTESI -->
     <DualFilterTableSection
-      :title="'MEMLEKETTIK TIL KURSYNYN SABAQ KESTESI'"
+      :title="'Мемлекеттік тіл курсының сабақ кестесі'"
       :month="selectedMonth3"
       :months="availableMonths3"
       :name="selectedName3"
@@ -35,7 +35,7 @@
 
     <!-- Table 4: MEMLEKETTIK TILDI OQYTU BOIYNSA TANDAUSYLARDYN SABAQQA KATYSU TURALY MALIMET -->
     <DualFilterTableSection
-      :title="'MEMLEKETTIK TILDI OQYTU BOIYNSA TANDAUSYLARDYN SABAQQA KATYSU TURALY MALIMET'"
+      :title="'Мемлекеттік тілді оқыту бойынша таңдаушылардың сабаққа қатысу туралы мәлімет'"
       :month="selectedMonth4"
       :months="availableMonths4"
       :name="selectedTeacher4"
@@ -157,7 +157,7 @@ const groupedData = computed(() => {
 
 const table1Columns = computed(() => [
   {
-    title: "MEKENZHAY",
+    title: "Мекен жайы",
     dataIndex: "adress",
     key: "adress",
     fixed: "left" as const,
@@ -165,7 +165,7 @@ const table1Columns = computed(() => [
   },
   ...createDayColumns((record, index) => record.daysArray[index] || ""),
   {
-    title: "TOLTQ SAGAT",
+    title: "Толық сағат",
     key: "total",
     align: "center" as const,
     width: 150,
@@ -189,14 +189,14 @@ const filteredTable2Data = computed(() =>
 );
 
 const table2Columns = [
-  { title: "T.A.A.", dataIndex: "TAA", key: "TAA" },
-  { title: "LAUAZYMY", dataIndex: "Lauazym", key: "Lauazym" },
-  { title: "TUGAN ZHYLY", dataIndex: "TuganJyly", key: "TuganJyly" },
-  { title: "MEKEN ZHAY", dataIndex: "Adress", key: "Adress" },
-  { title: "BAILANYS TELEFONY", dataIndex: "Tel", key: "Tel" },
-  { title: "ULTY", dataIndex: "Ulty", key: "Ulty" },
-  { title: "DENGEIY", dataIndex: "Dengei", key: "Dengei" },
-  { title: "AZAMATTYGY", dataIndex: "Azamat", key: "Azamat" },
+  { title: "T.A.Ә.", dataIndex: "TAA", key: "TAA" },
+  { title: "Лауазымы", dataIndex: "Lauazym", key: "Lauazym" },
+  { title: "Туған жылы", dataIndex: "TuganJyly", key: "TuganJyly" },
+  { title: "Мекен жайы", dataIndex: "Adress", key: "Adress" },
+  { title: "Байланыс телефоны", dataIndex: "Tel", key: "Tel" },
+  { title: "Ұлты", dataIndex: "Ulty", key: "Ulty" },
+  { title: "Деңгейі", dataIndex: "Dengei", key: "Dengei" },
+  { title: "Азаматығы", dataIndex: "Azamat", key: "Azamat" },
 ];
 
 // Table 3 computeds
@@ -216,14 +216,14 @@ const filteredTable3Data = computed(() =>
 );
 
 const table3Columns = [
-  { title: "MEKEN ZHAIY", dataIndex: "Adress", key: "Adress" },
-  { title: "SANY", dataIndex: "Sany", key: "Sany" },
-  { title: "DYISWNBI", dataIndex: "pn", key: "pn" },
-  { title: "SEISEMBI", dataIndex: "vt", key: "vt" },
-  { title: "SARSENBI", dataIndex: "sr", key: "sr" },
-  { title: "BEISENBI", dataIndex: "cht", key: "cht" },
-  { title: "ZUMA", dataIndex: "pt", key: "pt" },
-  { title: "SENBI", dataIndex: "sb", key: "sb" },
+  { title: "Мекен жайы", dataIndex: "Adress", key: "Adress" },
+  { title: "Саны", dataIndex: "Sany", key: "Sany" },
+  { title: "Дүйсенбі", dataIndex: "pn", key: "pn" },
+  { title: "Сейсенбі", dataIndex: "vt", key: "vt" },
+  { title: "Сәрсенбі", dataIndex: "sr", key: "sr" },
+  { title: "Бейсенбі", dataIndex: "cht", key: "cht" },
+  { title: "Жұма", dataIndex: "pt", key: "pt" },
+  { title: "Сенбі", dataIndex: "sb", key: "sb" },
 ];
 
 // Table 4 computeds
@@ -244,7 +244,7 @@ const filteredTable4Data = computed(() =>
 
 const table4Columns = computed(() => [
   {
-    title: "TANDAUSYNYN T.A.A",
+    title: "Тандаушының T.A.Ә",
     dataIndex: "TAA",
     key: "TAA",
     fixed: "left" as const,
@@ -252,14 +252,14 @@ const table4Columns = computed(() => [
   },
   ...createDayColumns(),
   {
-    title: "SEBEPTI",
+    title: "Себепті",
     dataIndex: "sebep",
     key: "sebep",
     align: "center" as const,
     width: 150,
   },
   {
-    title: "SEBEPSIZ",
+    title: "Себепсіз",
     dataIndex: "sebepsiz",
     key: "sebepsiz",
     align: "center" as const,

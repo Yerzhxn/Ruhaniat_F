@@ -5,29 +5,36 @@
       <div class="hidden md:flex gap-4 col-span-2">
         <p
           class="text-gray-400 hover:text-[#00B5C0] transition-all duration-300 cursor-pointer"
+          @click="$router.push('/news')"
         >
           Жаңалықтар
         </p>
         <p
           class="text-gray-400 hover:text-[#00B5C0] transition-all duration-300 cursor-pointer"
+          @click="$router.push('/tabl')"
         >
-          Басшылық
+          Кестелер
         </p>
         <p
           class="text-gray-400 hover:text-[#00B5C0] transition-all duration-300 cursor-pointer"
+          @click="$router.push('/achievements')"
         >
-          Құрылым
+          Біздің жетістіктер
         </p>
         <p
           class="text-gray-400 hover:text-[#00B5C0] transition-all duration-300 cursor-pointer"
+          @click="$router.push('/youTubes')"
         >
-          Жобалар
+          You-Tube
         </p>
         <p
           class="text-gray-400 hover:text-[#00B5C0] transition-all duration-300 cursor-pointer"
+          @click="$router.push('/about')"
         >
-          Біз туралы
+          Біз Туралы
         </p>
+        
+        
       </div>
       <div class="flex text-gray-400 gap-4">
         <InstagramFilled

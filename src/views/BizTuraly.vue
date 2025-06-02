@@ -6,9 +6,9 @@ interface Card {
 
 const cards: Card[] = [
   {
-    img: "../assets/img/img_1.png",
+    img: "img/img_1.png",
     description:
-      "Bizdiñ mektep – qazaq tilin úırenýge arnalǵan keremet oryn. Múnda tásirıibeli ustazdar zamanawy ádistermen sabaq beredi. Oqushylar tildik daǵdyların jylдам damytady. Sabaqtar qyzyqty, tíimdi jáne qoljetimdi. Qazaq mádenietin tereńirek túsinýge kómektesemiz. Bizben birge qazaq tilin ońai úirenińiz!  Bizdiñ mektep – qazaq tilin úırenýge arnalǵan keremet oryn. Múnda tásirıibeli ustazdar zamanawy ádistermen sabaq beredi. Oqushylar tildik daǵdyların jylдам damytady. Sabaqtar qyzyqty, tíimdi jáne qoljetimdi. Qazaq mádenietin tereńirek túsinýge kómektesemiz. Bizben birge qazaq tilin ońai úirenińiz!",
+      "Біздің мектеп – қазақ тілін үйренуге арналған керемет орын. Мұнда тәжірибелі ұстаздар заманауи әдістермен сабақ береді. Оқушылар тілдік дағдыларын жылдам дамытады. Сабақтар қызықты, тиімді және қолжетімді. Қазақ мәдениетін тереңірек түсінуге көмектесеміз. Бізбен бірге қазақ тілін оңай үйреніңіз! Біздің мектеп – қазақ тілін үйренуге арналған керемет орын. Мұнда тәжірибелі ұстаздар заманауи әдістермен сабақ береді. Оқушылар тілдік дағдыларын жылдам дамытады. Сабақтар қызықты, тиімді және қолжетімді. Қазақ мәдениетін тереңірек түсінуге көмектесеміз. Бізбен бірге қазақ тілін оңай үйреніңіз!",
   },
 ];
 </script>
@@ -18,7 +18,7 @@ const cards: Card[] = [
     class="youtube px-[20px] md:px-[140px] py-[100px] bg-[#00B5C0] bg-[url(/oiuGreen.png)] bg-no-repeat bg-position-[center] text-white"
   >
     <div class="nav flex justify-between">
-      <h1 class="text-[24px] md:text-[40px]">BIZ TURALY</h1>
+      <h1 class="text-[24px] md:text-[40px]">БІЗ ТУРАЛЫ</h1>
     </div>
 
     <div class="w-[50%] h-[2px] bg-white mt-[50px]"></div>
@@ -37,14 +37,10 @@ const cards: Card[] = [
 
       <div class="grid py-[24px] space-x-[40px]">
         <h2 class="text-[24px] md:text-[40px] border-b-[2px] py-[20px]">
-          ZHALPY AKPARAT
+          ЖАЛПЫ АҚПАРАТ
         </h2>
         <p class="line text-[16px] md:text-[20px] mt-[40px]">
-          Bizdiñ mektep – qazaq tilin úırenýge arnalǵan keremet oryn. Múnda
-          tásirıibeli ustazdar zamanawy ádistermen sabaq beredi. Oqushylar
-          tildik daǵdyların jylдам damytady. Sabaqtar qyzyqty, tíimdi jáne
-          qoljetimdi. Qazaq mádenietin tereńirek túsinýge kómektesemiz. Bizben
-          birge qazaq tilin ońai úirenińiz!
+          Біздің мектеп – қазақ тілін үйренуге арналған керемет орын. Мұнда тәжірибелі ұстаздар заманауи әдістермен сабақ береді. Оқушылар тілдік дағдыларын жылдам дамытады. Сабақтар қызықты, тиімді және қолжетімді. Қазақ мәдениетін тереңірек түсінуге көмектесеміз. Бізбен бірге қазақ тілін оңай үйреніңіз!
         </p>
       </div>
     </div>
