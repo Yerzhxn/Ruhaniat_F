@@ -93,9 +93,9 @@
         :closable="true"
       >
         <div class="flex flex-col gap-4 text-[16px] text-gray-700">
-          <p @click="$router.push('/news')">Janalyktar</p>
+          <p @click="$router.push('/news')">Жаңалықтар</p>
           <p @click="$router.push('/youTubes')">You-Tube</p>
-          <p @click="$router.push('/achievements')">Bizdiń jetistikter</p>
+          <p @click="$router.push('/achievements')">Біздің жетістіктер</p>
           <a-dropdown>
             <a class="ant-dropdown-link" @click.prevent>
               Біз Туралы 
