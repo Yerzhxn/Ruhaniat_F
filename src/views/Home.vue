@@ -162,7 +162,7 @@
         class="absolute w-[600px] top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2"
       />
       <div class="flex justify-between items-center container mx-auto">
-        <p class="text-[18px] md:text-[24px]">Біздің жетістіктер</p>
+        <p class="text-[18px] md:text-[24px]">Жобалар</p>
         <div
           @click="$router.push('/achievements')"
           class="text-[14px] md:text-[16px] flex items-center gap-2 bg-white rounded-xl cursor-pointer px-4 py-1 text-gray-600"

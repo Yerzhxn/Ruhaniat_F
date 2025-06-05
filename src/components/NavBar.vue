@@ -44,7 +44,7 @@
           @click="$router.push('/achievements')"
           class="text-gray-700 hover:text-[#00B5C0] transition-all duration-300 cursor-pointer"
         >
-          Біздің жобалар
+          Жобалар
         </p>
         <p
           @click="$router.push('/youTubes')"
@@ -166,7 +166,7 @@
             @click="$router.push('/achievements')"
             class="text-gray-700 hover:text-[#00B5C0] transition-all duration-300 cursor-pointer"
           >
-            Біздің жобалар
+            Жобалар
           </p>
           <p
             @click="$router.push('/youTubes')"

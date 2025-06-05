@@ -17,6 +17,13 @@
         v-html="currentAchievement.description"
         class="pt-10 text-[16px] text-gray-500"
       />
+      <a
+        :href="currentAchievement.link"
+        target="_blank"
+        class="text-[16px] text-blue-500"
+      >
+        <a-button type="primary" class="mt-4"> Жобаға өту </a-button>
+      </a>
     </div>
   </div>
 </template>
@@ -27,6 +34,7 @@ import { useNewsStore } from "../../stores/news";
 import { onMounted, ref } from "vue";
 import { storeToRefs } from "pinia";
 import { API_URL } from "../../env";
+import { ArrowRightOutlined } from "@ant-design/icons-vue";
 
 const route = useRoute();
 const newsId = route.params.id;
