@@ -132,7 +132,7 @@
   </div>
 </div>
 
-    <div class="news py-[60px] md:py-[140px] container mx-auto">
+    <div class="news py-[60px] md:py-[140px] container mx-auto  px-[20px] md:px-[0px]">
       <div class="flex justify-between items-center">
         <p class="text-[18px] md:text-[24px]">Жаңалықтар</p>
         <div
@@ -154,7 +154,7 @@
     </div>
 
     <div
-      class="achievments py-[60px] md:py-[140px] bg-[#00B5C0] text-white relative px-[20px] md:px-[100px]"
+      class="achievments py-[60px] md:py-[140px] bg-[#00B5C0] text-white relative px-[20px] md:px-[0px]"
     >
       <img
         src="../assets/img/oyu_1.png"
@@ -182,6 +182,40 @@
           :data="item"
         />
       </div>
+    </div>
+
+    <div class="partners py-[60px] md:py-[140px] container mx-auto px-[20px] md:px-[0]">
+      <p class="text-[18px] md:text-[24px]">Серіктестер</p>
+      <swiper
+        :slides-per-view="2"
+        :space-between="30"
+      :navigation="true"
+        :modules="[Autoplay, Pagination, Navigation]"
+        :loop="true"
+        :autoplay="{
+          delay: 2500,
+          disableOnInteraction: false,
+        }"
+        :breakpoints="{
+          640: {
+            slidesPerView: 2,
+          },
+          768: {
+            slidesPerView: 3,
+          },
+          1024: {
+            slidesPerView: 6,
+          },
+        }"
+        class="pt-10 mt-20"
+      >
+        <swiper-slide v-for="item in [...partners, ...partners, ...partners, ...partners, ...partners, ...partners, ...partners]" :key="item.id">
+          <a :href="item.link" target="_blank">
+            <img :src="API_URL + item.image.url" alt="" class="w-[100px] h-[100px] object-cover rounded-full mx-auto mb-3" />
+            <p class="text-[14px] md:text-[16px] text-center">{{ item.title }}</p>
+          </a>
+        </swiper-slide>
+      </swiper>
     </div>
 
     <div
@@ -216,6 +250,10 @@
 </template>
 
 <script setup lang="ts">
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 import { ArrowRightOutlined } from "@ant-design/icons-vue";
 import NewsCard from "../components/NewsCard.vue";
 import NewsCardDef from "../components/NewsCardDef.vue";
@@ -223,8 +261,9 @@ import { useNewsStore } from "../stores/news";
 import { storeToRefs } from "pinia";
 import { onMounted } from "vue";
 import YouTubeCard from "../components/YouTubeCard.vue";
+import { API_URL } from "../env";
 
-const { news, achievements, youTubes } = storeToRefs(useNewsStore());
+const { news, achievements, youTubes, partners } = storeToRefs(useNewsStore());
 const newsStore = useNewsStore();
 onMounted(async () => {
   await newsStore.getDirs();

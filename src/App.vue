@@ -1,10 +1,10 @@
 <template>
   <div class="mx-auto">
     <NavBar />
-    <div style="min-height: calc(100vh - 264px);">
+    <div style="min-height: calc(100vh - 264px)">
       <router-view />
     </div>
-    
+
     <Footer />
   </div>
 </template>
@@ -20,5 +20,6 @@ onMounted(async () => {
   await newsStore.getNews();
   await newsStore.getAchievements();
   await newsStore.getYouTubes();
+  await newsStore.getPartners();
 });
 </script>
