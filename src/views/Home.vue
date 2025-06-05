@@ -8,14 +8,21 @@
         alt=""
         class="w-[150px] md:w-[350px] mb-5 md:mb-10"
       />
-      <p class="text-center text-sm md:text-[20px] text-gray-500 font-light">
-        Жаңа мектеп, бізбен бірге белеске!
-      </p>
       <h1
         class="text-[30px] md:text-[80px] font-bold text-[#00B5C0] mt-2 md:mt-4"
       >
         RUHANIAT
       </h1>
+      <p
+        class="text-center text-sm md:text-[20px] text-gray-500 font-light max-w-[800px] w-[90%] mx-auto"
+      >
+        "Данышпандар туралы зерде - олардың өздері көтерген мәселелердің
+        өзектілігі жойылғанша ғана ел жадында сақталады."
+        <br />
+        <span class="font-light text-[12px] md:text-[14px] block mt-2">
+          Олжас Сүлейменов
+        </span>
+      </p>
     </div>
     <div
       class="bg-[#00B5C0] py-[60px] md:py-[140px] relative px-[20px] md:px-[100px]"
@@ -35,14 +42,97 @@
             Біз туралы
           </p>
           <p class="text-[16px] md:text-[24px]">
-            Біздің мектеп – қазақ тілін үйренуге арналған керемет орын. Мұнда тәжірибелі ұстаздар заманауи әдістермен сабақ береді. Оқушылар тілдік дағдыларын жылдам дамытады. Сабақтар қызықты, тиімді және қолжетімді. Қазақ мәдениетін тереңірек түсінуге көмектесеміз. Бізбен бірге қазақ тілін оңай үйреніңіз!
+            Біздің мектеп – қазақ тілін үйренуге арналған керемет орын. Мұнда
+            тәжірибелі ұстаздар заманауи әдістермен сабақ береді. Оқушылар
+            тілдік дағдыларын жылдам дамытады. Сабақтар қызықты, тиімді және
+            қолжетімді. Қазақ мәдениетін тереңірек түсінуге көмектесеміз. Бізбен
+            бірге қазақ тілін оңай үйреніңіз!
           </p>
         </div>
         <img src="../assets/img/img_1.png" alt="" class="w-[500px]" />
       </div>
     </div>
 
-    <div class="news py-[60px] md:py-[140px] container px-[20px] md:px-[100px] ">
+
+
+    <div class="directors py-[60px] md:py-[140px] px-[20px] md:px-[100px]">
+      
+      <div class="grid md:grid-cols-[300px_1fr] grid-cols-1 gap-5">
+        <img
+          class="w-full h-[300px] rounded-full object-cover mt-[20px]"
+          alt="example"
+          src="../assets/img/user.png"
+        />
+        <div class="mt-10">
+          <p
+            class="text-[20px] md:text-[20px] transition-all duration-300 font-medium mb-4"
+          >
+            Арман Манарбекұлы
+          </p>
+          <p class="text-[16px] text-gray-500">
+            Астана қаласы әкімдігінің Тілдерді дамыту және архив ісі басқармасы
+            басшысының 2025 жылғы 3 наурыздағы бұйрығына сәйкес, «Руханият»
+            коммуналдық мемлекеттік мекемесінің басшысы лауазымына Шеризатов Арман
+            Манарбекұлы тағайындалды.
+            <br />
+            <br />
+            Арман Манарбекұлы — Қазақстан Жазушылар одағының мүшесі, «Дарын»
+            мемлекеттік жастар сыйлығының лауреаты, «Тәңірқұт», «Күміс шық» жыр
+            жинақтарының авторы. Педагогика ғылымдарының магистрі.
+            <br />
+            <br />
+            <ul class="list-disc list-inside text-gray-500">
+              <li>21.10.2024 жылдан бастап бүгінге дейін — «Астана қаласының
+                коммуникациялар қызметі» ММ Контент өндіру бөлімінің басшысы</li>
+              <li>29.01–10.06.2024 — ҚР Сыртқы істер министрлігіне қарасты «Отандастар
+            қоры» КеАҚ, Шетелдегі қандастармен жұмыс департаментінің жобалар
+            үйлестірушісі</li>
+              <li>2023–2024 жж. — «Қазконтент» АҚ, RUH.KZ порталының бас
+                редакторы</li>
+              <li>2022 ж. — республикалық «Егемен Қазақстан» газетінің
+                интернет-редакция тілшісі</li>
+              <li>2019–2021 жж. — «Қазконтент» АҚ, «Әдебиет
+                порталы» жобасының журналисі</li>
+              <li>2017–2019 жж. — «Сәкен Сейфуллин
+                музейі» МКҚК, ғылыми қызметкер, ғылыми-ағарту бөлімінің меңгерушісі</li>
+            </ul>
+          </p>
+        </div>
+      </div>
+      </div>
+
+<div
+  class="youtube py-[60px] md:py-[140px] bg-[#00B5C0] text-white relative px-[20px] md:px-[100px]"
+>
+  <img
+    src="../assets/img/oyu_1.png"
+    alt=""
+    class="absolute w-[600px] top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2"
+  />
+  <div class="flex justify-between items-center container mx-auto">
+    <p class="text-[18px] md:text-[24px]">You-Tube</p>
+    <div
+      @click="$router.push('/youTubes')"
+      class="text-[14px] md:text-[16px] flex items-center gap-2 bg-white rounded-xl cursor-pointer px-4 py-1 text-gray-600"
+    >
+      Барлығы
+      <ArrowRightOutlined />
+    </div>
+  </div>
+
+  <div
+    class="grid relative md:grid-cols-3 gap-10 pt-10 container mx-auto"
+    v-if="youTubes.length > 0"
+  >
+    <YouTubeCard
+      v-for="item in youTubes.slice(0, 3)"
+      :key="item.id"
+      :data="item"
+    />
+  </div>
+</div>
+
+    <div class="news py-[60px] md:py-[140px] container mx-auto">
       <div class="flex justify-between items-center">
         <p class="text-[18px] md:text-[24px]">Жаңалықтар</p>
         <div
@@ -61,61 +151,6 @@
           :key="item.id"
         />
       </div>
-    </div>
-
-    <div
-      class="youtube py-[60px] md:py-[140px] bg-[#00B5C0] text-white relative px-[20px] md:px-[100px]"
-    >
-      <img
-        src="../assets/img/oyu_1.png"
-        alt=""
-        class="absolute w-[600px] top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2"
-      />
-      <div class="flex justify-between items-center container mx-auto">
-        <p class="text-[18px] md:text-[24px]">You-Tube</p>
-        <div
-          @click="$router.push('/youTubes')"
-          class="text-[14px] md:text-[16px] flex items-center gap-2 bg-white rounded-xl cursor-pointer px-4 py-1 text-gray-600"
-        >
-          Барлығы
-          <ArrowRightOutlined />
-        </div>
-      </div>
-
-      <div
-        class="grid relative md:grid-cols-3 gap-10 pt-10 container mx-auto"
-        v-if="youTubes.length > 0"
-      >
-        <NewsCardDef
-          v-for="item in youTubes.slice(0, 3)"
-          :key="item.id"
-          :data="item"
-        />
-      </div>
-    </div>
-
-    <div class="directors py-[60px] md:py-[140px] px-[20px] md:px-[100px]">
-      <div class="flex justify-between items-center container mx-auto">
-        <p class="text-[18px] md:text-[24px]">Басшылар</p>
-        <div
-        @click="$router.push('/dirs')"
-        class="text-[14px] md:text-[16px] flex items-center gap-2 border border-gray-300 rounded-xl cursor-pointer px-4 py-1 text-gray-600"
-        >
-          Барлығы
-          <ArrowRightOutlined />
-        </div>
-      </div>
-      <div
-        class="grid relative md:grid-cols-3 gap-10 pt-10 container mx-auto"
-        v-if="dirs.length > 0"
-      >
-        <DirsCardDef
-          v-for="item in dirs.slice(0, 3)"
-          :key="item.id"
-          :data="item"
-        />
-      </div>
-      
     </div>
 
     <div
@@ -148,7 +183,7 @@
         />
       </div>
     </div>
-    
+
     <div
       class="footer px-[20px] md:px-[120px] py-[40px] border-b border-4 border-[#F7F7F8] md:flex justify-between bg-[#F7F7F8]"
     >
@@ -157,7 +192,8 @@
           >Біздің жаңалықтар таратылымымызға жазылыңыз.</span
         >
         <span class="md:w-[500px] text-[#81828c] text-[14px] md:text-[16px]"
-          >Біз сізге соңғы айда жіберілген қысқа мәліметтерді, жаңартуларды және команда талғау туралы ақпараттарды жеткіземіз..</span
+          >Біз сізге соңғы айда жіберілген қысқа мәліметтерді, жаңартуларды және
+          команда талғау туралы ақпараттарды жеткіземіз..</span
         >
       </div>
       <div
@@ -183,67 +219,14 @@
 import { ArrowRightOutlined } from "@ant-design/icons-vue";
 import NewsCard from "../components/NewsCard.vue";
 import NewsCardDef from "../components/NewsCardDef.vue";
-import DirsCardDef from "../components/DirsCardDef.vue";
-import { useNewsStore } from "../stores/news.js";
+import { useNewsStore } from "../stores/news";
 import { storeToRefs } from "pinia";
 import { onMounted } from "vue";
+import YouTubeCard from "../components/YouTubeCard.vue";
 
-const { news, achievements , youTubes,dirs } = storeToRefs(useNewsStore());
+const { news, achievements, youTubes } = storeToRefs(useNewsStore());
 const newsStore = useNewsStore();
 onMounted(async () => {
   await newsStore.getDirs();
 });
-
-document.addEventListener("DOMContentLoaded", () => {
-  const btn1 = document.getElementById("toggle-btn1");
-  const btn2 = document.getElementById("toggle-btn2");
-  const btn3 = document.getElementById("toggle-btn3");
-  const btn4 = document.getElementById("toggle-btn4");
-  const answer1 = document.querySelector(".answer_1") as HTMLElement | null;
-  const answer2 = document.querySelector(".answer_2") as HTMLElement | null;
-  const answer3 = document.querySelector(".answer_3") as HTMLElement | null;
-  const answer4 = document.querySelector(".answer_4") as HTMLElement | null;
-  const question_1 = document.querySelector(
-    ".question_1"
-  ) as HTMLElement | null;
-  const question_2 = document.querySelector(
-    ".question_2"
-  ) as HTMLElement | null;
-  const question_3 = document.querySelector(
-    ".question_3"
-  ) as HTMLElement | null;
-  const question_4 = document.querySelector(
-    ".question_4"
-  ) as HTMLElement | null;
-
-  btn1?.addEventListener("click", () => {
-    if (answer1) {
-      answer1.classList.toggle("hidden");
-      question_1.classList.toggle("bg-[#F7F7F8]");
-      btn1.textContent = answer1.classList.contains("hidden") ? "+" : "−";
-    }
-  });
-  btn2?.addEventListener("click", () => {
-    if (answer2) {
-      answer2.classList.toggle("hidden");
-      question_2.classList.toggle("bg-[#F7F7F8]");
-      btn2.textContent = answer2.classList.contains("hidden") ? "+" : "−";
-    }
-  });
-  btn3?.addEventListener("click", () => {
-    if (answer3) {
-      answer3.classList.toggle("hidden");
-      question_3.classList.toggle("bg-[#F7F7F8]");
-      btn3.textContent = answer3.classList.contains("hidden") ? "+" : "−";
-    }
-  });
-  btn4?.addEventListener("click", () => {
-    if (answer4) {
-      answer4.classList.toggle("hidden");
-      question_4.classList.toggle("bg-[#F7F7F8]");
-      btn4.textContent = answer4.classList.contains("hidden") ? "+" : "−";
-    }
-  });
-});
-
 </script>

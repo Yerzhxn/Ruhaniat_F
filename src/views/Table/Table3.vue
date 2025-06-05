@@ -1,26 +1,5 @@
 <template>
-  <div class="pt-[100px] px-[20px] text-[#00B5C0] container mx-auto py-[100px]"
-  >
-    <!-- Table 1: MEMLEKETTIK TILDE OTKIZILGEN SABAQTARDYN SAQAN SANDARY -->
-    <TableSection
-      :title="'Мемлекеттік тілде өткізілген сабақтардың сағат саны'"
-      :month="selectedMonth1"
-      :months="availableMonths1"
-      :table-data="groupedData[selectedMonth1]"
-      :columns="table1Columns"
-      @month-change="selectedMonth1 = $event"
-    />
-
-    <!-- Table 2: MEMLEKETTIK TIL KURSYNA KATYSUSSYLAR TIZIMI -->
-    <TableSection
-      :title="'Мемлекеттік тіл курсына қатысушылар тізімі'"
-      :month="selectedMonth2"
-      :months="availableMonths2"
-      :table-data="filteredTable2Data"
-      :columns="table2Columns"
-      @month-change="selectedMonth2 = $event"
-    />
-
+  <div class="pt-[100px] px-[20px] text-[#00B5C0] container mx-auto py-[100px]">
     <!-- Table 3: MEMLEKETTIK TIL KURSYNYN SABAQ KESTESI -->
     <DualFilterTableSection
       :title="'Мемлекеттік тіл курсының сабақ кестесі'"
@@ -33,20 +12,6 @@
       @month-change="selectedMonth3 = $event"
       @name-change="selectedName3 = $event"
     />
-
-    <!-- Table 4: MEMLEKETTIK TILDI OQYTU BOIYNSA TANDAUSYLARDYN SABAQQA KATYSU TURALY MALIMET -->
-    <DualFilterTableSection
-      :title="'Мемлекеттік тілді оқыту бойынша таңдаушылардың сабаққа қатысу туралы мәлімет'"
-      :month="selectedMonth4"
-      :months="availableMonths4"
-      :name="selectedTeacher4"
-      :names="availableTeachers4"
-      :table-data="formattedTable4Data"
-      :columns="table4Columns"
-      :scroll="{ x: 1500 }"
-      @month-change="selectedMonth4 = $event"
-      @name-change="selectedTeacher4 = $event"
-    />
   </div>
 </template>
 
@@ -56,7 +21,6 @@ import { useNewsStore } from "../../stores/news.js";
 import { storeToRefs } from "pinia";
 
 // Components
-import TableSection from "./TableSection.vue";
 import DualFilterTableSection from "./DualFilterTableSection.vue";
 
 // Constants
@@ -217,7 +181,7 @@ const filteredTable3Data = computed(() =>
 );
 
 const table3Columns = [
-  { title: "Мекен жайы", dataIndex: "Adress", key: "Adress" },
+  { title: "", dataIndex: "Adress", key: "Adress" },
   { title: "Саны", dataIndex: "Sany", key: "Sany" },
   { title: "Дүйсенбі", dataIndex: "pn", key: "pn" },
   { title: "Сейсенбі", dataIndex: "vt", key: "vt" },

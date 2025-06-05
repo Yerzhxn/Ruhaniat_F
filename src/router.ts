@@ -39,27 +39,40 @@ const router = createRouter({
       component: () => import('./views/youTube/YoutubeView.vue')
     },
     {
-      path: '/tabl',
-      name: 'tables',
-      component: () => import('./views/Table/Table.vue')
-    },
-    {
       path: '/dirs',
       name: 'dirs',
       component: () => import('./views/dirs/Dirs.vue')
     },
     {
-      path: '/dirs/:id',
-      name: 'dirsView',
-      component: () => import('./views/dirs/DirView.vue')
+      path: '/kurylym',
+      name: 'kurylym',
+      component: () => import('./views/dirs/Kurylym.vue')
     },
     {
       path: '/map',
       name: 'map',
       component: () => import('./views/Map.vue')
     },
-    
-
+    {
+      path: '/table1',
+      name: 'table1',
+      component: () => import('./views/Table/Table1.vue')
+    },
+    {
+      path: '/table2',
+      name: 'table2',
+      component: () => import('./views/Table/Table2.vue')
+    },
+    {
+      path: '/table3',
+      name: 'table3',
+      component: () => import('./views/Table/Table3.vue')
+    },
+    {
+      path: '/table4',
+      name: 'table4',
+      component: () => import('./views/Table/Table4.vue')
+    },
     //old
     {
       path: '/about',

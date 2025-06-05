@@ -5,12 +5,13 @@
       alt="example"
       :src="API_URL + data.image?.url"
     />
-    <p
-      @click="$router.push(`/achievements/${data.documentId}`)"
-      class="text-[18px] md:text-[24px] hover:text-gray-200 cursor-pointer transition-all duration-300 font-bold mb-1"
+    <a
+      :href="data.link"
+      target="_blank"
+      class="text-[18px] md:text-[24px] cursor-pointer transition-all duration-300 font-bold mb-1"
     >
       {{ data.title }}
-    </p>
+    </a>
   </div>
 </template>
 
