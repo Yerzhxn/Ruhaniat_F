@@ -209,7 +209,7 @@
         }"
         class="pt-10 mt-20"
       >
-        <swiper-slide v-for="item in [...partners, ...partners, ...partners, ...partners, ...partners, ...partners, ...partners]" :key="item.id">
+        <swiper-slide v-for="item in partners" :key="item.id">
           <a :href="item.link" target="_blank">
             <img :src="API_URL + item.image.url" alt="" class="w-[100px] h-[100px] object-cover rounded-full mx-auto mb-3" />
             <p class="text-[14px] md:text-[16px] text-center">{{ item.title }}</p>
