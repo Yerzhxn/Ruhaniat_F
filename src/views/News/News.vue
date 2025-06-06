@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-[20px] py-[140px]">
+  <div class="container mx-auto px-[20px] md:px-[100px] py-[140px]">
     <img
       src="../../assets/img/oyu_2.png"
       alt=""

@@ -1,60 +1,75 @@
 <template>
   <div>
-    <div class="header flex gap-5 container mx-auto py-10">
-      <div class="w-[79%] block relative">
-        <swiper 
-      class="relative"
-      :modules="[Autoplay, Navigation]" :loop="true" :autoplay="{
-          delay: 4500,
-        }" :slides-per-view="1"
-      @swiper="onSwiperInit">
-      <div
-              @click="swiperController?.slidePrev()"
-              class="cursor-pointer absolute z-10 left-0 text-[20px] !bottom-0 min-w-[80px] h-[150px] text-white bg-[#00B5C0] flex items-center justify-center"
-            >
-              <ArrowLeftOutlined />
-            </div>
-            <div
-              @click="swiperController?.slideNext()"
-              class="cursor-pointer absolute z-10 right-0 text-[20px] !bottom-0 min-w-[80px] h-[150px] text-white bg-[#00B5C0] flex items-center justify-center"
-            >
-              <ArrowRightOutlined />
-            </div>
-        <swiper-slide v-for="item in news" :key="item">
-          <div class="relative">
-            <img :src="API_URL + item.image.url" alt="" class="w-full h-[700px] object-cover" />
-            <div class="absolute bottom-0 left-0 w-full bg-[#00000080] h-[150px] py-4 px-[200px]">
-              <p class="text-[20px] md:text-[24px] font-bold text-white cursor-pointer" @click="$router.push(`/news/${item.documentId}`)">
-                {{ item.title }}
-              </p>
-              <p class="text-[16px] text-white font-light line-clamp-2 max-w-[800px]">
-                {{ item.description }}
-              </p>
+    <div class="mb-[20px]">
+      
+      <div class="header md:flex gap-5 space-y-[20px] container mx-auto pt-5 px-[20px] md:px-[100px]">
+        <div class="md:w-[79%] block relative">
+          <swiper 
+        class="relative"
+        :modules="[Autoplay, Navigation]" :loop="true" :autoplay="{
+            delay: 4500,
+          }" :slides-per-view="1"
+        @swiper="onSwiperInit">
+        <div
+                @click="swiperController?.slidePrev()"
+                class="cursor-pointer absolute z-10 left-0 text-[20px] !bottom-0 md:min-w-[80px] min-w-[50px]  h-[150px] text-white bg-[#00B5C0] flex items-center justify-center"
+              >
+                <ArrowLeftOutlined />
+              </div>
+              <div
+                @click="swiperController?.slideNext()"
+                class="cursor-pointer absolute z-10 right-0 text-[20px] !bottom-0 md:min-w-[80px] min-w-[50px] h-[150px] text-white bg-[#00B5C0] flex items-center justify-center"
+              >
+                <ArrowRightOutlined />
+              </div>
+          <swiper-slide v-for="item in news" :key="item">
+            <div class="relative">
+              <img :src="API_URL + item.image.url" alt="" class="w-full h-[400px] md:h-[700px] object-cover" />
+              <div class="absolute bottom-0 left-0 w-full bg-[#00000080] h-[150px] py-4 px-[80px] md:px-[200px]">
+                <p class="text-[18px] md:text-[24px] font-bold text-white cursor-pointer" @click="$router.push(`/news/${item.documentId}`)">
+                  {{ item.title }}
+                </p>
+                <p class="text-[16px] text-white font-light line-clamp-2 max-w-[800px]">
+                  {{ item.description }}
+                </p>
+                
+              </div>
               
             </div>
-            
-          </div>
-        </swiper-slide>
-      </swiper>
+          </swiper-slide>
+        </swiper>
+        </div>
+        <div class="md:w-[20%]">
+          <swiper 
+        class="relative"
+        :modules="[Autoplay, Navigation]" :loop="true" :autoplay="{
+            delay: 4500,
+          }" :slides-per-view="1">
+          <swiper-slide v-for="item in banners.filter(b => b.type === 'type_2')" :key="item">
+            <div class="relative">
+              <a :href="item.link" target="_blank"><img :src="API_URL + item.image.url" alt="" class="h-[130px] w-[100%] md:w-full md:h-[700px] object-cover cursor-pointer" /></a>
+            </div>
+          </swiper-slide>
+        </swiper>
+        </div>
       </div>
-      <div class="w-[20%]">
-        <swiper 
-      class="relative"
-      :modules="[Autoplay, Navigation]" :loop="true" :autoplay="{
-          delay: 4500,
-        }" :slides-per-view="1">
-        <swiper-slide v-for="item in news" :key="item">
-          <div class="relative">
-            <img :src="API_URL + item.image.url" alt="" class="w-full h-[700px] object-cover" />
-          </div>
-        </swiper-slide>
-      </swiper>
+      <div class="md:mt-0 mt-[20px]">
+        <div class="w-full px-[20px] md:px-[100px] h-[130px]">
+          <swiper 
+        class="relative"
+        :modules="[Autoplay, Navigation]" :loop="true" :autoplay="{
+            delay: 4500,
+          }" :slides-per-view="1">
+          <swiper-slide v-for="item in banners.filter(b => b.type === 'type_3')" :key="item">
+            <div class="relative">
+              <a :href="item.link" target="_blank"><img :src="API_URL + item.image.url" alt="" class="w-[100%] h-[130px] object-cover cursor-pointer" /></a>
+            </div>
+          </swiper-slide>
+        </swiper>
+        </div>
       </div>
     </div>
 
-    <div class="container mx-auto">
-      <img src="../assets/img/img_1.png" alt="" class="w-full h-[130px] mb-10 object-cover">
-    </div>
     <div
       class="bg-[#00B5C0] py-[60px] md:py-[140px] relative px-[20px] md:px-[100px]"
     >
@@ -86,10 +101,10 @@
 
 
 
-    <div class="container mx-auto py-[100px]">
-      <div class="grid md:grid-cols-[300px_1fr] grid-cols-1 gap-5">
+    <div class="container mx-auto py-[100px] px-[20px] md:px-[100px]">
+      <div class="grid md:grid-cols-[300px_1fr] grid-cols-1 gap-5 place-items-center">
         <img
-          class="w-full h-[300px] rounded-full object-cover mt-[20px]"
+          class="w-[300px] h-[300px] rounded-full object-cover "
           alt="example"
           src="../assets/img/user.png"
         />
@@ -153,7 +168,7 @@
   <div
     class="grid relative md:grid-cols-3 gap-10 pt-10 container mx-auto"
     v-if="youTubes.length > 0"
-  >
+  > 
     <YouTubeCard
       v-for="item in youTubes.slice(0, 3)"
       :key="item.id"
@@ -162,7 +177,7 @@
   </div>
 </div>
 
-    <div class="news py-[60px] md:py-[140px] container mx-auto  px-[20px] md:px-[0px]">
+    <div class="news py-[60px] md:py-[140px] container mx-auto  px-[20px] md:px-[100px]">
       <div class="flex justify-between items-center">
         <p class="text-[18px] md:text-[24px]">Жаңалықтар</p>
         <div
@@ -184,7 +199,7 @@
     </div>
 
     <div
-      class="achievments py-[60px] md:py-[140px] bg-[#00B5C0] text-white relative px-[20px] md:px-[0px]"
+      class="achievments py-[60px] md:py-[140px] bg-[#00B5C0] text-white relative px-[20px] md:px-[100px]"
     >
       <img
         src="../assets/img/oyu_1.png"
@@ -214,7 +229,7 @@
       </div>
     </div>
 
-    <div class="partners py-[60px] md:py-[140px] container mx-auto px-[20px] md:px-[0]">
+    <div class="partners py-[60px] md:py-[140px] container mx-auto px-[20px] md:px-[100px]">
       <p class="text-[18px] md:text-[24px]">Серіктестер</p>
       <swiper
         :slides-per-view="2"
@@ -300,10 +315,8 @@ function onSwiperInit(swiperInstance: any) {
   swiperController.value = swiperInstance;
 }
 
-const { news, achievements, youTubes, partners } = storeToRefs(useNewsStore());
+const { news, achievements, youTubes, partners,banners,dirs} = storeToRefs(useNewsStore());
 const newsStore = useNewsStore();
 
-onMounted(async () => {
-  await newsStore.getDirs();
-});
+
 </script>
