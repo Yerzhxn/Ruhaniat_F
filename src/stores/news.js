@@ -18,7 +18,8 @@ export const useNewsStore = defineStore('newsStore', {
         jumyss: [],
         currentDir: null,
         currentYouTube: null,
-        partners: []
+        partners: [],
+        banners: []
     }),
     actions: {
         async fetchData(endpoint, stateKey) {
@@ -84,6 +85,10 @@ export const useNewsStore = defineStore('newsStore', {
         async getPartners() {
             const response = await api.get("/partners");
             this.partners = response.data.data;
+        },
+        async getBanners() {
+            const response = await api.get("/banners");
+            this.banners = response.data.data;
         }
     }
 })

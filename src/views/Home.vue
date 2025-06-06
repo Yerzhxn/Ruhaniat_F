@@ -1,28 +1,59 @@
 <template>
   <div>
-    <div
-      class="container mx-auto flex flex-col items-center justify-center h-[600px] md:h-[900px]"
-    >
-      <img
-        src="../assets/img/logo_2.png"
-        alt=""
-        class="w-[150px] md:w-[350px] mb-5 md:mb-10"
-      />
-      <h1
-        class="text-[30px] md:text-[80px] font-bold text-[#00B5C0] mt-2 md:mt-4"
-      >
-        RUHANIAT
-      </h1>
-      <p
-        class="text-center text-sm md:text-[20px] text-gray-500 font-light max-w-[800px] w-[90%] mx-auto"
-      >
-        "Данышпандар туралы зерде - олардың өздері көтерген мәселелердің
-        өзектілігі жойылғанша ғана ел жадында сақталады."
-        <br />
-        <span class="font-light text-[12px] md:text-[14px] block mt-2">
-          Олжас Сүлейменов
-        </span>
-      </p>
+    <div class="header flex gap-5 container mx-auto py-10">
+      <div class="w-[79%] block relative">
+        <swiper 
+      class="relative"
+      :modules="[Autoplay, Navigation]" :loop="true" :autoplay="{
+          delay: 4500,
+        }" :slides-per-view="1"
+      @swiper="onSwiperInit">
+      <div
+              @click="swiperController?.slidePrev()"
+              class="cursor-pointer absolute z-10 left-0 text-[20px] !bottom-0 min-w-[80px] h-[150px] text-white bg-[#00B5C0] flex items-center justify-center"
+            >
+              <ArrowLeftOutlined />
+            </div>
+            <div
+              @click="swiperController?.slideNext()"
+              class="cursor-pointer absolute z-10 right-0 text-[20px] !bottom-0 min-w-[80px] h-[150px] text-white bg-[#00B5C0] flex items-center justify-center"
+            >
+              <ArrowRightOutlined />
+            </div>
+        <swiper-slide v-for="item in news" :key="item">
+          <div class="relative">
+            <img :src="API_URL + item.image.url" alt="" class="w-full h-[700px] object-cover" />
+            <div class="absolute bottom-0 left-0 w-full bg-[#00000080] h-[150px] py-4 px-[200px]">
+              <p class="text-[20px] md:text-[24px] font-bold text-white cursor-pointer" @click="$router.push(`/news/${item.documentId}`)">
+                {{ item.title }}
+              </p>
+              <p class="text-[16px] text-white font-light line-clamp-2 max-w-[800px]">
+                {{ item.description }}
+              </p>
+              
+            </div>
+            
+          </div>
+        </swiper-slide>
+      </swiper>
+      </div>
+      <div class="w-[20%]">
+        <swiper 
+      class="relative"
+      :modules="[Autoplay, Navigation]" :loop="true" :autoplay="{
+          delay: 4500,
+        }" :slides-per-view="1">
+        <swiper-slide v-for="item in news" :key="item">
+          <div class="relative">
+            <img :src="API_URL + item.image.url" alt="" class="w-full h-[700px] object-cover" />
+          </div>
+        </swiper-slide>
+      </swiper>
+      </div>
+    </div>
+
+    <div class="container mx-auto">
+      <img src="../assets/img/img_1.png" alt="" class="w-full h-[130px] mb-10 object-cover">
     </div>
     <div
       class="bg-[#00B5C0] py-[60px] md:py-[140px] relative px-[20px] md:px-[100px]"
@@ -55,8 +86,7 @@
 
 
 
-    <div class="directors py-[60px] md:py-[140px] px-[20px] md:px-[100px]">
-      
+    <div class="container mx-auto py-[100px]">
       <div class="grid md:grid-cols-[300px_1fr] grid-cols-1 gap-5">
         <img
           class="w-full h-[300px] rounded-full object-cover mt-[20px]"
@@ -99,7 +129,7 @@
           </p>
         </div>
       </div>
-      </div>
+    </div>
 
 <div
   class="youtube py-[60px] md:py-[140px] bg-[#00B5C0] text-white relative px-[20px] md:px-[100px]"
@@ -254,7 +284,7 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import { ArrowRightOutlined } from "@ant-design/icons-vue";
+import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons-vue";
 import NewsCard from "../components/NewsCard.vue";
 import NewsCardDef from "../components/NewsCardDef.vue";
 import { useNewsStore } from "../stores/news";
@@ -262,9 +292,17 @@ import { storeToRefs } from "pinia";
 import { onMounted } from "vue";
 import YouTubeCard from "../components/YouTubeCard.vue";
 import { API_URL } from "../env";
+import { ref } from "vue";
+
+const swiperController = ref<Swiper | null>(null);
+
+function onSwiperInit(swiperInstance: any) {
+  swiperController.value = swiperInstance;
+}
 
 const { news, achievements, youTubes, partners } = storeToRefs(useNewsStore());
 const newsStore = useNewsStore();
+
 onMounted(async () => {
   await newsStore.getDirs();
 });
