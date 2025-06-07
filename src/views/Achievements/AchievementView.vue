@@ -42,7 +42,7 @@ const loading = ref(true);
 
 const newsStore = useNewsStore();
 const { currentAchievement } = storeToRefs(newsStore);
-
+const item = route?.state?.item;
 onMounted(async () => {
   await newsStore.getCurrentAchievement(newsId);
   loading.value = false;

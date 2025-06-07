@@ -22,7 +22,7 @@ import { onMounted } from "vue";
 
 const newsStore = useNewsStore();
 const { news } = storeToRefs(newsStore);
-
+console.log(news.value)
 onMounted(async () => {
   await newsStore.getNews();
 });

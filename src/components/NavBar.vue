@@ -6,7 +6,7 @@
           <p class="text-[14px] md:text-[16px] text-[#00B5C0]">KZ</p>
           <p class="text-[14px] md:text-[16px]">RU</p>
         </div>
-        <div class="flex text-gray-400 gap-2 md:gap-4">
+        <div class="flex text-gray-400 gap-1 md:gap-4">
           <a href="https://www.instagram.com/ruhaniat.kz" target="_blank">
             <img
               src="../assets/img/instagram.png"
@@ -29,10 +29,15 @@
             />
           </a>
         </div>
-        <input
-          placeholder="Сайт бойынша іздеу"
-          class="w-[300px] bg-white h-[30px] md:h-[35px] rounded-full px-4 text-[14px]"
-        />
+        <div class="flex items-center gap-2">
+          <input
+            v-model="searchQuery"
+            @keyup.enter="handleSearch"
+            placeholder="Сайт бойынша іздеу"
+            class="w-[300px] bg-white h-[30px] md:h-[35px] rounded-full px-4 text-[14px]"
+          />
+          <SearchOutlined class="cursor-pointer text-gray-500" @click="handleSearch" />
+        </div>
       </div>
     </div>
     <div class="container mx-auto py-3 px-[20px] md:px-[100px]">
@@ -251,8 +256,8 @@ import { useRouter } from "vue-router";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons-vue";
 import { storeToRefs } from "pinia";
 import { useNewsStore } from "../stores/news";
+const { news, achievements, youTubes,banners} = storeToRefs(useNewsStore());
 
-const { banners } = storeToRefs(useNewsStore());
 const newsStore = useNewsStore();
 const swiperController = ref<Swiper | null>(null);
 const lang = ref("KK");
@@ -281,5 +286,32 @@ const openDrawerBelowMenu = () => {
 const navigate1 = (path) => {
   drawerVisible.value = false;
   router.push(path);
+};
+
+
+
+const searchQuery = ref("");
+const handleSearch = () => {
+  const query = searchQuery.value.trim().toLowerCase();
+  if (!query) return;
+
+  const combined = [
+  ...(news?.value || []).map((item) => ({ ...item, type: "news" })),
+  ...(achievements?.value || []).map((item) => ({ ...item, type: "achievement" })),
+  ...(youTubes?.value || []).map((item) => ({ ...item, type: "youtube" })),
+];
+
+  const results = combined.filter((item) => {
+    const searchableFields = [
+      item.title,
+      item.description,
+    ];
+    return searchableFields.some(
+      (field) => field?.toLowerCase().includes(query)
+    );
+  });
+
+  localStorage.setItem("searchResults", JSON.stringify(results));
+  router.push("/res");
 };
 </script>

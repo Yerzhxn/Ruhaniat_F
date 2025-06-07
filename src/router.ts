@@ -79,6 +79,11 @@ const router = createRouter({
       name: 'about',
       component: () => import('./views/BizTuraly.vue')
     },
+    {
+      path: '/res',
+      name: 'results',
+      component: () => import('./views/Results.vue')
+    },
     
     
   ]

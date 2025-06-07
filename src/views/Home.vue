@@ -317,6 +317,6 @@ function onSwiperInit(swiperInstance: any) {
 
 const { news, achievements, youTubes, partners,banners,dirs} = storeToRefs(useNewsStore());
 const newsStore = useNewsStore();
-
+console.log(achievements.value)
 
 </script>

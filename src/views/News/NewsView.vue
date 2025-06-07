@@ -34,7 +34,7 @@ const loading = ref(true);
 
 const newsStore = useNewsStore();
 const { currentNews } = storeToRefs(newsStore);
-
+const item = route?.state?.item;
 onMounted(async () => {
   await newsStore.getCurrentNews(newsId);
   loading.value = false;
