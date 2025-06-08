@@ -18,18 +18,12 @@
         </p>
         <template #overlay>
           <a-menu>
-            <a-menu-item @click="$router.push('/table1')">
-              Мемлекеттік тілде өткізілген сабақтардың сағат саны
-            </a-menu-item>
-            <a-menu-item @click="$router.push('/table2')">
-              Мемлекеттік тіл курсына қатысушылар тізімі
-            </a-menu-item>
-            <a-menu-item @click="$router.push('/table3')">
-              Мемлекеттік тіл курсының сабақ кестесі
-            </a-menu-item>
-            <a-menu-item @click="$router.push('/table4')">
-              Мемлекеттік тілді оқыту бойынша таңдаушылардың сабаққа қатысу
-              туралы мәлімет
+            <a-menu-item
+              v-for="(item, index) in tables"
+              :key="index"
+              @click="$router.push(item.route)"
+            >
+              {{ item.title }}
             </a-menu-item>
           </a-menu>
         </template>
@@ -53,31 +47,26 @@
         </a>
         <template #overlay>
           <a-menu>
-            <a-menu-item @click="$router.push('/about')">
-              Жалпы Ақпарат
+            <a-menu-item
+              v-for="(item, index) in aboutMenu"
+              :key="index"
+              @click="$router.push(item.route)"
+            >
+              {{ item.title }}
             </a-menu-item>
-            <a-menu-item @click="$router.push('/kurylym')">
-              Құрылым
-            </a-menu-item>
-            <a-menu-item @click="$router.push('/dirs')"> Бөлімдер </a-menu-item>
-            <a-menu-item @click="$router.push('/map')"> Байланыс </a-menu-item>
           </a-menu>
         </template>
       </a-dropdown>
     </div>
     <div class="flex text-gray-400 gap-4">
-      <a href="https://www.instagram.com/ruhaniat.kz" target="_blank">
-        <InstagramFilled
-          class="text-[18px] cursor-pointer hover:!text-[#00B5C0] transition-all duration-300"
-        />
-      </a>
-      <a href="https://www.youtube.com/@ruhaniatkz" target="_blank">
-        <YoutubeFilled
-          class="text-[18px] cursor-pointer hover:!text-[#00B5C0] transition-all duration-300"
-        />
-      </a>
-      <a href="https://www.facebook.com/ruhaniatnursultan" target="_blank">
-        <FacebookFilled
+      <a
+        v-for="(social, index) in socials"
+        :key="index"
+        :href="social.link"
+        target="_blank"
+      >
+        <component
+          :is="social.icon"
           class="text-[18px] cursor-pointer hover:!text-[#00B5C0] transition-all duration-300"
         />
       </a>
@@ -87,19 +76,70 @@
   <div
     class="text-center text-gray-400 h-16 border-t border-gray-200 flex items-center justify-center"
   >
-    <p>Все права защищены. © 2025</p>
+    <p>Все права защищены. © {{ currentYear }}</p>
   </div>
 </template>
 
 <script setup lang="ts">
 import {
-  DownOutlined,
   FacebookFilled,
   InstagramFilled,
-  TwitterCircleFilled,
   YoutubeFilled,
 } from "@ant-design/icons-vue";
-import { ref } from "vue";
 
-const lang = ref("EN");
+const tables = [
+  {
+    route: "/table1",
+    title: "Мемлекеттік тілде өткізілген сабақтардың сағат саны",
+  },
+  {
+    route: "/table2",
+    title: "Мемлекеттік тіл курсына қатысушылар тізімі",
+  },
+  {
+    route: "/table3",
+    title: "Мемлекеттік тіл курсының сабақ кестесі",
+  },
+  {
+    route: "/table4",
+    title:
+      "Мемлекеттік тілді оқыту бойынша таңдаушылардың сабаққа қатысу туралы мәлімет",
+  },
+];
+
+const aboutMenu = [
+  {
+    route: "/about",
+    title: "Жалпы Ақпарат",
+  },
+  {
+    route: "/kurylym",
+    title: "Құрылым",
+  },
+  {
+    route: "/dirs",
+    title: "Бөлімдер",
+  },
+  {
+    route: "/map",
+    title: "Байланыс",
+  },
+];
+
+const socials = [
+  {
+    link: "https://www.instagram.com/ruhaniat.kz",
+    icon: InstagramFilled,
+  },
+  {
+    link: "https://www.youtube.com/@ruhaniatkz",
+    icon: YoutubeFilled,
+  },
+  {
+    link: "https://www.facebook.com/ruhaniatnursultan",
+    icon: FacebookFilled,
+  },
+];
+
+const currentYear = new Date().getFullYear();
 </script>

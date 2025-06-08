@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <div class="h-[50px] bg-gray-200 flex items-center px-0 md:px-[100px]">
+    <div class="h-[50px] bg-gray-200 flex items-center px-0">
       <div class="container mx-auto flex items-center justify-between">
         <div class="flex items-center gap-1 md:gap-4">
           <p class="text-[14px] md:text-[16px] text-[#00B5C0]">KZ</p>
@@ -36,12 +36,17 @@
             placeholder="Сайт бойынша іздеу"
             class="w-[300px] bg-white h-[30px] md:h-[35px] rounded-full px-4 text-[14px]"
           />
-          <SearchOutlined class="cursor-pointer text-gray-500" @click="handleSearch" />
+          <SearchOutlined
+            class="cursor-pointer text-gray-500"
+            @click="handleSearch"
+          />
         </div>
       </div>
     </div>
-    <div class="container mx-auto py-3 px-[20px] md:px-[100px]">
-      <div class="grid md:grid-cols-3 space-y-[20px] items-center justify-between">
+    <div class="container mx-auto py-3 px-[20px]">
+      <div
+        class="grid md:grid-cols-3 space-y-[20px] items-center justify-between"
+      >
         <div class="w-[410px] md:w-[79%] block relative">
           <swiper
             v-if="banners.length > 0"
@@ -54,7 +59,10 @@
             :slides-per-view="1"
             @swiper="onSwiperInit"
           >
-            <swiper-slide v-for="item in banners.filter(b => b.type === 'type_1')" :key="item">
+            <swiper-slide
+              v-for="item in banners.filter((b) => b.type === 'type_1')"
+              :key="item"
+            >
               <a :href="item.link" target="_blank" class="cursor-pointer">
                 <div class="relative z-10">
                   <img
@@ -85,7 +93,9 @@
           class="min-h-10 cursor-pointer mx-auto"
           @click="$router.push('/')"
         />
-        <div class="md:max-w-[80%] font-light italic relative text-center md:text-right">
+        <div
+          class="md:max-w-[80%] font-light italic relative text-center md:text-right"
+        >
           <img
             src="../assets/img/quote.png"
             alt=""
@@ -95,27 +105,25 @@
             Данышпандар туралы зерде - олардың өздері көтерген мәселелердің
             өзектілігі жойылғанша ғана ел жадында сақталады.
           </p>
-          <p class="text-[14px] text-gray-500 text-center md:text-right">Олжас Сүлейменов</p>
+          <p class="text-[14px] text-gray-500 text-center md:text-right">
+            Олжас Сүлейменов
+          </p>
         </div>
       </div>
     </div>
-
-    
-
-
 
     <div class="bg-[#00B5C0] h-[50px] flex">
       <div>
         <div
           ref="menuButtonRef"
-        class="md:hidden cursor-pointer w-[50px] h-[50px] flex items-center justify-center bg-[#008e96]"
-        @click="openDrawerBelowMenu"
+          class="md:hidden cursor-pointer w-[50px] h-[50px] flex items-center justify-center bg-[#008e96]"
+          @click="openDrawerBelowMenu"
         >
           <MenuOutlined class="!text-white" />
         </div>
       </div>
       <div
-        class="container hidden  mx-auto md:flex items-center gap-4 justify-around text-lg"
+        class="container hidden mx-auto md:flex items-center gap-4 justify-around text-lg"
       >
         <p
           @click="$router.push('/news')"
@@ -192,7 +200,9 @@
         :style="{ top: drawerTopOffset + 'px' }"
         class="bg-[#00B5C0]"
       >
-        <div class="flex flex-col gap-4 text-[#00B5C0] text-center text-[25px] text-xl p-4">
+        <div
+          class="flex flex-col gap-4 text-[#00B5C0] text-center text-[25px] text-xl p-4"
+        >
           <p @click="navigate1('/news')">Жаңалықтар</p>
 
           <a-dropdown>
@@ -209,7 +219,8 @@
                   Мемлекеттік тіл курсының сабақ кестесі
                 </a-menu-item>
                 <a-menu-item @click="navigate1('/table4')">
-                  Мемлекеттік тілді оқыту бойынша таңдаушылардың сабаққа қатысу туралы мәлімет
+                  Мемлекеттік тілді оқыту бойынша таңдаушылардың сабаққа қатысу
+                  туралы мәлімет
                 </a-menu-item>
               </a-menu>
             </template>
@@ -222,8 +233,12 @@
             <p class="cursor-pointer">Біз Туралы</p>
             <template #overlay>
               <a-menu>
-                <a-menu-item @click="navigate1('/about')">Жалпы Ақпарат</a-menu-item>
-                <a-menu-item @click="navigate1('/kurylym')">Құрылым</a-menu-item>
+                <a-menu-item @click="navigate1('/about')"
+                  >Жалпы Ақпарат</a-menu-item
+                >
+                <a-menu-item @click="navigate1('/kurylym')"
+                  >Құрылым</a-menu-item
+                >
                 <a-menu-item @click="navigate1('/dirs')">Бөлімдер</a-menu-item>
                 <a-menu-item @click="navigate1('/map')">Байланыс</a-menu-item>
               </a-menu>
@@ -242,72 +257,67 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import {
-  DownOutlined,
-  FacebookFilled,
-  InstagramFilled,
-  MenuOutlined,
-  SearchOutlined,
-  YoutubeFilled,
-} from "@ant-design/icons-vue";
+import { MenuOutlined, SearchOutlined } from "@ant-design/icons-vue";
 import { ref } from "vue";
 import { API_URL } from "../env";
 import { useRouter } from "vue-router";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons-vue";
 import { storeToRefs } from "pinia";
 import { useNewsStore } from "../stores/news";
-const { news, achievements, youTubes,banners} = storeToRefs(useNewsStore());
 
-const newsStore = useNewsStore();
-const swiperController = ref<Swiper | null>(null);
-const lang = ref("KK");
+interface SearchResult {
+  title?: string;
+  description?: string;
+  type: "news" | "achievement" | "youtube";
+}
 
-const visible = ref(false);
+const { news, achievements, youTubes, banners } = storeToRefs(useNewsStore());
+const swiperController = ref<typeof Swiper | null>(null);
 const router = useRouter();
+const drawerVisible = ref(false);
+const drawerTopOffset = ref(0);
+const menuButtonRef = ref<HTMLElement | null>(null);
+const searchQuery = ref("");
 
-function onSwiperInit(swiper: Swiper) {
+function onSwiperInit(swiper: typeof Swiper) {
   swiperController.value = swiper;
 }
 
-
-
-const drawerVisible = ref(false);
-const drawerTopOffset = ref(0);
-const menuButtonRef = ref(null);
 const openDrawerBelowMenu = () => {
   if (menuButtonRef.value) {
     const rect = menuButtonRef.value.getBoundingClientRect();
     drawerTopOffset.value = rect.bottom;
   } else {
-    drawerTopOffset.value = 50; // fallback
+    drawerTopOffset.value = 50;
   }
   drawerVisible.value = true;
 };
-const navigate1 = (path) => {
+
+const navigate1 = (path: string) => {
   drawerVisible.value = false;
   router.push(path);
 };
 
-
-
-const searchQuery = ref("");
 const handleSearch = () => {
   const query = searchQuery.value.trim().toLowerCase();
   if (!query) return;
 
-  const combined = [
-  ...(news?.value || []).map((item) => ({ ...item, type: "news" })),
-  ...(achievements?.value || []).map((item) => ({ ...item, type: "achievement" })),
-  ...(youTubes?.value || []).map((item) => ({ ...item, type: "youtube" })),
-];
+  const combined: SearchResult[] = [
+    ...(news?.value || []).map((item: any) => ({ ...item, type: "news" })),
+    ...(achievements?.value || []).map((item: any) => ({
+      ...item,
+      type: "achievement",
+    })),
+    ...(youTubes?.value || []).map((item: any) => ({
+      ...item,
+      type: "youtube",
+    })),
+  ];
 
   const results = combined.filter((item) => {
-    const searchableFields = [
-      item.title,
-      item.description,
-    ];
-    return searchableFields.some(
-      (field) => field?.toLowerCase().includes(query)
+    const searchableFields = [item.title, item.description];
+    return searchableFields.some((field) =>
+      field?.toLowerCase().includes(query)
     );
   });
 
