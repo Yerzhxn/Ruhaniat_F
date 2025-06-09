@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <div class="h-[50px] bg-gray-200 flex items-center px-0">
+    <div class="h-[50px] bg-gray-200 hidden md:flex items-center px-0">
       <div class="container mx-auto flex items-center justify-between">
         <div class="flex items-center gap-1 md:gap-4">
           <p class="text-[14px] md:text-[16px] text-[#00B5C0]">KZ</p>
@@ -31,21 +31,18 @@
         </div>
         <div class="flex items-center gap-2">
           <input
-            v-model="searchQuery"
-            @keyup.enter="handleSearch"
-            placeholder="Сайт бойынша іздеу"
-            class="w-[300px] bg-white h-[30px] md:h-[35px] rounded-full px-4 text-[14px]"
+              v-model="searchQuery"
+              @keyup.enter="handleSearch"
+              placeholder="Сайт бойынша іздеу"
+              class="w-[300px]  bg-white h-[30px] md:h-[35px] rounded-full border-[1px] border-[#00B5C0] px-4 text-[14px]"
           />
-          <SearchOutlined
-            class="cursor-pointer text-gray-500"
-            @click="handleSearch"
-          />
+          
         </div>
       </div>
     </div>
-    <div class="container mx-auto py-3 px-[20px]">
+    <div class="hidden md:grid container mx-auto py-3 px-[20px]">
       <div
-        class="grid md:grid-cols-3 space-y-[20px] items-center justify-between"
+        class="hidden md:grid md:grid-cols-3 space-y-[20px] items-center justify-between"
       >
         <div class="w-[410px] md:w-[79%] block relative">
           <swiper
@@ -114,6 +111,7 @@
 
     <div class="bg-[#00B5C0] h-[50px] flex">
       <div>
+        
         <div
           ref="menuButtonRef"
           class="md:hidden cursor-pointer w-[50px] h-[50px] flex items-center justify-center bg-[#008e96]"
@@ -200,6 +198,35 @@
         :style="{ top: drawerTopOffset + 'px' }"
         class="bg-[#00B5C0]"
       >
+        <!-- Новый блок языков и соцсетей -->
+        <div class="flex items-center justify-between px-4 py-2 bg-white">
+          <div class="flex items-center gap-4">
+            <p class="text-[#00B5C0] text-sm font-semibold">KZ</p>
+            <p class="text-gray-600 text-sm">RU</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <input
+              v-model="searchQuery"
+              @keyup.enter="handleSearch"
+              placeholder="Сайт бойынша іздеу"
+              class="w-[200px] bg-white h-[30px] md:h-[35px] rounded-full border-[1px] border-[#00B5C0] px-4 text-[14px]"
+            />
+            
+          </div>
+          <div class="flex items-center gap-3">
+            <a href="https://www.instagram.com/ruhaniat.kz" target="_blank">
+              <img src="../assets/img/instagram.png" class="h-[22px]" />
+            </a>
+            <a href="https://www.youtube.com/@ruhaniatkz" target="_blank">
+              <img src="../assets/img/youtube.png" class="h-[22px]" />
+            </a>
+            <a href="https://www.facebook.com/ruhaniatnursultan" target="_blank">
+              <img src="../assets/img/facebook.png" class="h-[22px]" />
+            </a>
+          </div>
+        </div>
+
+        <!-- Старый блок пунктов меню -->
         <div
           class="flex flex-col gap-4 text-[#00B5C0] text-center text-[25px] text-xl p-4"
         >
@@ -233,12 +260,8 @@
             <p class="cursor-pointer">Біз Туралы</p>
             <template #overlay>
               <a-menu>
-                <a-menu-item @click="navigate1('/about')"
-                  >Жалпы Ақпарат</a-menu-item
-                >
-                <a-menu-item @click="navigate1('/kurylym')"
-                  >Құрылым</a-menu-item
-                >
+                <a-menu-item @click="navigate1('/about')">Жалпы Ақпарат</a-menu-item>
+                <a-menu-item @click="navigate1('/kurylym')">Құрылым</a-menu-item>
                 <a-menu-item @click="navigate1('/dirs')">Бөлімдер</a-menu-item>
                 <a-menu-item @click="navigate1('/map')">Байланыс</a-menu-item>
               </a-menu>
@@ -246,6 +269,7 @@
           </a-dropdown>
         </div>
       </a-drawer>
+
     </div>
   </div>
 </template>
@@ -299,29 +323,12 @@ const navigate1 = (path: string) => {
 };
 
 const handleSearch = () => {
-  const query = searchQuery.value.trim().toLowerCase();
+  const query = searchQuery.value.trim();
+  drawerVisible.value = false;
+
   if (!query) return;
 
-  const combined: SearchResult[] = [
-    ...(news?.value || []).map((item: any) => ({ ...item, type: "news" })),
-    ...(achievements?.value || []).map((item: any) => ({
-      ...item,
-      type: "achievement",
-    })),
-    ...(youTubes?.value || []).map((item: any) => ({
-      ...item,
-      type: "youtube",
-    })),
-  ];
-
-  const results = combined.filter((item) => {
-    const searchableFields = [item.title, item.description];
-    return searchableFields.some((field) =>
-      field?.toLowerCase().includes(query)
-    );
-  });
-
-  localStorage.setItem("searchResults", JSON.stringify(results));
+  localStorage.setItem("searchQuery", query);
   router.push("/res");
 };
 </script>

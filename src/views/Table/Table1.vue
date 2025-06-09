@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-[100px] px-[20px] text-[#00B5C0] container mx-auto py-[100px]">
+  <div class=" px-[20px] text-[#00B5C0] container mx-auto ">
     <!-- Table 1: MEMLEKETTIK TILDE OTKIZILGEN SABAQTARDYN SAQAN SANDARY -->
     <TableSection
       :title="'Мемлекеттік тілде өткізілген сабақтардың сағат саны'"

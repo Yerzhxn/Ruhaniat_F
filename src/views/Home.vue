@@ -5,52 +5,53 @@
         class="header md:flex gap-5 space-y-[20px] container mx-auto pt-5 px-[20px]"
       >
         <div class="md:w-[79%] block relative">
-          <swiper
-            class="relative"
-            :modules="[Autoplay, Navigation]"
-            :loop="true"
-            :autoplay="{ delay: 4500 }"
-            :slides-per-view="1"
-            @swiper="onSwiperInit"
+        <swiper
+          class="relative"
+          :modules="[Autoplay, Navigation]"
+          :loop="true"
+          :autoplay="{ delay: 4500 }"
+          :slides-per-view="1"
+          @swiper="onSwiperInit"
+        >
+          <div
+            @click="swiperController?.slidePrev()"
+            class="cursor-pointer absolute z-10 left-0 text-[20px] !bottom-0 md:min-w-[80px] min-w-[50px] h-[150px] text-white bg-[#00B5C0] flex items-center justify-center"
           >
-            <div
-              @click="swiperController?.slidePrev()"
-              class="cursor-pointer absolute z-10 left-0 text-[20px] !bottom-0 md:min-w-[80px] min-w-[50px] h-[150px] text-white bg-[#00B5C0] flex items-center justify-center"
-            >
-              <ArrowLeftOutlined />
-            </div>
-            <div
-              @click="swiperController?.slideNext()"
-              class="cursor-pointer absolute z-10 right-0 text-[20px] !bottom-0 md:min-w-[80px] min-w-[50px] h-[150px] text-white bg-[#00B5C0] flex items-center justify-center"
-            >
-              <ArrowRightOutlined />
-            </div>
-            <swiper-slide v-for="item in news" :key="item.id">
-              <div class="relative">
-                <img
-                  :src="`${API_URL}${item.image.url}`"
-                  :alt="item.title"
-                  class="w-full h-[400px] md:h-[700px] object-cover"
-                />
-                <div
-                  class="absolute bottom-0 left-0 w-full bg-[#00000080] h-[150px] py-4 px-[80px] md:px-[200px]"
+            <ArrowLeftOutlined />
+          </div>
+          <div
+            @click="swiperController?.slideNext()"
+            class="cursor-pointer absolute z-10 right-0 text-[20px] !bottom-0 md:min-w-[80px] min-w-[50px] h-[150px] text-white bg-[#00B5C0] flex items-center justify-center"
+          >
+            <ArrowRightOutlined />
+          </div>
+
+          <swiper-slide v-for="item in news" :key="item.id">
+            <div class="relative">
+              <img
+                :src="`${API_URL}${item.image?.url}`"
+                :alt="item.title"
+                class="w-full h-[400px] md:h-[700px] object-cover"
+              />
+              <div
+                class="absolute bottom-0 left-0 w-full bg-[#00000080] h-[150px] py-4 px-[80px] md:px-[200px]"
+              >
+                <p
+                  class="text-[18px] md:text-[24px] font-bold text-white cursor-pointer"
+                  @click="$router.push(`/news/${item.documentId}`)"
                 >
-                  <p
-                    class="text-[18px] md:text-[24px] font-bold text-white cursor-pointer"
-                    @click="$router.push(`/news/${item.documentId}`)"
-                  >
-                    {{ item.title }}
-                  </p>
-                  <p
-                    class="text-[16px] text-white font-light line-clamp-2 max-w-[800px]"
-                  >
-                    {{ item.description }}
-                  </p>
-                </div>
+                  {{ item.title }}
+                </p>
+                <p
+                  class="text-[16px] text-white font-light line-clamp-2 max-w-[800px]"
+                >
+                  {{ item.description }}
+                </p>
               </div>
-            </swiper-slide>
-          </swiper>
-        </div>
+            </div>
+          </swiper-slide>
+        </swiper>
+      </div>
         <div class="md:w-[20%]">
           <swiper
             class="relative"
@@ -356,7 +357,7 @@ import { useNewsStore } from "../stores/news";
 import { storeToRefs } from "pinia";
 import YouTubeCard from "../components/YouTubeCard.vue";
 import { API_URL } from "../env";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 
 const swiperController = ref<Swiper | null>(null);
 
@@ -367,4 +368,11 @@ function onSwiperInit(swiperInstance: any) {
 const { news, achievements, youTubes, partners, banners } = storeToRefs(
   useNewsStore()
 );
+
+const newsStore = useNewsStore();
+
+onMounted(async () => {
+  await newsStore.fetchLast3News();
+  console.log(newsStore.news);
+});
 </script>

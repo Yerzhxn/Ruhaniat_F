@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-[100px] px-[20px] text-[#00B5C0] container mx-auto py-[100px]">
+  <div class=" px-[20px] text-[#00B5C0] container mx-auto ">
     <!-- Table 4: MEMLEKETTIK TILDI OQYTU BOIYNSA TANDAUSYLARDYN SABAQQA KATYSU TURALY MALIMET -->
     <DualFilterTableSection
       :title="'Мемлекеттік тілді оқыту бойынша таңдаушылардың сабаққа қатысу туралы мәлімет'"
