@@ -97,7 +97,7 @@
           class="md:max-w-[80%] font-light italic relative text-center md:text-right"
         >
           <img
-            src="../assets/img/quote.png"
+            src="../assets/img/quote.PNG"
             alt=""
             class="w-[25px] absolute -top-5 -right-10"
           />
