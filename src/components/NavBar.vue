@@ -1,12 +1,12 @@
 <template>
-  <div class="navbar">
-    <div class="h-[50px] bg-gray-200 hidden md:flex items-center px-0">
-      <div class="container mx-auto flex items-center justify-between">
+  <div class="navbar ">
+    <div class="h-[50px] bg-gray-200 hidden md:grid items-center px-[20px]">
+      <div class="container mx-auto grid grid-cols-3 items-center justify-between">
         <div class="flex items-center gap-1 md:gap-4">
           <p class="text-[14px] md:text-[16px] text-[#00B5C0]">KZ</p>
           <p class="text-[14px] md:text-[16px]">RU</p>
         </div>
-        <div class="flex text-gray-400 gap-1 md:gap-4">
+        <div class="flex justify-center text-gray-400 gap-1 md:gap-4">
           <a href="https://www.instagram.com/ruhaniat.kz" target="_blank">
             <img
               src="../assets/img/instagram.png"
@@ -29,7 +29,7 @@
             />
           </a>
         </div>
-        <div class="flex items-center gap-2">
+        <div class="flex justify-end items-center gap-2">
           <input
             v-model="searchQuery"
             @keyup.enter="handleSearch"
@@ -118,6 +118,7 @@
           <MenuOutlined class="!text-white" />
         </div>
       </div>
+      <img src="../assets/img/logo_2.png" alt="" @click="$router.push('/')" class="hidden md:grid w-[70px] pb-2 cursor-pointer">
       <div
         class="container hidden mx-auto md:flex items-center gap-4 justify-around text-lg"
       >
@@ -188,103 +189,104 @@
           </template>
         </a-dropdown>
       </div>
-      <a-drawer
-        v-model:open="drawerVisible"
-        placement="bottom"
-        :closable="false"
-        :height="`calc(100% - ${drawerTopOffset}px)`"
-        :style="{ top: drawerTopOffset + 'px' }"
-        class="bg-[#00B5C0]"
-      >
-        
-        <div class="flex items-center  justify-between px-4 py-2 bg-white">
-          
-          <a-dropdown>
-            <template #overlay>
-              <a-menu @click="changeLanguage">
-                <a-menu-item key="KZ">KZ</a-menu-item>
-                <a-menu-item key="RU">RU</a-menu-item>
-              </a-menu>
-            </template>
-            <a-button type="text" class="text-[#00B5C0] font-semibold">Тілді Таңдау</a-button>
-          </a-dropdown>
+      
+      <div class="md:hidden flex w-full justify-end items-center">
+        <div>
+          <a-drawer
+            v-model:open="drawerVisible"
+            placement="bottom"
+            :closable="false"
+            :height="`calc(100% - ${drawerTopOffset}px)`"
+            :style="{ top: drawerTopOffset + 'px' }"
+            class="bg-[#00B5C0]"
+          >
+            
+            <div class="grid place-center px-4 py-2 bg-white space-y-4">
+              <div class="flex justify-between">
+                <div class="flex items-center gap-4">
+                  <p class="text-[#00B5C0] text-sm font-semibold">KZ</p>
+                  <p class="text-gray-600 text-sm">RU</p>
+                </div>
 
-          
-          <div class="flex items-center gap-2">
-            <input
-              v-model="searchQuery"
-              @keyup.enter="handleSearch"
-              placeholder="Сайт бойынша іздеу"
-              class="w-[180px] bg-white h-[30px] md:h-[35px] rounded-full border-[1px] border-[#00B5C0] px-4 text-[14px]"
-            />
-          </div>
 
-          
-          <a-dropdown>
-            <template #overlay>
-              <a-menu>
-                <a-menu-item>
-                  <a href="https://www.instagram.com/ruhaniat.kz" target="_blank">Instagram</a>
-                </a-menu-item>
-                <a-menu-item>
-                  <a href="https://www.youtube.com/@ruhaniatkz" target="_blank">YouTube</a>
-                </a-menu-item>
-                <a-menu-item>
-                  <a href="https://www.facebook.com/ruhaniatnursultan" target="_blank">Facebook</a>
-                </a-menu-item>
-              </a-menu>
-            </template>
-            <a-button type="text">Желілер</a-button>
-          </a-dropdown>
+                <div class="flex items-center gap-3">
+                  <a href="https://www.instagram.com/ruhaniat.kz" target="_blank">
+                    <img src="../assets/img/instagram.png" class="h-[22px]" />
+                  </a>
+                  <a href="https://www.youtube.com/@ruhaniatkz" target="_blank">
+                    <img src="../assets/img/youtube.png" class="h-[22px]" />
+                  </a>
+                  <a href="https://www.facebook.com/ruhaniatnursultan" target="_blank">
+                    <img src="../assets/img/facebook.png" class="h-[22px]" />
+                  </a>
+                </div>
+              </div>
+              
+
+              <div class="flex items-center gap-2">
+                <input
+                  v-model="searchQuery"
+                  @keyup.enter="handleSearch"
+                  placeholder="Сайт бойынша іздеу"
+                  class="w-full bg-white h-[30px] md:h-[35px] rounded-full border-[1px] border-[#00B5C0] px-4 text-[14px]"
+                />
+                
+              </div>
+              
+
+            </div>
+            <div
+              class="flex flex-col gap-4 text-[#00B5C0] text-center text-[25px] text-xl p-4"
+            >
+              <p @click="navigate1('/news')">Жаңалықтар</p>
+
+              <a-dropdown>
+                <p class="cursor-pointer">Кестелер</p>
+                <template #overlay>
+                  <a-menu>
+                    <a-menu-item @click="navigate1('/table1')">
+                      Мемлекеттік тілде өткізілген сабақтардың сағат саны
+                    </a-menu-item>
+                    <a-menu-item @click="navigate1('/table2')">
+                      Мемлекеттік тіл курсына қатысушылар тізімі
+                    </a-menu-item>
+                    <a-menu-item @click="navigate1('/table3')">
+                      Мемлекеттік тіл курсының сабақ кестесі
+                    </a-menu-item>
+                    <a-menu-item @click="navigate1('/table4')">
+                      Мемлекеттік тілді оқыту бойынша таңдаушылардың сабаққа қатысу
+                      туралы мәлімет
+                    </a-menu-item>
+                  </a-menu>
+                </template>
+              </a-dropdown>
+
+              <p @click="navigate1('/achievements')">Жобалар</p>
+              <p @click="navigate1('/youTubes')">You-Tube</p>
+
+              <a-dropdown>
+                <p class="cursor-pointer">Біз Туралы</p>
+                <template #overlay>
+                  <a-menu>
+                    <a-menu-item @click="navigate1('/about')"
+                      >Жалпы Ақпарат</a-menu-item
+                    >
+                    <a-menu-item @click="navigate1('/kurylym')"
+                      >Құрылым</a-menu-item
+                    >
+                    <a-menu-item @click="navigate1('/dirs')">Бөлімдер</a-menu-item>
+                    <a-menu-item @click="navigate1('/map')">Байланыс</a-menu-item>
+                  </a-menu>
+                </template>
+              </a-dropdown>
+            </div>
+          </a-drawer>
         </div>
-
-        
-        <div
-          class="flex flex-col gap-4 text-[#00B5C0] text-center text-[25px] text-xl p-4"
-        >
-          <p @click="navigate1('/news')">Жаңалықтар</p>
-
-          <a-dropdown>
-            <p class="cursor-pointer">Кестелер</p>
-            <template #overlay>
-              <a-menu>
-                <a-menu-item @click="navigate1('/table1')">
-                  Мемлекеттік тілде өткізілген сабақтардың сағат саны
-                </a-menu-item>
-                <a-menu-item @click="navigate1('/table2')">
-                  Мемлекеттік тіл курсына қатысушылар тізімі
-                </a-menu-item>
-                <a-menu-item @click="navigate1('/table3')">
-                  Мемлекеттік тіл курсының сабақ кестесі
-                </a-menu-item>
-                <a-menu-item @click="navigate1('/table4')">
-                  Мемлекеттік тілді оқыту бойынша таңдаушылардың сабаққа қатысу
-                  туралы мәлімет
-                </a-menu-item>
-              </a-menu>
-            </template>
-          </a-dropdown>
-
-          <p @click="navigate1('/achievements')">Жобалар</p>
-          <p @click="navigate1('/youTubes')">You-Tube</p>
-
-          <a-dropdown>
-            <p class="cursor-pointer">Біз Туралы</p>
-            <template #overlay>
-              <a-menu>
-                <a-menu-item @click="navigate1('/about')"
-                  >Жалпы Ақпарат</a-menu-item
-                >
-                <a-menu-item @click="navigate1('/kurylym')"
-                  >Құрылым</a-menu-item
-                >
-                <a-menu-item @click="navigate1('/dirs')">Бөлімдер</a-menu-item>
-                <a-menu-item @click="navigate1('/map')">Байланыс</a-menu-item>
-              </a-menu>
-            </template>
-          </a-dropdown>
+        <div>
+          <img src="../assets/img/logo_2.png" alt="" @click="$router.push('/')" class="w-[70px] pb-2">
         </div>
-      </a-drawer>
+        
+      </div>
     </div>
   </div>
 </template>

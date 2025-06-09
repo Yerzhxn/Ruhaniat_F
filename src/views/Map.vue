@@ -1,8 +1,8 @@
 <template>
   <div
-    class="hidden md:grid absolute mt-[120px] ml-[20px] md:ml-[120px] backdrop-blur-md p-[25px] rounded-xl space-y-[20px]"
+    class=" md:grid absolute mt-[340px] md:mt-[120px] ml-[45px] md:ml-[120px] backdrop-blur-md p-[10px] md:p-[25px] rounded-xl space-y-[20px]"
   >
-    <p class="text-[16px] md:text-[20px]">Бізбен байланыс</p>
+    <p class="text-[14px] md:text-[20px]">Бізбен байланыс</p>
     <div class="flex gap-3">
       <p class="flex items-center">Мекен жай:</p>
       <p>Астана қаласы, улица Бейбитшилик, 9</p>

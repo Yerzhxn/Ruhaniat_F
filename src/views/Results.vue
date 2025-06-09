@@ -1,11 +1,11 @@
 <template>
-  <div class="mb-[40px] p-4 container mx-auto text-[#00B5C0]">
-    <div class="flex items-center gap-2">
+  <div class="mb-[40px] p-5 container mx-auto">
+    <div class="items-center gap-2 ">
+      <p class="text-[16px] mb-2 mt-10">Сайт бойынша іздеу</p>
       <input
         v-model="searchQuery"
-        @input="handleSearch"
         placeholder="Сайт бойынша іздеу"
-        class="w-[300px] bg-white h-[40px] text-[20px] mt-[30px] border-1 border-[#00B5C0] md:h-[35px] rounded-full px-4 text-[14px]"
+        class="w-[300px] bg-white h-[40px]  border-1 border-[#00B5C0] md:h-[35px] rounded-full px-4 text-[14px]"
       />
     </div>
 
@@ -75,7 +75,6 @@ import YouTubeCard from "../components/YouTubeCard.vue";
 import { useRouter } from "vue-router";
 import { useNewsStore } from "../stores/news.js";
 
-const router = useRouter();
 const searchQuery = ref(""); // Больше не используем localStorage
 const allItems = ref([]);
 
@@ -134,20 +133,9 @@ onMounted(async () => {
   const storedQuery = localStorage.getItem("searchQuery");
   if (storedQuery) {
     searchQuery.value = storedQuery;
-    handleSearch(); // автоматический переход на /res
   }
 });
-const drawerVisible = ref(false);
 
-const handleSearch = () => {
-  const query = searchQuery.value.trim();
-  drawerVisible.value = false;
-
-  if (!query) return;
-
-  localStorage.setItem("searchQuery", query);
-  router.push("/res");
-};
 </script>
 
 
