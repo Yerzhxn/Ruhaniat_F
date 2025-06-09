@@ -198,35 +198,49 @@
         :style="{ top: drawerTopOffset + 'px' }"
         class="bg-[#00B5C0]"
       >
-        <!-- Новый блок языков и соцсетей -->
-        <div class="flex items-center justify-between px-4 py-2 bg-white">
-          <div class="flex items-center gap-4">
-            <p class="text-[#00B5C0] text-sm font-semibold">KZ</p>
-            <p class="text-gray-600 text-sm">RU</p>
-          </div>
+        
+        <div class="flex items-center  justify-between px-4 py-2 bg-white">
+          
+          <a-dropdown>
+            <template #overlay>
+              <a-menu @click="changeLanguage">
+                <a-menu-item key="KZ">KZ</a-menu-item>
+                <a-menu-item key="RU">RU</a-menu-item>
+              </a-menu>
+            </template>
+            <a-button type="text" class="text-[#00B5C0] font-semibold">Тілді Таңдау</a-button>
+          </a-dropdown>
+
+          
           <div class="flex items-center gap-2">
             <input
               v-model="searchQuery"
               @keyup.enter="handleSearch"
               placeholder="Сайт бойынша іздеу"
-              class="w-[200px] bg-white h-[30px] md:h-[35px] rounded-full border-[1px] border-[#00B5C0] px-4 text-[14px]"
+              class="w-[180px] bg-white h-[30px] md:h-[35px] rounded-full border-[1px] border-[#00B5C0] px-4 text-[14px]"
             />
-            
           </div>
-          <div class="flex items-center gap-3">
-            <a href="https://www.instagram.com/ruhaniat.kz" target="_blank">
-              <img src="../assets/img/instagram.png" class="h-[22px]" />
-            </a>
-            <a href="https://www.youtube.com/@ruhaniatkz" target="_blank">
-              <img src="../assets/img/youtube.png" class="h-[22px]" />
-            </a>
-            <a href="https://www.facebook.com/ruhaniatnursultan" target="_blank">
-              <img src="../assets/img/facebook.png" class="h-[22px]" />
-            </a>
-          </div>
+
+          
+          <a-dropdown>
+            <template #overlay>
+              <a-menu>
+                <a-menu-item>
+                  <a href="https://www.instagram.com/ruhaniat.kz" target="_blank">Instagram</a>
+                </a-menu-item>
+                <a-menu-item>
+                  <a href="https://www.youtube.com/@ruhaniatkz" target="_blank">YouTube</a>
+                </a-menu-item>
+                <a-menu-item>
+                  <a href="https://www.facebook.com/ruhaniatnursultan" target="_blank">Facebook</a>
+                </a-menu-item>
+              </a-menu>
+            </template>
+            <a-button type="text">Желілер</a-button>
+          </a-dropdown>
         </div>
 
-        <!-- Старый блок пунктов меню -->
+        
         <div
           class="flex flex-col gap-4 text-[#00B5C0] text-center text-[25px] text-xl p-4"
         >
