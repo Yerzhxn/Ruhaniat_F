@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-[20px] py-[140px]">
+  <div class="container mx-auto px-[20px] py-[40px]">
     <img
       src="../../assets/img/oyu_2.png"
       alt=""
@@ -8,7 +8,7 @@
     <div class="flex items-center">
       <p class="text-[24px]">Жаңалықтар</p>
     </div>
-    <div class="md:grid md:grid-cols-3 gap-5 pt-10">
+    <div class="grid md:grid-cols-3 gap-5  pt-10">
       <NewsCard v-for="item in news" :data="item" :key="item.id" />
     </div>
   </div>
