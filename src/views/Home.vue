@@ -143,7 +143,7 @@
         <img
           class="w-[300px] h-[300px] rounded-full object-cover"
           alt="Арман Манарбекұлы"
-          src="../assets/img/user.png"
+          src="../assets/img/user.PNG"
         />
         <div class="mt-10">
           <p class="text-[20px] transition-all duration-300 font-medium mb-4">

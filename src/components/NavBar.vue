@@ -31,12 +31,11 @@
         </div>
         <div class="flex items-center gap-2">
           <input
-              v-model="searchQuery"
-              @keyup.enter="handleSearch"
-              placeholder="Сайт бойынша іздеу"
-              class="w-[300px]  bg-white h-[30px] md:h-[35px] rounded-full border-[1px] border-[#00B5C0] px-4 text-[14px]"
+            v-model="searchQuery"
+            @keyup.enter="handleSearch"
+            placeholder="Сайт бойынша іздеу"
+            class="w-[300px] bg-white h-[30px] md:h-[35px] rounded-full border-[1px] border-[#00B5C0] px-4 text-[14px]"
           />
-          
         </div>
       </div>
     </div>
@@ -111,7 +110,6 @@
 
     <div class="bg-[#00B5C0] h-[50px] flex">
       <div>
-        
         <div
           ref="menuButtonRef"
           class="md:hidden cursor-pointer w-[50px] h-[50px] flex items-center justify-center bg-[#008e96]"
@@ -274,8 +272,12 @@
             <p class="cursor-pointer">Біз Туралы</p>
             <template #overlay>
               <a-menu>
-                <a-menu-item @click="navigate1('/about')">Жалпы Ақпарат</a-menu-item>
-                <a-menu-item @click="navigate1('/kurylym')">Құрылым</a-menu-item>
+                <a-menu-item @click="navigate1('/about')"
+                  >Жалпы Ақпарат</a-menu-item
+                >
+                <a-menu-item @click="navigate1('/kurylym')"
+                  >Құрылым</a-menu-item
+                >
                 <a-menu-item @click="navigate1('/dirs')">Бөлімдер</a-menu-item>
                 <a-menu-item @click="navigate1('/map')">Байланыс</a-menu-item>
               </a-menu>
@@ -283,7 +285,6 @@
           </a-dropdown>
         </div>
       </a-drawer>
-
     </div>
   </div>
 </template>

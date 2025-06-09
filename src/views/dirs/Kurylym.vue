@@ -10,7 +10,7 @@
       <img
         class="w-[300px] h-[300px] rounded-full object-cover mt-[20px] mx-auto"
         alt="example"
-        src="../../assets/img/user.png"
+        src="../../assets/img/user.PNG"
       />
       <div class="mt-10">
         <p
