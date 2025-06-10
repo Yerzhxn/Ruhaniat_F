@@ -5,53 +5,54 @@
         class="header md:flex gap-5 space-y-[20px] container mx-auto pt-5 px-[20px]"
       >
         <div class="md:w-[79%] block relative">
-        <swiper
-          class="relative"
-          :modules="[Autoplay, Navigation]"
-          :loop="true"
-          :autoplay="{ delay: 4500 }"
-          :slides-per-view="1"
-          @swiper="onSwiperInit"
-        >
-          <div
-            @click="swiperController?.slidePrev()"
-            class="cursor-pointer absolute z-10 left-0 text-[20px] !bottom-0 md:min-w-[80px] min-w-[50px] h-[150px] text-white bg-[#00B5C0] flex items-center justify-center"
+          <swiper
+            class="relative"
+            :modules="[Autoplay, Navigation]"
+            :loop="true"
+            :autoplay="{ delay: 4500 }"
+            :slides-per-view="1"
+            @swiper="onSwiperInit"
           >
-            <ArrowLeftOutlined />
-          </div>
-          <div
-            @click="swiperController?.slideNext()"
-            class="cursor-pointer absolute z-10 right-0 text-[20px] !bottom-0 md:min-w-[80px] min-w-[50px] h-[150px] text-white bg-[#00B5C0] flex items-center justify-center"
-          >
-            <ArrowRightOutlined />
-          </div>
-
-          <swiper-slide v-for="item in news" :key="item.id">
-            <div class="relative">
-              <img
-                :src="`${API_URL}${item.image?.url}`"
-                :alt="item.title"
-                class="w-full h-[400px] md:h-[700px] object-cover"
-              />
-              <div
-                class="absolute bottom-0 left-0 w-full bg-[#00000080] h-[150px] py-4 px-[80px] md:px-[200px]"
-              >
-                <p
-                  class="text-[18px] md:text-[24px] font-bold text-white cursor-pointer"
-                  @click="$router.push(`/news/${item.documentId}`)"
-                >
-                  {{ item.title }}
-                </p>
-                <p
-                  class="text-[16px] text-white font-light line-clamp-2 max-w-[800px]"
-                >
-                  {{ item.description }}
-                </p>
-              </div>
+            <div
+              @click="swiperController?.slidePrev()"
+              class="cursor-pointer absolute z-10 left-0 text-[20px] !bottom-0 md:min-w-[80px] min-w-[50px] h-[100px] text-white bg-[#00B5C0] flex items-center justify-center"
+            >
+              <ArrowLeftOutlined />
             </div>
-          </swiper-slide>
-        </swiper>
-      </div>
+            <div
+              @click="swiperController?.slideNext()"
+              class="cursor-pointer absolute z-10 right-0 text-[20px] !bottom-0 md:min-w-[80px] min-w-[50px] h-[100px] text-white bg-[#00B5C0] flex items-center justify-center"
+            >
+              <ArrowRightOutlined />
+            </div>
+
+            <swiper-slide v-for="item in news" :key="item.id">
+              <div class="relative">
+                <img
+                  :src="`${API_URL}${item.image?.url}`"
+                  :alt="item.title"
+                  class="w-full h-[400px] md:h-[380px] object-cover"
+                />
+                <div
+                  class="absolute bottom-0 left-0 w-full bg-[#00000080] h-[100px] py-4 px-[80px] md:px-[130px]"
+                >
+                  <p
+                    class="text-[18px] md:text-[24px] font-bold text-white cursor-pointer"
+                    @click="$router.push(`/news/${item.documentId}`)"
+                  >
+                    {{ item.title }}
+                  </p>
+                  <p
+                    class="text-[16px] text-white font-light line-clamp-2 max-w-[800px] flex items-center gap-2"
+                  >
+                    <CalendarOutlined class="text-[#00B5C0]" />
+                    {{ new Date(item.createdAt).toLocaleDateString("ru-RU") }}
+                  </p>
+                </div>
+              </div>
+            </swiper-slide>
+          </swiper>
+        </div>
         <div class="md:w-[20%]">
           <swiper
             class="relative"
@@ -71,7 +72,7 @@
                   <img
                     :src="`${API_URL}${item.image.url}`"
                     :alt="item.title"
-                    class="h-[130px] w-[100%] md:w-full md:h-[700px] object-cover cursor-pointer"
+                    class="h-[130px] w-[100%] md:w-full md:h-[380px] object-cover cursor-pointer"
                   />
                 </a>
               </div>
@@ -79,7 +80,7 @@
           </swiper>
         </div>
       </div>
-      <div class="md:mt-0 mt-[20px]">
+      <div class="md:mt-0 mt-[20px] container mx-auto">
         <div class="w-full px-[20px] h-[130px]">
           <swiper
             class="relative"
@@ -350,7 +351,11 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons-vue";
+import {
+  ArrowLeftOutlined,
+  ArrowRightOutlined,
+  CalendarOutlined,
+} from "@ant-design/icons-vue";
 import NewsCard from "../components/NewsCard.vue";
 import NewsCardDef from "../components/NewsCardDef.vue";
 import { useNewsStore } from "../stores/news";

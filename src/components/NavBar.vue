@@ -1,8 +1,16 @@
 <template>
-  <div class="navbar ">
+  <div class="navbar">
     <div class="h-[50px] bg-gray-200 hidden md:grid items-center px-[20px]">
-      <div class="container mx-auto grid grid-cols-3 items-center justify-between">
+      <div
+        class="container mx-auto grid grid-cols-3 items-center justify-between"
+      >
         <div class="flex items-center gap-1 md:gap-4">
+          <div class="flex items-center gap-2 bg-gray-300 h-[50px] px-3 mr-5">
+            <CalendarOutlined class="text-[#00B5C0]" />
+            <p class="text-[14px] md:text-[16px]">
+              {{ new Date().toLocaleDateString("ru-RU") }}
+            </p>
+          </div>
           <p class="text-[14px] md:text-[16px] text-[#00B5C0]">KZ</p>
           <p class="text-[14px] md:text-[16px]">RU</p>
         </div>
@@ -34,7 +42,7 @@
             v-model="searchQuery"
             @keyup.enter="handleSearch"
             placeholder="Сайт бойынша іздеу"
-            class="w-[300px] bg-white h-[30px] md:h-[35px] rounded-full border-[1px] border-[#00B5C0] px-4 text-[14px]"
+            class="w-[300px] bg-white h-[30px] md:h-[35px] rounded-full px-4 text-[14px]"
           />
         </div>
       </div>
@@ -118,7 +126,12 @@
           <MenuOutlined class="!text-white" />
         </div>
       </div>
-      <img src="../assets/img/logo_2.png" alt="" @click="$router.push('/')" class="hidden md:grid w-[70px] pb-2 cursor-pointer">
+      <img
+        src="../assets/img/logo_2.png"
+        alt=""
+        @click="$router.push('/')"
+        class="hidden md:grid w-[70px] pb-2 cursor-pointer"
+      />
       <div
         class="container hidden mx-auto md:flex items-center gap-4 justify-around text-lg"
       >
@@ -189,7 +202,7 @@
           </template>
         </a-dropdown>
       </div>
-      
+
       <div class="md:hidden flex w-full justify-end items-center">
         <div>
           <a-drawer
@@ -200,7 +213,6 @@
             :style="{ top: drawerTopOffset + 'px' }"
             class="bg-[#00B5C0]"
           >
-            
             <div class="grid place-center px-4 py-2 bg-white space-y-4">
               <div class="flex justify-between">
                 <div class="flex items-center gap-4">
@@ -208,20 +220,24 @@
                   <p class="text-gray-600 text-sm">RU</p>
                 </div>
 
-
                 <div class="flex items-center gap-3">
-                  <a href="https://www.instagram.com/ruhaniat.kz" target="_blank">
+                  <a
+                    href="https://www.instagram.com/ruhaniat.kz"
+                    target="_blank"
+                  >
                     <img src="../assets/img/instagram.png" class="h-[22px]" />
                   </a>
                   <a href="https://www.youtube.com/@ruhaniatkz" target="_blank">
                     <img src="../assets/img/youtube.png" class="h-[22px]" />
                   </a>
-                  <a href="https://www.facebook.com/ruhaniatnursultan" target="_blank">
+                  <a
+                    href="https://www.facebook.com/ruhaniatnursultan"
+                    target="_blank"
+                  >
                     <img src="../assets/img/facebook.png" class="h-[22px]" />
                   </a>
                 </div>
               </div>
-              
 
               <div class="flex items-center gap-2">
                 <input
@@ -230,10 +246,7 @@
                   placeholder="Сайт бойынша іздеу"
                   class="w-full bg-white h-[30px] md:h-[35px] rounded-full border-[1px] border-[#00B5C0] px-4 text-[14px]"
                 />
-                
               </div>
-              
-
             </div>
             <div
               class="flex flex-col gap-4 text-[#00B5C0] text-center text-[25px] text-xl p-4"
@@ -254,8 +267,8 @@
                       Мемлекеттік тіл курсының сабақ кестесі
                     </a-menu-item>
                     <a-menu-item @click="navigate1('/table4')">
-                      Мемлекеттік тілді оқыту бойынша таңдаушылардың сабаққа қатысу
-                      туралы мәлімет
+                      Мемлекеттік тілді оқыту бойынша таңдаушылардың сабаққа
+                      қатысу туралы мәлімет
                     </a-menu-item>
                   </a-menu>
                 </template>
@@ -274,8 +287,12 @@
                     <a-menu-item @click="navigate1('/kurylym')"
                       >Құрылым</a-menu-item
                     >
-                    <a-menu-item @click="navigate1('/dirs')">Бөлімдер</a-menu-item>
-                    <a-menu-item @click="navigate1('/map')">Байланыс</a-menu-item>
+                    <a-menu-item @click="navigate1('/dirs')"
+                      >Бөлімдер</a-menu-item
+                    >
+                    <a-menu-item @click="navigate1('/map')"
+                      >Байланыс</a-menu-item
+                    >
                   </a-menu>
                 </template>
               </a-dropdown>
@@ -283,9 +300,13 @@
           </a-drawer>
         </div>
         <div>
-          <img src="../assets/img/logo_2.png" alt="" @click="$router.push('/')" class="w-[70px] pb-2">
+          <img
+            src="../assets/img/logo_2.png"
+            alt=""
+            @click="$router.push('/')"
+            class="w-[70px] pb-2"
+          />
         </div>
-        
       </div>
     </div>
   </div>
@@ -298,7 +319,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { MenuOutlined, SearchOutlined } from "@ant-design/icons-vue";
+import { CalendarOutlined, MenuOutlined } from "@ant-design/icons-vue";
 import { ref } from "vue";
 import { API_URL } from "../env";
 import { useRouter } from "vue-router";
@@ -306,11 +327,12 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons-vue";
 import { storeToRefs } from "pinia";
 import { useNewsStore } from "../stores/news";
 
-interface SearchResult {
-  title?: string;
-  description?: string;
-  type: "news" | "achievement" | "youtube";
-}
+const text = [
+  {
+    note: "«Тау мен тасты су бұзар, адамзатты сөз бұзар» деген нақыл бар. Бұзуға құдіреті келетін сөздің түзеуге құдыреті келер. Сөз – қару. Бұны бұзуға жұмсасақ, бұзады, түзеуге жұмсасақ, түзейді».",
+    author: "Олжас Сүлейменов",
+  },
+];
 
 const { news, achievements, youTubes, banners } = storeToRefs(useNewsStore());
 const swiperController = ref<typeof Swiper | null>(null);
