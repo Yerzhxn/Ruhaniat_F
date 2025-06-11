@@ -80,32 +80,23 @@
           </swiper>
         </div>
       </div>
-      <div class="md:mt-0 mt-[20px] container mx-auto">
-        <div class="w-full px-[20px] h-[130px]">
-          <swiper
-            class="relative"
-            :modules="[Autoplay, Navigation]"
-            :loop="true"
-            :autoplay="{ delay: 4500 }"
-            :slides-per-view="1"
-          >
-            <swiper-slide
-              v-for="item in banners.filter(
-                (banner) => banner.type === 'type_3'
-              )"
-              :key="item.id"
-            >
-              <div class="relative">
-                <a :href="item.link" target="_blank">
-                  <img
-                    :src="`${API_URL}${item.image.url}`"
-                    :alt="item.title"
-                    class="w-[100%] h-[130px] object-cover cursor-pointer"
-                  />
-                </a>
-              </div>
-            </swiper-slide>
-          </swiper>
+      <div class="grid md:mt-0 mt-[20px] container mx-auto cursor-pointer "
+      @click="scrollToTop">
+        <div class="grid h-[500px] md:flex justify-between md:w-full mx-[20px] px-[20px] md:h-[130px] bg-linear-to-b md:bg-linear-to-r from-[#f9cf71] from-60% to-white place-items-center ">
+          <img src="../assets/img/logo.png" alt="">
+          <div class="md:flex place-items-center md:space-x-[40px]">
+            <p class="text-white text-[40px] md:text-[70px]">‹‹100 КІТАП››</p>
+            <p class="text-white  text-[30px] md:text-[40px] md:w-[100px]">ҰЛТТЫҚ САУАЛНАМАСЫ</p>
+            
+          </div>
+
+          <div class="md:w-[300px] ml-[200px] hidden md:flex place-items-center">
+            <img src="../assets/img/right-arrow.png" alt="" class="absolute h-[130px] md:w-[300px]">
+            <p class="md:pl-[40px] text-white text-[20px] w-[100px]">ҚАТЫСЫҢЫЗ</p>
+          </div>
+          <div>
+            <img src="../assets/img/qr.png" alt="" class="w-[140px] justify-right">
+          </div>
         </div>
       </div>
     </div>
@@ -337,7 +328,7 @@
           class="border-none bg-white focus:outline-[#00B5C0] rounded-[12px] px-[10px] w-[240px]"
         />
         <button
-          class="text-[12px] md:text-[16px] bg-[#00B5C0] border-none text-white rounded-[12px] px-[20px] hover:bg-white hover:text-[#00B5C0] transition duration-300"
+          class="cursor-pointer text-[12px] md:text-[16px] bg-[#00B5C0] border-none text-white rounded-[12px] px-[20px] hover:bg-white hover:text-[#00B5C0] transition duration-300"
         >
           Жазылу
         </button>
@@ -380,4 +371,10 @@ onMounted(async () => {
   await newsStore.fetchLast3News();
   console.log(newsStore.news);
 });
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", // плавная прокрутка
+  });
+};
 </script>

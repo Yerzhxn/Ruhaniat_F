@@ -57,9 +57,7 @@
             class="relative"
             :modules="[Autoplay, Navigation]"
             :loop="true"
-            :autoplay="{
-              delay: 4500,
-            }"
+            
             :slides-per-view="1"
             @swiper="onSwiperInit"
           >
@@ -141,11 +139,17 @@
         >
           Жаңалықтар
         </p>
+        <p
+          @click="$router.push('/achievements')"
+          class="text-white hover:text-gray-100 transition-all duration-300 cursor-pointer"
+        >
+          Жобалар
+        </p>
         <a-dropdown>
           <p
             class="text-white hover:text-gray-100 transition-all duration-300 cursor-pointer"
           >
-            Кестелер
+            Тіл курстары Кестелер
           </p>
           <template #overlay>
             <a-menu>
@@ -165,12 +169,7 @@
             </a-menu>
           </template>
         </a-dropdown>
-        <p
-          @click="$router.push('/achievements')"
-          class="text-white hover:text-gray-100 transition-all duration-300 cursor-pointer"
-        >
-          Жобалар
-        </p>
+        
         <p
           @click="$router.push('/youTubes')"
           class="text-white hover:text-gray-100 transition-all duration-300 cursor-pointer"
@@ -182,7 +181,7 @@
           <p
             class="text-white hover:text-gray-100 transition-all duration-300 cursor-pointer"
           >
-            Біз Туралы
+            Құрылым
           </p>
           <template #overlay>
             <a-menu>
@@ -195,12 +194,15 @@
               <a-menu-item @click="$router.push('/dirs')">
                 Бөлімдер
               </a-menu-item>
-              <a-menu-item @click="$router.push('/map')">
-                Байланыс
-              </a-menu-item>
             </a-menu>
           </template>
         </a-dropdown>
+        <p
+          @click="$router.push('/map')"
+          class="text-white hover:text-gray-100 transition-all duration-300 cursor-pointer"
+        >
+          Байланыс
+        </p>
       </div>
 
       <div class="md:hidden flex w-full justify-end items-center">
