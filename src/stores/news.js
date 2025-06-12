@@ -19,7 +19,8 @@ export const useNewsStore = defineStore('newsStore', {
     currentDir: null,
     currentYouTube: null,
     partners: [],
-    banners: []
+    banners: [],
+    quotes: []
   }),
   actions: {
     async fetchData(endpoint, stateKey) {
@@ -130,6 +131,9 @@ export const useNewsStore = defineStore('newsStore', {
     },
     async getBanners() {
         await this.fetchData('/banners', 'banners');
+    },
+    async getQuotes() {
+        await this.fetchData('/quotes', 'quotes');
     },
   }
 })

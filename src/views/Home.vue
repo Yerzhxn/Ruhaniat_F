@@ -67,12 +67,12 @@
               )"
               :key="item.id"
             >
-              <div class="relative">
+              <div class="relative w-full h-[380px] overflow-hidden">
                 <a :href="item.link" target="_blank">
                   <img
                     :src="`${API_URL}${item.image.url}`"
                     :alt="item.title"
-                    class="h-[130px] w-[100%] md:w-full md:h-[380px] object-cover cursor-pointer"
+                    class="w-full h-full object-fill cursor-pointer"
                   />
                 </a>
               </div>
@@ -80,24 +80,32 @@
           </swiper>
         </div>
       </div>
-      <div class="grid md:mt-0 mt-[20px] container mx-auto cursor-pointer "
+      <div class= "mt-[20px] md:mt-0 px-[20px]"
       @click="scrollToTop">
-        <div class="grid h-[500px] md:flex justify-between md:w-full mx-[20px] px-[20px] md:h-[130px] bg-linear-to-b md:bg-linear-to-r from-[#f9cf71] from-60% to-white place-items-center ">
-          <img src="../assets/img/logo.png" alt="">
-          <div class="md:flex place-items-center md:space-x-[40px]">
-            <p class="text-white text-[40px] md:text-[70px]">‹‹100 КІТАП››</p>
-            <p class="text-white  text-[30px] md:text-[40px] md:w-[100px]">ҰЛТТЫҚ САУАЛНАМАСЫ</p>
-            
-          </div>
-
-          <div class="md:w-[300px] ml-[200px] hidden md:flex place-items-center">
-            <img src="../assets/img/right-arrow.png" alt="" class="absolute h-[130px] md:w-[300px]">
-            <p class="md:pl-[40px] text-white text-[20px] w-[100px]">ҚАТЫСЫҢЫЗ</p>
-          </div>
-          <div>
-            <img src="../assets/img/qr.png" alt="" class="w-[140px] justify-right">
-          </div>
-        </div>
+        <swiper
+            class="relative"
+            :modules="[Autoplay, Navigation]"
+            :loop="true"
+            :autoplay="{ delay: 4500 }"
+            :slides-per-view="1"
+          >
+            <swiper-slide
+              v-for="item in banners.filter(
+                (banner) => banner.type === 'type_3'
+              )"
+              :key="item.id"
+            >
+              <div class="relative w-full h-[60px] md:h-[130px] overflow-hidden">
+                <a :href="item.link" target="_blank">
+                  <img
+                    :src="`${API_URL}${item.image.url}`"
+                    :alt="item.title"
+                    class="w-full h-full object-fill cursor-pointer"
+                  />
+                </a>
+              </div>
+            </swiper-slide>
+          </swiper>
       </div>
     </div>
 
@@ -193,7 +201,7 @@
         class="absolute w-[600px] top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2"
       />
       <div class="flex justify-between items-center container mx-auto">
-        <p class="text-[18px] md:text-[24px]">You-Tube</p>
+        <p class="text-[28px] md:text-[32px] font-sans font-semibold">You-Tube</p>
         <button
           @click="$router.push('/youTubes')"
           class="text-[14px] md:text-[16px] flex items-center gap-2 bg-white rounded-xl cursor-pointer px-4 py-1 text-gray-600"
@@ -217,7 +225,7 @@
 
     <div class="news py-[60px] md:py-[140px] container mx-auto px-[20px]">
       <div class="flex justify-between items-center">
-        <p class="text-[18px] md:text-[24px]">Жаңалықтар</p>
+        <p class="text-[28px] md:text-[32px] font-sans font-semibold">Жаңалықтар</p>
         <button
           @click="$router.push('/news')"
           class="text-[14px] md:text-[16px] flex items-center gap-2 border border-gray-300 rounded-xl cursor-pointer px-4 py-1 text-gray-600"
@@ -245,7 +253,7 @@
         class="absolute w-[600px] top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2"
       />
       <div class="flex justify-between items-center container mx-auto">
-        <p class="text-[18px] md:text-[24px]">Жобалар</p>
+        <p class="text-[28px] md:text-[32px] font-sans font-semibold">Жобалар</p>
         <button
           @click="$router.push('/achievements')"
           class="text-[14px] md:text-[16px] flex items-center gap-2 bg-white rounded-xl cursor-pointer px-4 py-1 text-gray-600"
@@ -268,7 +276,7 @@
     </div>
 
     <div class="partners py-[60px] md:py-[140px] container mx-auto px-[20px]">
-      <p class="text-[18px] md:text-[24px]">Серіктестер</p>
+      <p class="text-[28px] md:text-[32px] font-sans font-semibold">Серіктестер</p>
       <swiper
         :slides-per-view="2"
         :space-between="30"
@@ -280,6 +288,9 @@
           disableOnInteraction: false,
         }"
         :breakpoints="{
+          300: {
+            slidesPerView: 1,
+          },
           640: {
             slidesPerView: 2,
           },
@@ -287,7 +298,7 @@
             slidesPerView: 3,
           },
           1024: {
-            slidesPerView: 6,
+            slidesPerView: 3,
           },
         }"
         class="pt-10 mt-20"
@@ -297,9 +308,9 @@
             <img
               :src="`${API_URL}${item.image.url}`"
               :alt="item.title"
-              class="w-[100px] h-[100px] object-cover rounded-full mx-auto mb-3"
+              class="w-[200px] h-[200px] object-cover rounded-full mx-auto mb-3"
             />
-            <p class="text-[14px] md:text-[16px] text-center">
+            <p class="text-[18px] md:text-[24px] text-center">
               {{ item.title }}
             </p>
           </a>

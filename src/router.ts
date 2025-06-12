@@ -33,11 +33,7 @@ const router = createRouter({
       name: 'youTubes',
       component: () => import('./views/youTube/YouTube.vue')
     },
-    {
-      path: '/youTubes/:id',
-      name: 'youTubesView',
-      component: () => import('./views/youTube/YoutubeView.vue')
-    },
+    
     {
       path: '/dirs',
       name: 'dirs',

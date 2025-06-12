@@ -13,30 +13,59 @@
     <!-- Только когда данные готовы -->
     <div v-if="isReady">
       <div v-for="(users, bolim) in list" :key="bolim" class="mb-4">
-        <a-collapse v-model:activeKey="activeKeys[bolim]">
-          <a-collapse-panel :key="bolim" :header="bolim">
-            <div class="grid gap-y-3">
-              <div
-                v-for="user in users"
-                :key="user.id"
-                class="flex place-items-center gap-5 p-3 border-gray-300 rounded-lg border"
-              >
-                <img
-                  :src="API_URL + user.image.url"
-                  alt=""
-                  class="w-[100px] h-[100px] rounded-full object-cover"
-                />
-                <div class="flex gap-x-[20px]">
-                  <p class="text-[16px] font-bold">{{ user.name }}</p>
-                  <p class="text-[14px] text-gray-500">
-                    {{ user.role ?? "Қызметкер" }}
-                  </p>
-                  <p class="text-[14px] text-gray-500">{{ user.tel }}</p>
-                </div>
-              </div>
+        <!-- Показываем БАСШЫ вне collapse -->
+        <div class="grid">
+          <div
+            v-for="user in users.filter(u => u.place === 'БАСШЫ')"
+            :key="'bas-' + user.id"
+            class="flex place-items-center gap-5 p-3 border-gray-300 rounded-t-lg border"
+          >
+            <img
+              :src="API_URL + user.image.url"
+              alt=""
+              class="w-[100px] h-[100px] rounded-full object-cover"
+            />
+            <div class="grid grid-cols-4 w-full gap-x-[20px]">
+              <p class="text-[16px] font-bold">{{ user.name }}</p>
+              <p class="text-[14px] text-gray-500">
+                {{ user.bolim ?? "Қызметкер" }}
+              </p>
+              <p class="text-[14px] text-gray-500">{{ user.tel }}</p>
+              <p class="text-[14px] text-gray-500">{{ user.role }}</p>
             </div>
-          </a-collapse-panel>
-        </a-collapse>
+          </div>
+        </div>
+          <div class="overflow-hidden rounded-b-lg border border-gray-300">
+            <a-collapse
+              v-model:activeKey="activeKeys[bolim]"
+              :bordered="false"
+              class="custom-collapse"
+            >
+              <a-collapse-panel :key="bolim" :header="bolim">
+                <div class="grid gap-y-3">
+                  <div
+                    v-for="user in users.filter(u => u.place !== 'БАСШЫ')"
+                    :key="'other-' + user.id"
+                    class="flex place-items-center gap-5 p-3 border-t border-gray-200"
+                  >
+                    <img
+                      :src="API_URL + user.image.url"
+                      alt=""
+                      class="w-[100px] h-[100px] rounded-full object-cover"
+                    />
+                    <div class="flex gap-x-[20px]">
+                      <p class="text-[16px] font-bold">{{ user.name }}</p>
+                      <p class="text-[14px] text-gray-500">
+                        {{ user.bolim ?? 'Қызметкер' }}
+                      </p>
+                      <p class="text-[14px] text-gray-500">{{ user.tel }}</p>
+                      <p class="text-[14px] text-gray-500">{{ user.role }}</p>
+                    </div>
+                  </div>
+                </div>
+              </a-collapse-panel>
+            </a-collapse>
+          </div>  
       </div>
     </div>
   </div>
@@ -55,13 +84,6 @@ const activeKeys = ref<{ [bolim: string]: string[] }>({});
 const list = ref<Record<string, any[]>>({});
 const isReady = ref(false);
 
-// Имена, для которых надо открывать панели
-const openNames = [
-  "Салин Қолғанат Мақатұлы",
-  "Жунусова Салтанат Ермековна",
-  "Досжанова Сауле Болатовна",
-  "Сауле Шабанбаевна Дабиева"
-];
 
 onMounted(async () => {
   await newsStore.getJumyss();
@@ -76,10 +98,7 @@ onMounted(async () => {
     }
     grouped[bolim].push(user);
 
-    // Проверяем, если имя в списке, отмечаем этот бөлім для раскрытия
-    if (openNames.includes(user.name)) {
-      tempActiveKeys[bolim] = [bolim];
-    }
+
   });
 
   list.value = grouped;

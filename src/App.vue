@@ -1,7 +1,7 @@
 <template>
   <div class="mx-auto">
     <NavBar />
-    <div style="min-height: calc(100vh - 264px)" v-if="!loading">
+    <div style="min-height: calc(100vh - 264px)" v-if="!loading" >
       <router-view />
     </div>
     <Footer />

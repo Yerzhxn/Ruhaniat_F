@@ -52,7 +52,7 @@
     <h3 class="text-[24px] font-bold mt-10 mb-5 px-4">Құрылым</h3>
     <div class="grid md:grid-cols-3 grid-cols-1 gap-5 justify-center px-4">
           <div
-            v-for="user in jumyss"
+            v-for="user in jumyss.filter(user => user.place === 'БАСШЫ')"
             :key="user.id"
             class="grid grid-cols-[100px_1fr] gap-4 p-3 border-gray-300 rounded-lg border"
           >
@@ -64,12 +64,13 @@
             <div class="mt-4">
               <p class="text-[16px] font-bold">{{ user.name }}</p>
               <p class="text-[14px] text-gray-500">
-                {{ user.role ?? "Қызметкер" }}
+                {{ user.bolim ?? "Қызметкер" }}
               </p>
               <p class="text-[14px] text-gray-500">{{ user.tel }}</p>
+              <p class="text-[14px] text-gray-500">{{ user.role }}</p>
             </div>
           </div>
-        </div>
+      </div>
   </div>
 </template>
 

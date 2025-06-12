@@ -6,8 +6,8 @@
       >
         <div class="flex items-center gap-1 md:gap-4">
           <div class="flex items-center gap-2 bg-gray-300 h-[50px] px-3 mr-5">
-            <CalendarOutlined class="text-[#00B5C0]" />
-            <p class="text-[14px] md:text-[16px]">
+            <CalendarOutlined :style="{ color: '#00B5C0', fontSize: '24px'  }"  />
+            <p class="text-[14px] md:text-[16px] p-[40px] py-[10px] font-sans text-[#424240] font-bold flex place-items-center">
               {{ new Date().toLocaleDateString("ru-RU") }}
             </p>
           </div>
@@ -104,17 +104,16 @@
             class="w-[25px] absolute -top-5 -right-10"
           />
           <p class="font-semibold">
-            Данышпандар туралы зерде - олардың өздері көтерген мәселелердің
-            өзектілігі жойылғанша ғана ел жадында сақталады.
+            {{ todayQuote?.description || 'Бүгінге арналған дәйексөз табылмады.' }}
           </p>
           <p class="text-[14px] text-gray-500 text-center md:text-right">
-            Олжас Сүлейменов
+            {{ todayQuote?.autor || '' }}
           </p>
         </div>
       </div>
     </div>
 
-    <div class="bg-[#00B5C0] h-[50px] flex">
+    <div class="bg-[#00B5C0] h-[50px] flex font-sans font-semibold">
       <div>
         <div
           ref="menuButtonRef"
@@ -131,7 +130,7 @@
         class="hidden md:grid w-[70px] pb-2 cursor-pointer"
       />
       <div
-        class="container hidden mx-auto md:flex items-center gap-4 justify-around text-lg"
+        class="container hidden mx-auto md:flex items-center gap-4 justify-around text-[22px]"
       >
         <p
           @click="$router.push('/news')"
@@ -149,7 +148,7 @@
           <p
             class="text-white hover:text-gray-100 transition-all duration-300 cursor-pointer"
           >
-            Тіл курстары Кестелер
+            Тіл курстары
           </p>
           <template #overlay>
             <a-menu>
@@ -170,16 +169,11 @@
           </template>
         </a-dropdown>
         
-        <p
-          @click="$router.push('/youTubes')"
-          class="text-white hover:text-gray-100 transition-all duration-300 cursor-pointer"
-        >
-          You-Tube
-        </p>
+        
 
         <a-dropdown>
           <p
-            class="text-white hover:text-gray-100 transition-all duration-300 cursor-pointer"
+            class=" text-white hover:text-gray-100 transition-all duration-300 cursor-pointer"
           >
             Құрылым
           </p>
@@ -205,7 +199,7 @@
         </p>
       </div>
 
-      <div class="md:hidden flex w-full justify-end items-center">
+      <div class="md:hidden flex w-full justify-end items-center font-sans font-semibold">
         <div>
           <a-drawer
             v-model:open="drawerVisible"
@@ -277,7 +271,7 @@
               </a-dropdown>
 
               <p @click="navigate1('/achievements')">Жобалар</p>
-              <p @click="navigate1('/youTubes')">You-Tube</p>
+              
 
               <a-dropdown>
                 <p class="cursor-pointer">Біз Туралы</p>
@@ -328,15 +322,18 @@ import { useRouter } from "vue-router";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons-vue";
 import { storeToRefs } from "pinia";
 import { useNewsStore } from "../stores/news";
+import { onMounted } from "vue";
+import { computed } from "vue";
 
-const text = [
-  {
-    note: "«Тау мен тасты су бұзар, адамзатты сөз бұзар» деген нақыл бар. Бұзуға құдіреті келетін сөздің түзеуге құдыреті келер. Сөз – қару. Бұны бұзуға жұмсасақ, бұзады, түзеуге жұмсасақ, түзейді».",
-    author: "Олжас Сүлейменов",
-  },
-];
 
-const { news, achievements, youTubes, banners } = storeToRefs(useNewsStore());
+const newsStore = useNewsStore();
+
+const { news, banners,quotes } = storeToRefs(newsStore);;
+onMounted(async () => {
+  await newsStore.getNews();
+  await newsStore.getQuotes();
+  await newsStore.getBanners();
+});
 const swiperController = ref<typeof Swiper | null>(null);
 const router = useRouter();
 const drawerVisible = ref(false);
@@ -372,4 +369,9 @@ const handleSearch = () => {
   localStorage.setItem("searchQuery", query);
   router.push("/res");
 };
+
+const todayQuote = computed(() => {
+  return quotes.value.find((q) => q.date === today);
+});
+const today = new Date().toISOString().split("T")[0];
 </script>
