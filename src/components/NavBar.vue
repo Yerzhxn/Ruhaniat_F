@@ -248,9 +248,9 @@
               class="flex flex-col gap-4 text-[#00B5C0] text-center text-[25px] text-xl p-4"
             >
               <p @click="navigate1('/news')">Жаңалықтар</p>
-
+              <p @click="navigate1('/achievements')">Жобалар</p>
               <a-dropdown>
-                <p class="cursor-pointer">Кестелер</p>
+                <p class="cursor-pointer">Тіл курстары</p>
                 <template #overlay>
                   <a-menu>
                     <a-menu-item @click="navigate1('/table1')">
@@ -270,11 +270,11 @@
                 </template>
               </a-dropdown>
 
-              <p @click="navigate1('/achievements')">Жобалар</p>
+              
               
 
               <a-dropdown>
-                <p class="cursor-pointer">Біз Туралы</p>
+                <p class="cursor-pointer">Құрылым</p>
                 <template #overlay>
                   <a-menu>
                     <a-menu-item @click="navigate1('/about')"
@@ -286,12 +286,11 @@
                     <a-menu-item @click="navigate1('/dirs')"
                       >Бөлімдер</a-menu-item
                     >
-                    <a-menu-item @click="navigate1('/map')"
-                      >Байланыс</a-menu-item
-                    >
+                    
                   </a-menu>
                 </template>
               </a-dropdown>
+              <p @click="navigate1('/map')">Байланыс</p>
             </div>
           </a-drawer>
         </div>
