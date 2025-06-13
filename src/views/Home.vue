@@ -2,9 +2,9 @@
   <div>
     <div class="mb-[20px]">
       <div
-        class="header md:flex gap-5 space-y-[20px] container mx-auto pt-5 px-[20px]"
+        class="header md:flex gap-5 space-y-[20px] container mx-auto pt-5 px-[20px] md:px-[100px]"
       >
-        <div class="md:w-[79%] block relative">
+        <div class="md:w-[74%] block relative">
           <swiper
             class="relative"
             :modules="[Autoplay, Navigation]"
@@ -31,7 +31,7 @@
                 <img
                   :src="`${API_URL}${item.image?.url}`"
                   :alt="item.title"
-                  class="w-full h-[400px] md:h-[380px] object-cover"
+                  class="w-full h-[430px] md:h-[430px] object-cover"
                 />
                 <div
                   class="absolute bottom-0 left-0 w-full bg-[#00000080] h-[100px] py-4 px-[80px] md:px-[130px]"
@@ -53,7 +53,7 @@
             </swiper-slide>
           </swiper>
         </div>
-        <div class="md:w-[20%]">
+        <div class="md:w-[25%]">
           <swiper
             class="relative"
             :modules="[Autoplay, Navigation]"
@@ -67,7 +67,7 @@
               )"
               :key="item.id"
             >
-              <div class="relative w-full h-[380px] overflow-hidden">
+              <div class="relative w-full h-[430px] overflow-hidden">
                 <a :href="item.link" target="_blank">
                   <img
                     :src="`${API_URL}${item.image.url}`"
@@ -79,8 +79,9 @@
             </swiper-slide>
           </swiper>
         </div>
+        
       </div>
-      <div class= "mt-[20px] md:mt-0 px-[20px]"
+      <div class= "mt-[20px] container mx-auto md:mt-0 px-[20px] md:px-[100px]"
       @click="scrollToTop">
         <swiper
             class="relative"

@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <div class="h-[50px] bg-gray-200 hidden md:grid items-center px-[20px]">
+    <div class="h-[50px] bg-gray-200 hidden md:grid items-center px-[100px]">
       <div
         class="container mx-auto grid grid-cols-3 items-center justify-between"
       >
@@ -47,7 +47,7 @@
         </div>
       </div>
     </div>
-    <div class="hidden md:grid container mx-auto py-3 px-[20px]">
+    <div class="hidden md:grid container mx-auto py-3 px-[100px]">
       <div
         class="hidden md:grid md:grid-cols-3 space-y-[20px] items-center justify-between"
       >
@@ -106,7 +106,7 @@
           <p class="font-semibold">
             {{ todayQuote?.description || 'Бүгінге арналған дәйексөз табылмады.' }}
           </p>
-          <p class="text-[14px] text-gray-500 text-center md:text-right">
+          <p class="text-[18px] font-semibold  text-[#00B5C0] text-center md:text-right">
             {{ todayQuote?.autor || '' }}
           </p>
         </div>
@@ -164,6 +164,9 @@
               <a-menu-item @click="$router.push('/table4')">
                 Мемлекеттік тілді оқыту бойынша таңдаушылардың сабаққа қатысу
                 туралы мәлімет
+              </a-menu-item>
+              <a-menu-item @click="$router.push('/table4')">
+                Ағылшын тілі курстары
               </a-menu-item>
             </a-menu>
           </template>
@@ -265,6 +268,9 @@
                     <a-menu-item @click="navigate1('/table4')">
                       Мемлекеттік тілді оқыту бойынша таңдаушылардың сабаққа
                       қатысу туралы мәлімет
+                    </a-menu-item>
+                    <a-menu-item @click="navigate1('/table4')">
+                      Ағылшын тілі курстары
                     </a-menu-item>
                   </a-menu>
                 </template>
