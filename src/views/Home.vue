@@ -110,7 +110,7 @@
       </div>
     </div>
 
-    <div class="bg-[#00B5C0] py-[60px] md:py-[140px] relative px-[20px]">
+    <div class="bg-[#00B5C0] py-[60px] md:py-[100px] relative px-[20px] md:px-[100px]">
       <img
         src="../assets/img/oyu_1.png"
         alt="Background"
@@ -137,7 +137,7 @@
       </div>
     </div>
 
-    <div class="container mx-auto py-[100px] px-[20px]">
+    <div class="container mx-auto py-[100px]  px-[20px] md:px-[100px]">
       <div
         class="grid md:grid-cols-[300px_1fr] grid-cols-1 gap-5 place-items-center"
       >
@@ -194,7 +194,7 @@
     </div>
 
     <div
-      class="youtube py-[60px] md:py-[140px] bg-[#00B5C0] text-white relative px-[20px]"
+      class="youtube py-[60px] md:py-[100px] bg-[#00B5C0] text-white relative px-[20px] md:px-[100px]"
     >
       <img
         src="../assets/img/oyu_1.png"
@@ -224,7 +224,7 @@
       </div>
     </div>
 
-    <div class="news py-[60px] md:py-[140px] container mx-auto px-[20px]">
+    <div class="news py-[60px] md:py-[100px] container mx-auto px-[20px] md:px-[100px]">
       <div class="flex justify-between items-center">
         <p class="text-[28px] md:text-[32px] font-sans font-semibold">Жаңалықтар</p>
         <button
@@ -246,7 +246,7 @@
     </div>
 
     <div
-      class="achievments py-[60px] md:py-[140px] bg-[#00B5C0] text-white relative px-[20px]"
+      class="achievments py-[60px] md:py-[100px] bg-[#00B5C0] text-white relative px-[20px] md:px-[100px]"
     >
       <img
         src="../assets/img/oyu_1.png"
@@ -276,7 +276,7 @@
       </div>
     </div>
 
-    <div class="partners py-[60px] md:py-[140px] container mx-auto px-[20px]">
+    <div class="partners py-[60px] md:py-[100px] container mx-auto px-[20px] md:px-[100px]">
       <p class="text-[28px] md:text-[32px] font-sans font-semibold">Серіктестер</p>
       <swiper
         :slides-per-view="2"

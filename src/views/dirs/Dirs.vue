@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-[20px] py-[40px] relative">
+  <div class="container mx-auto px-[20px] md:px-[100px] py-[40px] relative">
     <img
       src="../../assets/img/oyu_2.png"
       alt=""
@@ -25,7 +25,7 @@
               alt=""
               class="w-[100px] h-[100px] rounded-full object-cover"
             />
-            <div class="grid grid-cols-4 w-full gap-x-[20px]">
+            <div class="grid md:grid-cols-4 w-full gap-x-[20px]">
               <p class="text-[16px] font-bold">{{ user.name }}</p>
               <p class="text-[14px] text-gray-500">
                 {{ user.bolim ?? "Қызметкер" }}
@@ -53,7 +53,7 @@
                       alt=""
                       class="w-[100px] h-[100px] rounded-full object-cover"
                     />
-                    <div class="flex gap-x-[20px]">
+                    <div class=" md:flex gap-x-[20px]">
                       <p class="text-[16px] font-bold">{{ user.name }}</p>
                       <p class="text-[14px] text-gray-500">
                         {{ user.bolim ?? 'Қызметкер' }}

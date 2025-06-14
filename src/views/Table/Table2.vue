@@ -1,5 +1,5 @@
 <template>
-  <div class=" px-[20px] text-[#00B5C0] container mx-auto ">
+  <div class=" px-[20px] md:px-[100px] text-[#00B5C0] container mx-auto ">
     <!-- Table 2: MEMLEKETTIK TIL KURSYNA KATYSUSSYLAR TIZIMI -->
     <TableSection
       :title="'Мемлекеттік тіл курсына қатысушылар тізімі'"
