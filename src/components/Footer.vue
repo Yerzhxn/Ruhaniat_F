@@ -10,11 +10,17 @@
       >
         Жаңалықтар
       </p>
+       <p
+        @click="$router.push('/achievements')"
+        class="text-gray-700 hover:text-[#00B5C0] transition-all duration-300 cursor-pointer"
+      >
+        Жобалар
+      </p>
       <a-dropdown placement="topCenter">
         <p
           class="text-gray-700 hover:text-[#00B5C0] transition-all duration-300 cursor-pointer"
         >
-          Кестелер
+          Тіл курстары
         </p>
         <template #overlay>
           <a-menu>
@@ -28,12 +34,7 @@
           </a-menu>
         </template>
       </a-dropdown>
-      <p
-        @click="$router.push('/achievements')"
-        class="text-gray-700 hover:text-[#00B5C0] transition-all duration-300 cursor-pointer"
-      >
-        Біздің жобалар
-      </p>
+     
       <p
         @click="$router.push('/youTubes')"
         class="text-gray-700 hover:text-[#00B5C0] transition-all duration-300 cursor-pointer"
