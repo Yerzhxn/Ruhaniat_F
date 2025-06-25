@@ -1,35 +1,40 @@
 <template>
-  <div class="container mx-auto px-[20px] md:px-[100px] py-[40px]">
+  <div class="container mx-auto px-[20px] md:px-[100px] py-[30px]">
     <div v-if="loading" class="flex justify-center items-center">
       <a-spin :spinning="loading" size="large" />
     </div>
-    <div class="md:flex" v-else>
-      <img
-        :src="API_URL + currentAchievement.image.url"
-        alt=""
-        class="w-full md:w-[50%] object-cover rounded-xl mb-4"
-      />
-      <div class="mx-[20px]">
-        <p class="text-[24px]">{{ currentAchievement.title }}</p>
-        <p class="text-xs text-gray-500">
+
+    <!-- Родитель с clearfix -->
+    <div v-else class="clearfix">
+      <div>
+        <img
+          :src="API_URL + currentAchievement.image.url"
+          alt=""
+          class="w-full md:w-[50%] md:float-left md:mr-6 mb-4 rounded-xl object-cover"
+        />
+        <p class="text-[24px] font-bold">{{ currentAchievement.title }}</p>
+        <p class="text-xs text-gray-500 mb-4">
           {{ currentAchievement.createdAt.split("T")[0] }}
         </p>
         <div
           v-html="currentAchievement.description"
-          class="pt-10 text-[16px] text-gray-500"
+          class="text-[16px] text-gray-700"
         />
-        <a
-          :href="currentAchievement.link"
-          target="_blank"
-          class="text-[16px] text-blue-500"
-        >
-          <a-button type="primary" class="mt-4"> Жобаға өту </a-button>
-        </a>
+        <div class="mt-4 clear-both">
+          <a
+            :href="currentAchievement.link"
+            target="_blank"
+            class="text-[16px] text-blue-500 inline-block"
+          >
+            <a-button type="primary">Жобаға өту</a-button>
+          </a>
+        </div>
       </div>
-      
     </div>
   </div>
 </template>
+
+
 
 <script setup lang="ts">
 import { useRoute } from "vue-router";

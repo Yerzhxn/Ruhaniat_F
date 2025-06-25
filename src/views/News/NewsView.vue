@@ -1,28 +1,33 @@
 <template>
-  <div class="container mx-auto px-[20px] md:px-[100px] py-[40px]">
+  <div class="container mx-auto px-[20px] md:px-[100px] py-[30px]">
     <div v-if="loading" class="flex justify-center items-center">
       <a-spin :spinning="loading" size="large" />
     </div>
-    <div class="md:flex" v-else>
-      <img
-        :src="API_URL + currentNews.image.url"
-        alt=""
-        class="w-full md:w-[50%] object-cover rounded-xl mb-4"
-      />
-      <div class="mx-[20px]">
-        <p class="text-[24px]">{{ currentNews.title }}</p>
-        <p class="text-xs text-gray-500">
+
+    <!-- Родитель с clearfix -->
+    <div v-else class="clearfix">
+      <div>
+        <img
+          :src="API_URL + currentNews.image.url"
+          alt=""
+          class="w-full md:w-[50%] md:float-left md:mr-6 mb-4 rounded-xl object-cover"
+        />
+        <p class="text-[24px] font-bold">{{ currentNews.title }}</p>
+        <p class="text-xs text-gray-500 mb-4">
           {{ currentNews.createdAt.split("T")[0] }}
         </p>
         <div
           v-html="currentNews.description"
-          class="pt-10 text-[16px] text-gray-500"
+          class="text-[16px] text-gray-700"
         />
+        <div class="mt-4 clear-both text-white">
+          asd
+        </div>
       </div>
-      
     </div>
   </div>
 </template>
+
 
 <script setup lang="ts">
 import { useRoute } from "vue-router";
