@@ -1,9 +1,9 @@
 <template>
-  <div class="container mx-auto px-[100px] py-[40px]">
+  <div class="container mx-auto px-[20px] md:px-[100px] py-[40px]">
     <div v-if="loading" class="flex justify-center items-center">
       <a-spin :spinning="loading" size="large" />
     </div>
-    <div class="flex" v-else>
+    <div class="md:flex" v-else>
       <img
         :src="API_URL + currentAchievement.image.url"
         alt=""

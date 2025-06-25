@@ -124,7 +124,7 @@
           Біз туралы
         </p>
         <p class="text-[16px] md:text-[24px] text-white">
-          <img src="../assets/img/img_1.png" alt="About" class="w-[600px] h-[400px] m-[20px] float-right" />
+          <img src="../assets/img/img_1.png" alt="About" class="w-[600px] h-[400px]  my-[20px] float-right" />
           Астана қаласы әкімдігінің «Руханият» КММ – елордада тіл саясатын іске асыруға жауапты мекеме.
           <br/>
           Мекеме қызметінің негізгі бағыттары:
