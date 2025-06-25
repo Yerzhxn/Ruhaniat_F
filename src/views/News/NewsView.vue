@@ -1,22 +1,25 @@
 <template>
-  <div class="container mx-auto px-[20px] py-[40px]">
+  <div class="container mx-auto px-[100px] py-[40px]">
     <div v-if="loading" class="flex justify-center items-center">
       <a-spin :spinning="loading" size="large" />
     </div>
-    <div class="" v-else>
+    <div class="flex" v-else>
       <img
         :src="API_URL + currentNews.image.url"
         alt=""
-        class="w-full h-[400px] object-cover rounded-xl mb-4"
+        class="w-full md:w-[50%] object-cover rounded-xl mb-4"
       />
-      <p class="text-[24px]">{{ currentNews.title }}</p>
-      <p class="text-xs text-gray-500">
-        {{ currentNews.createdAt.split("T")[0] }}
-      </p>
-      <div
-        v-html="currentNews.description"
-        class="pt-10 text-[16px] text-gray-500"
-      />
+      <div class="mx-[20px]">
+        <p class="text-[24px]">{{ currentNews.title }}</p>
+        <p class="text-xs text-gray-500">
+          {{ currentNews.createdAt.split("T")[0] }}
+        </p>
+        <div
+          v-html="currentNews.description"
+          class="pt-10 text-[16px] text-gray-500"
+        />
+      </div>
+      
     </div>
   </div>
 </template>

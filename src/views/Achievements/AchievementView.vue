@@ -1,29 +1,32 @@
 <template>
-  <div class="container mx-auto px-[20px] py-[40px]">
+  <div class="container mx-auto px-[100px] py-[40px]">
     <div v-if="loading" class="flex justify-center items-center">
       <a-spin :spinning="loading" size="large" />
     </div>
-    <div class="" v-else>
+    <div class="flex" v-else>
       <img
         :src="API_URL + currentAchievement.image.url"
         alt=""
-        class="w-full h-[400px] object-cover rounded-xl mb-4"
+        class="w-full md:w-[50%] object-cover rounded-xl mb-4"
       />
-      <p class="text-[24px]">{{ currentAchievement.title }}</p>
-      <p class="text-xs text-gray-500">
-        {{ currentAchievement.createdAt.split("T")[0] }}
-      </p>
-      <div
-        v-html="currentAchievement.description"
-        class="pt-10 text-[16px] text-gray-500"
-      />
-      <a
-        :href="currentAchievement.link"
-        target="_blank"
-        class="text-[16px] text-blue-500"
-      >
-        <a-button type="primary" class="mt-4"> Жобаға өту </a-button>
-      </a>
+      <div class="mx-[20px]">
+        <p class="text-[24px]">{{ currentAchievement.title }}</p>
+        <p class="text-xs text-gray-500">
+          {{ currentAchievement.createdAt.split("T")[0] }}
+        </p>
+        <div
+          v-html="currentAchievement.description"
+          class="pt-10 text-[16px] text-gray-500"
+        />
+        <a
+          :href="currentAchievement.link"
+          target="_blank"
+          class="text-[16px] text-blue-500"
+        >
+          <a-button type="primary" class="mt-4"> Жобаға өту </a-button>
+        </a>
+      </div>
+      
     </div>
   </div>
 </template>

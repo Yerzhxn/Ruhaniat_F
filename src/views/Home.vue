@@ -116,81 +116,92 @@
         alt="Background"
         class="absolute w-[300px] md:w-[600px] top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2"
       />
-      <div
-        class="relative about grid md:grid-cols-2 gap-10 container mx-auto text-white"
-      >
-        <div>
-          <p
-            class="text-[25px] md:text-[60px] font-bold mb-8 pb-8 border-b border-white"
-          >
-            Біз туралы
-          </p>
-          <p class="text-[16px] md:text-[24px]">
-            Біздің мектеп – қазақ тілін үйренуге арналған керемет орын. Мұнда
-            тәжірибелі ұстаздар заманауи әдістермен сабақ береді. Оқушылар
-            тілдік дағдыларын жылдам дамытады. Сабақтар қызықты, тиімді және
-            қолжетімді. Қазақ мәдениетін тереңірек түсінуге көмектесеміз. Бізбен
-            бірге қазақ тілін оңай үйреніңіз!
-          </p>
-        </div>
-        <img src="../assets/img/img_1.png" alt="About" class="w-[500px]" />
+      
+      <div>
+        <p
+          class="text-[25px] md:text-[60px] font-bold mb-8 pb-8 border-b border-white text-white"
+        >
+          Біз туралы
+        </p>
+        <p class="text-[16px] md:text-[24px] text-white">
+          <img src="../assets/img/img_1.png" alt="About" class="w-[600px] h-[400px] m-[20px] float-right" />
+          Астана қаласы әкімдігінің «Руханият» КММ – елордада тіл саясатын іске асыруға жауапты мекеме.
+          <br/>
+          Мекеме қызметінің негізгі бағыттары:
+          <br/>
+          2023–2029 жылдарға арналған тіл саясатын жүзеге асыру
+
+          <br/>Қазақ, орыс, ағылшын тілдерін ересектерге, мемлекеттік және азаматтық қызметкерлерге оқыту
+
+          <br/>Оқытушыларды оқыту және тәжірибе алмасу семинарларын ұйымдастыру
+
+          <br/>Латын графикасына көшу бойынша іс-шаралар мен әдістемелік қолдау көрсету
+
+          <br/>Оқу-әдістемелік құралдар дайындау және тарату
+
+          <br/>Көрмелер, конференциялар, дөңгелек үстелдер өткізу
+
+          <br/>Тілдік курстар мен бағдарламалар ұйымдастыру
+
+          <br/>Мемлекеттік және мемлекеттік емес ұйымдармен ынтымақтастық орнату
+
+          <br/>Тілдер фестивалі мен ұлттық байқаулар өткізу
+
+          <br/>Бейнематериалдар жасап, әлеуметтік желілерде тарату
+
+          <br/>Мемлекеттік рәміздерді дәріптеу, ономастика және патриоттық іс-шараларға қатысу.
+
+          <br/>Мақсаты: Мемлекеттік тілді және көптілділікті дамыту, ұлттық рухани құндылықтарды насихаттау.
+        </p>
       </div>
+        
+      
     </div>
 
-    <div class="container mx-auto py-[100px]  px-[20px] md:px-[100px]">
-      <div
-        class="grid md:grid-cols-[300px_1fr] grid-cols-1 gap-5 place-items-center"
+    <div class="partners py-[60px] md:py-[100px] container mx-auto px-[20px] md:px-[100px] ">
+      <p class="text-[28px] md:text-[32px] font-sans font-semibold">Кітаптар</p>
+      <swiper
+        :slides-per-view="2"
+        :space-between="30"
+        :navigation="true"
+        :modules="[Autoplay, Pagination, Navigation]"
+        :loop="true"
+        :autoplay="{
+          delay: 2500,
+          disableOnInteraction: false,
+        }"
+        :breakpoints="{
+          300: {
+            slidesPerView: 1,
+          },
+          640: {
+            slidesPerView: 2,
+          },
+          768: {
+            slidesPerView: 3,
+          },
+          1024: {
+            slidesPerView: 3,
+          },
+        }"
+        class="pt-10 mt-20"
       >
-        <img
-          class="w-[300px] h-[300px] rounded-full object-cover"
-          alt="Арман Манарбекұлы"
-          src="../assets/img/user.PNG"
-        />
-        <div class="mt-10">
-          <p class="text-[20px] transition-all duration-300 font-medium mb-4">
-            Арман Манарбекұлы
-          </p>
-          <div class="text-[16px] text-gray-500">
-            <p>
-              Астана қаласы әкімдігінің Тілдерді дамыту және архив ісі
-              басқармасы басшысының 2025 жылғы 3 наурыздағы бұйрығына сәйкес,
-              «Руханият» коммуналдық мемлекеттік мекемесінің басшысы лауазымына
-              Шеризатов Арман Манарбекұлы тағайындалды.
+        <swiper-slide v-for="item in books" :key="item.id">
+          <div
+            @click="downloadBook(item.book?.url, item.book?.name)"
+            class="cursor-pointer"
+          >
+            <img
+              :src="`${API_URL}${item.image.url}`"
+              :alt="item.title"
+              class="w-[240px] h-[320px] object-cover rounded-[5px] mx-auto mb-3"
+            />
+            <p class="text-[18px] md:text-[24px] text-center">
+              {{ item.title }}
             </p>
-            <p class="my-4">
-              Арман Манарбекұлы — Қазақстан Жазушылар одағының мүшесі, «Дарын»
-              мемлекеттік жастар сыйлығының лауреаты, «Тәңірқұт», «Күміс шық»
-              жыр жинақтарының авторы. Педагогика ғылымдарының магистрі.
-            </p>
-            <ul class="list-disc list-inside">
-              <li>
-                21.10.2024 жылдан бастап бүгінге дейін — «Астана қаласының
-                коммуникациялар қызметі» ММ Контент өндіру бөлімінің басшысы
-              </li>
-              <li>
-                29.01–10.06.2024 — ҚР Сыртқы істер министрлігіне қарасты
-                «Отандастар қоры» КеАҚ, Шетелдегі қандастармен жұмыс
-                департаментінің жобалар үйлестірушісі
-              </li>
-              <li>
-                2023–2024 жж. — «Қазконтент» АҚ, RUH.KZ порталының бас редакторы
-              </li>
-              <li>
-                2022 ж. — республикалық «Егемен Қазақстан» газетінің
-                интернет-редакция тілшісі
-              </li>
-              <li>
-                2019–2021 жж. — «Қазконтент» АҚ, «Әдебиет порталы» жобасының
-                журналисі
-              </li>
-              <li>
-                2017–2019 жж. — «Сәкен Сейфуллин музейі» МКҚК, ғылыми қызметкер,
-                ғылыми-ағарту бөлімінің меңгерушісі
-              </li>
-            </ul>
           </div>
-        </div>
-      </div>
+        </swiper-slide>
+      </swiper>
     </div>
 
     <div
@@ -373,15 +384,16 @@ function onSwiperInit(swiperInstance: any) {
   swiperController.value = swiperInstance;
 }
 
-const { news, achievements, youTubes, partners, banners } = storeToRefs(
+const { news, achievements, youTubes, partners, banners ,books } = storeToRefs(
   useNewsStore()
 );
 
 const newsStore = useNewsStore();
-
+console.log(newsStore.books);
 onMounted(async () => {
+  await newsStore.getBooks();
   await newsStore.fetchLast3News();
-  console.log(newsStore.news);
+  console.log(newsStore.books);
 });
 const scrollToTop = () => {
   window.scrollTo({
@@ -389,4 +401,16 @@ const scrollToTop = () => {
     behavior: "smooth", // плавная прокрутка
   });
 };
+const downloadBook = (pdfUrl?: string, fileName?: string) => {
+  if (!pdfUrl) return;
+
+  const fullUrl = `${API_URL}${pdfUrl}`;
+  const link = document.createElement("a");
+  link.href = fullUrl;
+  link.setAttribute("download", fileName || "book.pdf"); // или item.book.name
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
 </script>
