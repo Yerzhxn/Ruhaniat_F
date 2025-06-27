@@ -121,37 +121,11 @@
         <p
           class="text-[25px] md:text-[60px] font-bold mb-8 pb-8 border-b border-white text-white"
         >
-          Біз туралы
+          {{ $t('main.about') }}
         </p>
         <p class="text-[16px] md:text-[24px] text-white">
-          <img src="../assets/img/img_1.png" alt="About" class="w-[600px] h-[400px]  my-[20px] float-right" />
-          Астана қаласы әкімдігінің «Руханият» КММ – елордада тіл саясатын іске асыруға жауапты мекеме.
-          <br/>
-          Мекеме қызметінің негізгі бағыттары:
-          <br/>
-          2023–2029 жылдарға арналған тіл саясатын жүзеге асыру
-
-          <br/>Қазақ, орыс, ағылшын тілдерін ересектерге, мемлекеттік және азаматтық қызметкерлерге оқыту
-
-          <br/>Оқытушыларды оқыту және тәжірибе алмасу семинарларын ұйымдастыру
-
-          <br/>Латын графикасына көшу бойынша іс-шаралар мен әдістемелік қолдау көрсету
-
-          <br/>Оқу-әдістемелік құралдар дайындау және тарату
-
-          <br/>Көрмелер, конференциялар, дөңгелек үстелдер өткізу
-
-          <br/>Тілдік курстар мен бағдарламалар ұйымдастыру
-
-          <br/>Мемлекеттік және мемлекеттік емес ұйымдармен ынтымақтастық орнату
-
-          <br/>Тілдер фестивалі мен ұлттық байқаулар өткізу
-
-          <br/>Бейнематериалдар жасап, әлеуметтік желілерде тарату
-
-          <br/>Мемлекеттік рәміздерді дәріптеу, ономастика және патриоттық іс-шараларға қатысу.
-
-          <br/>Мақсаты: Мемлекеттік тілді және көптілділікті дамыту, ұлттық рухани құндылықтарды насихаттау.
+          <img src="../assets/img/img_1.png" alt="About" class="w-[600px] h-[400px] md:px-[20px] my-[20px] float-right" />
+          {{ $t('main.text') }}
         </p>
       </div>
         
@@ -159,7 +133,7 @@
     </div>
 
     <div class="partners py-[60px] md:py-[100px] container mx-auto px-[20px] md:px-[100px] ">
-      <p class="text-[28px] md:text-[32px] font-sans font-semibold">Кітаптар</p>
+      <p class="text-[28px] md:text-[32px] font-sans font-semibold">{{ $t('main.book') }}</p>
       <swiper
         :slides-per-view="2"
         :space-between="30"
@@ -218,7 +192,7 @@
           @click="$router.push('/youTubes')"
           class="text-[14px] md:text-[16px] flex items-center gap-2 bg-white rounded-xl cursor-pointer px-4 py-1 text-gray-600"
         >
-          Барлығы
+          {{ $t('main.all') }}
           <ArrowRightOutlined />
         </button>
       </div>
@@ -237,12 +211,12 @@
 
     <div class="news py-[60px] md:py-[100px] container mx-auto px-[20px] md:px-[100px]">
       <div class="flex justify-between items-center">
-        <p class="text-[28px] md:text-[32px] font-sans font-semibold">Жаңалықтар</p>
+        <p class="text-[28px] md:text-[32px] font-sans font-semibold">{{ $t('menu.news') }}</p>
         <button
           @click="$router.push('/news')"
           class="text-[14px] md:text-[16px] flex items-center gap-2 border border-gray-300 rounded-xl cursor-pointer px-4 py-1 text-gray-600"
         >
-          Барлығы
+          {{ $t('main.all') }}
           <ArrowRightOutlined />
         </button>
       </div>
@@ -265,12 +239,12 @@
         class="absolute w-[600px] top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2"
       />
       <div class="flex justify-between items-center container mx-auto">
-        <p class="text-[28px] md:text-[32px] font-sans font-semibold">Жобалар</p>
+        <p class="text-[28px] md:text-[32px] font-sans font-semibold">{{ $t('main.projects') }}</p>
         <button
           @click="$router.push('/achievements')"
           class="text-[14px] md:text-[16px] flex items-center gap-2 bg-white rounded-xl cursor-pointer px-4 py-1 text-gray-600"
         >
-          Барлығы
+          {{ $t('main.all') }}
           <ArrowRightOutlined />
         </button>
       </div>
@@ -288,7 +262,7 @@
     </div>
 
     <div class="partners py-[60px] md:py-[100px] container mx-auto px-[20px] md:px-[100px]">
-      <p class="text-[28px] md:text-[32px] font-sans font-semibold">Серіктестер</p>
+      <p class="text-[28px] md:text-[32px] font-sans font-semibold">{{ $t('main.partners') }}</p>
       <swiper
         :slides-per-view="2"
         :space-between="30"
@@ -335,11 +309,10 @@
     >
       <div class="grid space-y-[12px] mb-[20px]">
         <span class="text-[16px] md:text-[20px]">
-          Біздің жаңалықтар таратылымымызға жазылыңыз.
+          {{$t('main.text1')}}
         </span>
         <span class="md:w-[500px] text-[#81828c] text-[14px] md:text-[16px]">
-          Біз сізге соңғы айда жіберілген қысқа мәліметтерді, жаңартуларды және
-          команда талғау туралы ақпараттарды жеткіземіз..
+          {{$t('main.text2')}}
         </span>
       </div>
       <div
@@ -347,7 +320,7 @@
       >
         <input
           type="email"
-          placeholder="@ Сіздің поштаңыз"
+          :placeholder= "$t('main.placeHolder')"
           class="border-none bg-white focus:outline-[#00B5C0] rounded-[12px] px-[10px] w-[240px]"
         />
         <button

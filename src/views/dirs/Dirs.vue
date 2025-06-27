@@ -7,7 +7,7 @@
     />
 
     <div class="flex items-center mb-5">
-      <p class="text-[24px]">Бөлімдер</p>
+      <p class="text-[24px]">{{ $t('menu.departments') }}</p>
     </div>
 
     <!-- Только когда данные готовы -->

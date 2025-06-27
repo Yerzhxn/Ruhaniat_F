@@ -11,8 +11,21 @@
               {{ new Date().toLocaleDateString("ru-RU") }}
             </p>
           </div>
-          <p class="text-[14px] md:text-[16px] text-[#00B5C0]">KZ</p>
-          <p class="text-[14px] md:text-[16px]">RU</p>
+          <div class="flex gap-2">
+            <p
+              @click="changeLocale('kk')"
+              :class="['cursor-pointer text-[16px]', locale === 'kk' ? 'font-bold text-[#00B5C0]' : '']"
+            >
+              KZ
+            </p>
+            <p
+              @click="changeLocale('ru')"
+              :class="['cursor-pointer text-[16px]', locale === 'ru' ? 'font-bold text-[#00B5C0]' : '']"
+            >
+              RU
+            </p>
+          </div>
+
         </div>
         <div class="flex justify-center text-gray-400 gap-1 md:gap-4">
           <a href="https://www.instagram.com/ruhaniat.kz" target="_blank">
@@ -41,7 +54,7 @@
           <input
             v-model="searchQuery"
             @keyup.enter="handleSearch"
-            placeholder="Сайт бойынша іздеу"
+            :placeholder="$t('search_placeholder')"
             class="w-[300px] bg-white h-[30px] md:h-[35px] rounded-full px-4 text-[14px]"
           />
         </div>
@@ -104,7 +117,7 @@
             class="w-[25px] absolute -top-5 -right-10"
           />
           <p class="font-semibold">
-            {{ todayQuote?.description || 'Бүгінге арналған дәйексөз табылмады.' }}
+            {{ todayQuote?.description || $t('quote_missing') }}
           </p>
           <p class="text-[18px] font-semibold  text-[#00B5C0] text-center md:text-right">
             {{ todayQuote?.autor || '' }}
@@ -136,37 +149,36 @@
           @click="$router.push('/news')"
           class="text-white hover:text-gray-100 transition-all duration-300 cursor-pointer"
         >
-          Жаңалықтар
+          {{ $t('menu.news') }}
         </p>
         <p
           @click="$router.push('/achievements')"
           class="text-white hover:text-gray-100 transition-all duration-300 cursor-pointer"
         >
-          Жобалар
+          {{ $t('menu.projects') }}
         </p>
         <a-dropdown>
           <p
             class="text-white hover:text-gray-100 transition-all duration-300 cursor-pointer"
           >
-            Тіл курстары
+            {{ $t('menu.courses') }}
           </p>
           <template #overlay>
             <a-menu>
               <a-menu-item @click="$router.push('/table1')">
-                Мемлекеттік тілде өткізілген сабақтардың сағат саны
+                {{ $t('menu.course1') }}
               </a-menu-item>
               <a-menu-item @click="$router.push('/table2')">
-                Мемлекеттік тіл курсына қатысушылар тізімі
+                {{ $t('menu.course2') }}
               </a-menu-item>
               <a-menu-item @click="$router.push('/table3')">
-                Мемлекеттік тіл курсының сабақ кестесі
+                {{ $t('menu.course3') }}
               </a-menu-item>
               <a-menu-item @click="$router.push('/table4')">
-                Мемлекеттік тілді оқыту бойынша таңдаушылардың сабаққа қатысу
-                туралы мәлімет
+                {{ $t('menu.course4') }}
               </a-menu-item>
               <a-menu-item @click="$router.push('/table4')">
-                Ағылшын тілі курстары
+                {{ $t('menu.course5') }}
               </a-menu-item>
             </a-menu>
           </template>
@@ -178,18 +190,18 @@
           <p
             class=" text-white hover:text-gray-100 transition-all duration-300 cursor-pointer"
           >
-            Құрылым
+            {{ $t('menu.structure') }}
           </p>
           <template #overlay>
             <a-menu>
               <a-menu-item @click="$router.push('/about')">
-                Жалпы Ақпарат
+                {{ $t('menu.about') }}
               </a-menu-item>
               <a-menu-item @click="$router.push('/kurylym')">
-                Құрылым
+                {{ $t('menu.structure') }}
               </a-menu-item>
               <a-menu-item @click="$router.push('/dirs')">
-                Бөлімдер
+                {{ $t('menu.departments') }}
               </a-menu-item>
             </a-menu>
           </template>
@@ -198,7 +210,7 @@
           @click="$router.push('/map')"
           class="text-white hover:text-gray-100 transition-all duration-300 cursor-pointer"
         >
-          Байланыс
+          {{ $t('menu.contact') }}
         </p>
       </div>
 
@@ -214,9 +226,19 @@
           >
             <div class="grid place-center px-4 py-2 bg-white space-y-4">
               <div class="flex justify-between">
-                <div class="flex items-center gap-4">
-                  <p class="text-[#00B5C0] text-sm font-semibold">KZ</p>
-                  <p class="text-gray-600 text-sm">RU</p>
+                <div class="flex gap-2">
+                  <p
+                    @click="changeLocale('kk')"
+                    :class="['cursor-pointer text-[16px]', locale === 'kk' ? 'font-bold text-[#00B5C0]' : '']"
+                  >
+                    KZ
+                  </p>
+                  <p
+                    @click="changeLocale('ru')"
+                    :class="['cursor-pointer text-[16px]', locale === 'ru' ? 'font-bold text-[#00B5C0]' : '']"
+                  >
+                    RU
+                  </p>
                 </div>
 
                 <div class="flex items-center gap-3">
@@ -242,7 +264,7 @@
                 <input
                   v-model="searchQuery"
                   @keyup.enter="handleSearch"
-                  placeholder="Сайт бойынша іздеу"
+                  :placeholder="$t('search_placeholder')"
                   class="w-full bg-white h-[30px] md:h-[35px] rounded-full border-[1px] border-[#00B5C0] px-4 text-[14px]"
                 />
               </div>
@@ -250,27 +272,26 @@
             <div
               class="flex flex-col gap-4 text-[#00B5C0] text-center text-[25px] text-xl p-4"
             >
-              <p @click="navigate1('/news')">Жаңалықтар</p>
-              <p @click="navigate1('/achievements')">Жобалар</p>
+              <p @click="navigate1('/news')">{{$t('menu.news')}}</p>
+              <p @click="navigate1('/achievements')">{{$t('menu.projects')}}</p>
               <a-dropdown>
-                <p class="cursor-pointer">Тіл курстары</p>
+                <p class="cursor-pointer">{{$t('menu.courses')}}</p>
                 <template #overlay>
                   <a-menu>
                     <a-menu-item @click="navigate1('/table1')">
-                      Мемлекеттік тілде өткізілген сабақтардың сағат саны
+                      {{$t('menu.course1')}}
                     </a-menu-item>
                     <a-menu-item @click="navigate1('/table2')">
-                      Мемлекеттік тіл курсына қатысушылар тізімі
+                      {{$t('menu.course2')}}
                     </a-menu-item>
                     <a-menu-item @click="navigate1('/table3')">
-                      Мемлекеттік тіл курсының сабақ кестесі
+                      {{$t('menu.course3')}}
                     </a-menu-item>
                     <a-menu-item @click="navigate1('/table4')">
-                      Мемлекеттік тілді оқыту бойынша таңдаушылардың сабаққа
-                      қатысу туралы мәлімет
+                      {{$t('menu.course4')}}
                     </a-menu-item>
                     <a-menu-item @click="navigate1('/table4')">
-                      Ағылшын тілі курстары
+                      {{$t('menu.course5')}}
                     </a-menu-item>
                   </a-menu>
                 </template>
@@ -280,23 +301,23 @@
               
 
               <a-dropdown>
-                <p class="cursor-pointer">Құрылым</p>
+                <p class="cursor-pointer">{{$t('menu.structure')}}</p>
                 <template #overlay>
                   <a-menu>
                     <a-menu-item @click="navigate1('/about')"
-                      >Жалпы Ақпарат</a-menu-item
+                      >{{$t('menu.about')}}</a-menu-item
                     >
                     <a-menu-item @click="navigate1('/kurylym')"
-                      >Құрылым</a-menu-item
+                      >{{$t('menu.structure')}}</a-menu-item
                     >
                     <a-menu-item @click="navigate1('/dirs')"
-                      >Бөлімдер</a-menu-item
+                      >{{$t('menu.departments')}}</a-menu-item
                     >
                     
                   </a-menu>
                 </template>
               </a-dropdown>
-              <p @click="navigate1('/map')">Байланыс</p>
+              <p @click="navigate1('/map')">{{$t('menu.contact')}}</p>
             </div>
           </a-drawer>
         </div>
@@ -379,4 +400,18 @@ const todayQuote = computed(() => {
   return quotes.value.find((q) => q.date === today);
 });
 const today = new Date().toISOString().split("T")[0];
+import { useI18n } from 'vue-i18n'
+const { locale } = useI18n()
+
+function changeLocale(lang: string) {
+  locale.value = lang
+  localStorage.setItem('lang', lang)
+}
+
+onMounted(() => {
+  const savedLang = localStorage.getItem('lang')
+  if (savedLang) {
+    locale.value = savedLang
+  }
+})
 </script>

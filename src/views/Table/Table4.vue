@@ -2,7 +2,7 @@
   <div class=" px-[20px] md:px-[100px] text-[#00B5C0] container mx-auto ">
     <!-- Table 4: MEMLEKETTIK TILDI OQYTU BOIYNSA TANDAUSYLARDYN SABAQQA KATYSU TURALY MALIMET -->
     <DualFilterTableSection
-      :title="'Мемлекеттік тілді оқыту бойынша таңдаушылардың сабаққа қатысу туралы мәлімет'"
+      :title="$t('menu.course4')"
       :month="selectedMonth4"
       :months="availableMonths4"
       :name="selectedTeacher4"

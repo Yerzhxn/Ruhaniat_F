@@ -49,7 +49,7 @@
       </div>
     </div>
 
-    <h3 class="text-[24px] font-bold mt-10 mb-5 px-4">Құрылым</h3>
+    <h3 class="text-[24px] font-bold mt-10 mb-5 px-4">{{$t('menu.structure')}}</h3>
     <div class="grid md:grid-cols-3 grid-cols-1 gap-5 justify-center px-4">
           <div
             v-for="user in jumyss.filter(user => user.place === 'БАСШЫ')"

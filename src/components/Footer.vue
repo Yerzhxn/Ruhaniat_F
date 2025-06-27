@@ -8,19 +8,19 @@
         @click="$router.push('/news')"
         class="text-gray-700 hover:text-[#00B5C0] transition-all duration-300 cursor-pointer"
       >
-        Жаңалықтар
+        {{ $t('menu.news') }}
       </p>
        <p
         @click="$router.push('/achievements')"
         class="text-gray-700 hover:text-[#00B5C0] transition-all duration-300 cursor-pointer"
       >
-        Жобалар
+        {{ $t('menu.projects') }}
       </p>
       <a-dropdown placement="topCenter">
         <p
           class="text-gray-700 hover:text-[#00B5C0] transition-all duration-300 cursor-pointer"
         >
-          Тіл курстары
+          {{ $t('menu.courses') }}
         </p>
         <template #overlay>
           <a-menu>
@@ -29,7 +29,7 @@
               :key="index"
               @click="$router.push(item.route)"
             >
-              {{ item.title }}
+              {{ $t(item.title) }}
             </a-menu-item>
           </a-menu>
         </template>
@@ -44,7 +44,7 @@
 
       <a-dropdown placement="topCenter">
         <a class="ant-dropdown-link cursor-pointer" @click.prevent>
-          Біз Туралы
+          {{ $t('main.about') }}
         </a>
         <template #overlay>
           <a-menu>
@@ -53,7 +53,7 @@
               :key="index"
               @click="$router.push(item.route)"
             >
-              {{ item.title }}
+              {{ $t(item.title) }}
             </a-menu-item>
           </a-menu>
         </template>
@@ -91,39 +91,39 @@ import {
 const tables = [
   {
     route: "/table1",
-    title: "Мемлекеттік тілде өткізілген сабақтардың сағат саны",
+    title: "menu.course1",
   },
   {
     route: "/table2",
-    title: "Мемлекеттік тіл курсына қатысушылар тізімі",
+    title: "menu.course2",
   },
   {
     route: "/table3",
-    title: "Мемлекеттік тіл курсының сабақ кестесі",
+    title: "menu.course3",
   },
   {
     route: "/table4",
     title:
-      "Мемлекеттік тілді оқыту бойынша таңдаушылардың сабаққа қатысу туралы мәлімет",
+      "menu.course4",
   },
 ];
 
 const aboutMenu = [
   {
     route: "/about",
-    title: "Жалпы Ақпарат",
+    title: 'menu.about',
   },
   {
     route: "/kurylym",
-    title: "Құрылым",
+    title: "menu.structure",
   },
   {
     route: "/dirs",
-    title: "Бөлімдер",
+    title: "menu.departments",
   },
   {
     route: "/map",
-    title: "Байланыс",
+    title: "menu.contact",
   },
 ];
 

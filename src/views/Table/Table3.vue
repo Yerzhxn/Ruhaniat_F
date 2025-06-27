@@ -2,7 +2,7 @@
   <div class=" px-[20px] md:px-[100px] text-[#00B5C0] container mx-auto ">
     <!-- Table 3: MEMLEKETTIK TIL KURSYNYN SABAQ KESTESI -->
     <DualFilterTableSection
-      :title="'Мемлекеттік тіл курсының сабақ кестесі'"
+      :title="$t('menu.course3')"
       :month="selectedMonth3"
       :months="availableMonths3"
       :name="selectedName3"
