@@ -326,7 +326,7 @@
         <button
           class="cursor-pointer text-[12px] md:text-[16px] bg-[#00B5C0] border-none text-white rounded-[12px] px-[20px] hover:bg-white hover:text-[#00B5C0] transition duration-300"
         >
-          Жазылу
+          {{ $t('main.btn') }}
         </button>
       </div>
     </div>
