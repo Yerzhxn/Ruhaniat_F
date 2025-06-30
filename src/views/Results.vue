@@ -1,7 +1,7 @@
 <template>
   <div class="mb-[40px] p-5 container mx-auto">
     <div class="items-center gap-2 ">
-      <p class="text-[16px] mb-2 mt-10">Сайт бойынша іздеу</p>
+      <p class="text-[16px] mb-2 mt-10">{{ $t('search.set') }}</p>
       <input
         v-model="searchQuery"
         placeholder="Сайт бойынша іздеу"
@@ -10,7 +10,7 @@
     </div>
 
     <div v-if="searchQuery && filteredResults.length === 0" class="mt-4">
-      Нәтиже табылмады.
+      {{ $t('search.none') }}
     </div>
 
     <div v-else class="space-y-8 mt-6">
@@ -72,7 +72,6 @@ import { API_URL } from "../env";
 import NewsCard from "../components/NewsCard.vue";
 import NewsCardDef from "../components/NewsCardDef.vue";
 import YouTubeCard from "../components/YouTubeCard.vue";
-import { useRouter } from "vue-router";
 import { useNewsStore } from "../stores/news.js";
 
 const searchQuery = ref(""); // Больше не используем localStorage
@@ -91,13 +90,25 @@ function getLink(item) {
   }
 }
 
+import { useI18n } from "vue-i18n";
+const { locale } = useI18n();
+
 const filteredResults = computed(() => {
   if (!searchQuery.value.trim()) return [];
+
   const q = searchQuery.value.toLowerCase();
+
   return allItems.value.filter(item => {
+    const titleKz = item.title?.toLowerCase() || "";
+    const titleRu = item.titleRu?.toLowerCase() || "";
+    const descKz = item.description?.toLowerCase() || "";
+    const descRu = item.descriptionRu?.toLowerCase() || "";
+
     return (
-      item.title?.toLowerCase().includes(q) ||
-      item.description?.toLowerCase().includes(q)
+      titleKz.includes(q) ||
+      titleRu.includes(q) ||
+      descKz.includes(q) ||
+      descRu.includes(q)
     );
   });
 });

@@ -40,7 +40,7 @@
                     class="text-[18px] md:text-[24px] font-bold text-white cursor-pointer"
                     @click="$router.push(`/news/${item.documentId}`)"
                   >
-                    {{ item.title }}
+                    {{ locale === 'ru' && item.titleRu ? item.titleRu : item.title }}
                   </p>
                   <p
                     class="text-[16px] text-white font-light line-clamp-2 max-w-[800px] flex items-center gap-2"
@@ -297,7 +297,7 @@
               class="w-[200px] h-[200px] object-cover rounded-full mx-auto mb-3"
             />
             <p class="text-[18px] md:text-[24px] text-center">
-              {{ item.title }}
+              {{ locale === 'ru' && item.titleRu ? item.titleRu : item.title }}
             </p>
           </a>
         </swiper-slide>
@@ -350,7 +350,7 @@ import { storeToRefs } from "pinia";
 import YouTubeCard from "../components/YouTubeCard.vue";
 import { API_URL } from "../env";
 import { onMounted, ref } from "vue";
-
+import { useI18n } from "vue-i18n";
 const swiperController = ref<Swiper | null>(null);
 
 function onSwiperInit(swiperInstance: any) {
@@ -385,5 +385,5 @@ const downloadBook = (pdfUrl?: string, fileName?: string) => {
   link.click();
   document.body.removeChild(link);
 };
-
+const { locale } = useI18n();
 </script>

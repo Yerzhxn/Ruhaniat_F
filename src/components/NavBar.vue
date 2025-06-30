@@ -117,7 +117,7 @@
             class="w-[25px] absolute -top-5 -right-10"
           />
           <p class="font-semibold">
-            {{ todayQuote?.description || $t('quote_missing') }}
+            {{ locale === 'ru' && todayQuote?.descriptionRu ? todayQuote.descriptionRu : todayQuote?.description || '' }}
           </p>
           <p class="text-[18px] font-semibold  text-[#00B5C0] text-center md:text-right">
             {{ todayQuote?.autor || '' }}
